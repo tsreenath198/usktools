@@ -22,7 +22,7 @@ export class DMilanComponent implements OnInit {
   }
   addToList() {
     this.selectedIndex = 0;
-    this.ykCurrData = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", mName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
+    this.ykCurrData = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
     this.ykList.unshift(this.ykCurrData);
     console.log(this.ykList);
   }

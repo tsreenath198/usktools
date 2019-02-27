@@ -6,7 +6,7 @@ export interface DmilanModel{
     kendraType:string;
     jimmedari:string;
     surname:string;
-    mName:string;
+    middleName:string;
     name:string;
     contact:string;
     dob:Date;

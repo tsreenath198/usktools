@@ -1,0 +1,95 @@
+<div class=" mt-4">
+  <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>
+  <table class="table" id="table_id" *ngIf="ykList.length">
+    <thead class="thead-dark">
+      <tr>
+        <th>Taluka</th>
+        <th>Patti</th>
+        <th>Video Kendra</th>
+        <th>Kendra</th>
+        <th>Kendra Type</th>
+        <th>Jimmedari</th>
+        <th colspan="3">Full Name</th>
+        <th>Contact</th>
+        <th>DoB</th>
+        <th>Age</th>
+        <th>Residence</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table_id">
+      <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
+
+        <td>
+          <span *ngIf="i !== 0">{{yk.taluka}}</span>
+          <span *ngIf="i === 0">
+            <select class="form-control" [(ngModel)]="yk.taluka">
+              <option *ngFor="let tl of thalukaList">{{tl}}</option>
+            </select>
+          </span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.patti}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.patti" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.videoKendra}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.videoKendra" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.kendra}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.kendra" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.kendraType}}</span>
+          <span *ngIf="i === 0">
+            <select class="form-control" [(ngModel)]="yk.kendraType">
+              <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
+            </select>
+          </span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.jimmedari}}</span>
+          <span *ngIf="i === 0">
+            <select class="form-control" [(ngModel)]="yk.jimmedari">
+              <option *ngFor="let jl of jimmedariList">{{jl}}</option>
+            </select>
+          </span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.surname}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.surname" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.mName}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.mName" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.name}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.name" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.contact}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.contact" /></span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.dob | date}}</span>
+          <span *ngIf="i === 0"><input type="date" class="form-control" [(ngModel)]="yk.dob"
+              (change)="getDob(yk)" /></span>
+        </td>
+        <td>
+          <span>{{yk.age}}</span>
+        </td>
+        <td>
+          <span *ngIf="i !== 0">{{yk.residence}}</span>
+          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.residence" /></span>
+        </td>
+        <td>
+          <button type="button" (click)="delete(i)" *ngIf="i !== 0" class="btn btn-primary btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button *ngIf="ykList.length" class="btn btn-primary btn-sm" (click)="submit()">Submit</button>
+</div>

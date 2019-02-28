@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { DMilanComponent } from "./d-milan/d-milan.component";
 
 import { HttpService } from "./http.service";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DMilanComponent
+    DMilanComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

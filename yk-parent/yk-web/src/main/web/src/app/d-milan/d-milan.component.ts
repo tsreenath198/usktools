@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DmilanModel } from './d-milan.model';
 import { HttpService } from "../http.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-d-milan',
@@ -17,8 +18,9 @@ export class DMilanComponent implements OnInit {
   public jimmedariList = ["Sanchalak","Sahasanchalak"];
   
   public thalukaList = ["Armoor","Bheemgal","Bodhan","Banswada","Kamareddy","Domakonda","Nizamabad","Yellareddy","Madnoor"];
-  constructor(private clientHttp: HttpService) { }
+  constructor(private clientHttp: HttpService, private router:Router) { }
   ngOnInit() {
+    this.addToList();
   }
   addToList() {
     this.selectedIndex = 0;
@@ -38,7 +40,7 @@ export class DMilanComponent implements OnInit {
 
   submit():void{
     this.clientHttp.create(this.ykList).subscribe(resp=>{
-
+      this.router.navigate(['/', 'searchdmilan'])
     })
   }
 

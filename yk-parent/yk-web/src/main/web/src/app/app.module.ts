@@ -8,17 +8,21 @@ import { DMilanComponent } from "./d-milan/d-milan.component";
 
 import { HttpService } from "./http.service";
 import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SearchdmilanComponent } from './searchdmilan/searchdmilan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DMilanComponent,
-    LoginComponent
+    LoginComponent,
+    SearchdmilanComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

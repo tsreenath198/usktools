@@ -19,4 +19,9 @@ public class APIServiceImp implements APIService {
 	public void createUser(List<YuvanDetails> yuvanDetails) {
 		apiRepository.saveAll(yuvanDetails);
 	}
+
+	@Override
+	public List<YuvanDetails> getAll() {
+		return (List<YuvanDetails>) apiRepository.findAll();
+	}
 }

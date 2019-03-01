@@ -1,1 +1,6 @@
+com\yk\server\app\model\YuvanDetails.class
+com\yk\server\app\service\APIServiceImp.class
+com\yk\server\app\controller\APIController.class
+com\yk\server\app\repository\APIRepository.class
 com\yk\server\app\AppApplication.class
+com\yk\server\app\service\APIService.class

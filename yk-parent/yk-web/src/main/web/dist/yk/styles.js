@@ -598,8 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\lenovo\workspace\pradeep\yk-parent\yk-web\src\main\web\src\styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! C:\Users\lenovo\workspace\pradeep\yk-parent\yk-web\src\main\web\node_modules\bootstrap\dist\css\bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
+__webpack_require__(/*! D:\usktools.git\trunk\yk-parent\yk-web\src\main\web\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! D:\usktools.git\trunk\yk-parent\yk-web\src\main\web\node_modules\bootstrap\dist\css\bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
 
 
 /***/ })

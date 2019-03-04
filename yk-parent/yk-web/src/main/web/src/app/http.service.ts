@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  configUrl: string = "http://localhost:8181/api/yuvan/create"
+  configUrl: string = "http://" + window.location.hostname + ":8181/api/yuvan/"
   constructor(private http: HttpClient) { }
-  create(data: any) {
-    return this.http.post(this.configUrl, data);
+  create(data: any, url) {
+    return this.http.post(this.configUrl + url, data);
   }
   public getReq(URL: string) {
-    return this.http.get(URL);
+    return this.http.get(this.configUrl + URL);
   }
   public getLogin(URL: string) {
-    return this.http.get(URL);
+    return this.http.get(this.configUrl + URL);
   }
 }

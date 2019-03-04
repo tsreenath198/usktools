@@ -14,11 +14,11 @@ export class DMilanComponent implements OnInit {
   public ykList: DmilanModel[] = [];
   public ykCurrData: DmilanModel = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };;
   public selectedIndex: number = 0;
-  public kendraTypeList = ["YK","DPC"];
-  public jimmedariList = ["Sanchalak","Sahasanchalak"];
-  
-  public thalukaList = ["Armoor","Bheemgal","Bodhan","Banswada","Kamareddy","Domakonda","Nizamabad","Yellareddy","Madnoor"];
-  constructor(private clientHttp: HttpService, private router:Router) { }
+  public kendraTypeList = ["YK", "DPC"];
+  public jimmedariList = ["Sanchalak", "Sahasanchalak"];
+
+  public thalukaList = ["Armoor", "Bheemgal", "Bodhan", "Banswada", "Kamareddy", "Domakonda", "Nizamabad", "Yellareddy", "Madnoor"];
+  constructor(private clientHttp: HttpService, private router: Router) { }
   ngOnInit() {
   }
   addToList() {
@@ -30,15 +30,15 @@ export class DMilanComponent implements OnInit {
   delete(index): void {
     this.ykList.splice(index, 1)
   }
-  getDob(yuvn){
+  getDob(yuvn) {
     //let dob = new Date(yuvn.dob);
     let timeDiff = Math.abs(new Date().getTime() - new Date(yuvn.dob).getTime());
     //Math.abs(Date.now() - dob);
-    yuvn.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+    yuvn.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
   }
 
-  submit():void{
-    this.clientHttp.create(this.ykList).subscribe(resp=>{
+  submit(): void {
+    this.clientHttp.create(this.ykList, 'create').subscribe(resp => {
       this.router.navigate(['/', 'searchdmilan'])
     })
   }

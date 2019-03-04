@@ -199,7 +199,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\" mt-4\">\n  <button class=\"btn btn-primary btn-sm\" (click)=\"addToList()\">Add</button>\n  <table class=\"table\" id=\"table_id\" *ngIf=\"ykList.length\">\n    <thead class=\"thead-dark\">\n      <tr>\n        <th>Taluka</th>\n        <th>Patti</th>\n        <th>Video Kendra</th>\n        <th>Kendra</th>\n        <th>Kendra Type</th>\n        <th>Jimmedari</th>\n        <th colspan=\"3\">Full Name</th>\n        <th>Contact</th>\n        <th>DoB</th>\n        <th>Age</th>\n        <th>Residence</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody id=\"table_id\">\n      <tr *ngFor=\"let yk of ykList;let i = index;let f= first;let l= last\">\n\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.taluka}}</span>\n          <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.taluka\">\n              <option *ngFor=\"let tl of thalukaList\">{{tl}}</option>\n            </select>\n          </span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.patti}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.patti\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.videoKendra}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.videoKendra\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.kendra}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.kendra\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.kendraType}}</span>\n          <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.kendraType\">\n              <option *ngFor=\"let ktl of kendraTypeList\">{{ktl}}</option>\n            </select>\n          </span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.jimmedari}}</span>\n          <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.jimmedari\">\n              <option *ngFor=\"let jl of jimmedariList\">{{jl}}</option>\n            </select>\n          </span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.surname}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.surname\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.middleName}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.middleName\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.name}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.name\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.contact}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.contact\" /></span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.dob | date}}</span>\n          <span *ngIf=\"i === 0\"><input type=\"date\" class=\"form-control\" [(ngModel)]=\"yk.dob\"\n              (change)=\"getDob(yk)\" /></span>\n        </td>\n        <td>\n          <span>{{yk.age}}</span>\n        </td>\n        <td>\n          <span *ngIf=\"i !== 0\">{{yk.residence}}</span>\n          <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.residence\" /></span>\n        </td>\n        <td>\n          <button type=\"button\" (click)=\"delete(i)\" *ngIf=\"i !== 0\" class=\"btn btn-primary btn-sm\">Delete</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n\n  <button *ngIf=\"ykList.length\" class=\"btn btn-primary btn-sm\" (click)=\"submit()\">Submit</button>\n</div>"
+module.exports = "<br>\n<div class=\"row\">\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"\">Surname,Middle Name and Name</span>\n    </div>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.surname\" placeholder=\"surname\" />\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.middleName\" placeholder=\"middle name\" />\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.name\" placeholder=\"name\" />\n  </div>\n</div>\n<br>\n<div class=\"row\">\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Taluka</span>\n    </div>\n    <select class=\"form-control\" [(ngModel)]=\"ykCurrData.taluka\" aria-placeholder=\"Taluka\">\n      <option *ngFor=\"let tl of thalukaList\">{{tl}}</option>\n    </select>\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Patti</span>\n    </div>\n    <input class=\"form-control\" type=\"text\" [(ngModel)]=\"ykCurrData.patti\" placeholder=\"Patti\" />\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Video Kendra</span>\n    </div>\n    <input class=\"form-control\" [(ngModel)]=\"ykCurrData.videoKendra\" placeholder=\"Video Kendra\" />\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Kendra</span>\n    </div>\n    <input class=\"form-control\" [(ngModel)]=\"ykCurrData.kendra\" placeholder=\"Kendra\" />\n  </div>\n</div>\n\n\n<div class=\"row\">\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Kendra Type</span>\n    </div>\n    <select class=\"form-control col\" [(ngModel)]=\"ykCurrData.kendraType\">\n      <option *ngFor=\"let ktl of kendraTypeList\">{{ktl}}</option>\n    </select>\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Jimmedari</span>\n    </div>\n    <select class=\"form-control col\" [(ngModel)]=\"ykCurrData.jimmedari\" placeholder=\"Jimmedari\">\n      <option *ngFor=\"let jl of jimmedariList\">{{jl}}</option>\n    </select>\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Contact</span>\n    </div>\n    <input type=\"text\" class=\"form-control col\" [(ngModel)]=\"ykCurrData.contact\" placeholder=\"contact\" />\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">DoB</span>\n    </div>\n    <input type=\"date\" class=\"form-control col\" [(ngModel)]=\"ykCurrData.dob\" (change)=\"getDob(ykCurrData)\"\n      placeholder=\"dob\" />\n  </div>\n</div>\n\n\n<div class=\"row\">\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">Recidence</span>\n    </div>\n    <input class=\"form-control\" [(ngModel)]=\"ykCurrData.residence\" placeholder=\"Residence\" />\n  </div>\n  <div class=\"input-group input-group-sm mb-3 col-sm-3\">\n    <button class=\"btn btn-primary btn-sm\" (click)=\"addToList()\">Add</button>\n  </div>\n</div>\n\n\n\n\n<br>\n <div class=\" mt-4\" style=\"align-content: center;\">\n  <!--<div class=\"form-group\">\n    <div class=\"row\">\n     \n      <input class=\"form-control col-sm-3\" type=\"text\" [(ngModel)]=\"ykCurrData.patti\" placeholder=\"Patti\" />\n\n      <input class=\"form-control col-sm-3\" [(ngModel)]=\"ykCurrData.videoKendra\" placeholder=\"Video Kendra\" />\n    </div>\n\n\n    <form class=\"row\">\n      <input class=\"form-control col\" [(ngModel)]=\"ykCurrData.kendra\" placeholder=\"Kendra\" />\n\n      kendraType:<select class=\"form-control col\" [(ngModel)]=\"ykCurrData.kendraType\" placeholder=\"kendra type:\">\n        <option *ngFor=\"let ktl of kendraTypeList\">{{ktl}}</option>\n      </select>\n\n      Jimmedari:<select class=\"form-control col\" [(ngModel)]=\"ykCurrData.jimmedari\" placeholder=\"Jimmedari\">\n        <option *ngFor=\"let jl of jimmedariList\">{{jl}}</option>\n      </select>\n    </form>\n    <br>\n    <form class=\"row\"><span class=\"col\">\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.surname\" placeholder=\"surname\" />\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.middleName\" placeholder=\"middle name\" />\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"ykCurrData.name\" placeholder=\"name\" />\n      </span>\n\n      <input type=\"text\" class=\"form-control col\" [(ngModel)]=\"ykCurrData.contact\" placeholder=\"contact\" />\n\n      Date of Birth:<input type=\"date\" class=\"form-control col\" [(ngModel)]=\"ykCurrData.dob\"\n        (change)=\"getDob(ykCurrData)\" placeholder=\"dob\" />\n    </form>\n\n    <form class=\"form-inline\">\n      <input class=\"form-control\" [(ngModel)]=\"ykCurrData.residence\" placeholder=\"Residence\" />\n      <button class=\"btn btn-primary btn-sm\" (click)=\"addToList()\">Add</button></form>\n  </div> -->\n  <!-- <button class=\"btn btn-primary btn-sm\" (click)=\"addToList()\">Add</button> -->\n  <table class=\"table\" id=\"table_id\" *ngIf=\"ykList.length\">\n    <thead class=\"thead-dark\">\n      <tr>\n        <th>Taluka</th>\n        <th>Patti</th>\n        <th>Video Kendra</th>\n        <th>Kendra</th>\n        <th>Kendra Type</th>\n        <th>Jimmedari</th>\n        <th colspan=\"3\">Full Name</th>\n        <th>Contact</th>\n        <th>DoB</th>\n        <th>Age</th>\n        <th>Residence</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody id=\"table_id\">\n      <tr *ngFor=\"let yk of ykList;let i = index;let f= first;let l= last\">\n\n        <td>\n          <span>{{yk.taluka}}</span>\n          <!-- <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.taluka\">\n              <option *ngFor=\"let tl of thalukaList\">{{tl}}</option>\n            </select>\n          </span> -->\n        </td>\n        <td>\n          <span>{{yk.patti}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.patti\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.videoKendra}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.videoKendra\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.kendra}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.kendra\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.kendraType}}</span>\n          <!-- <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.kendraType\">\n              <option *ngFor=\"let ktl of kendraTypeList\">{{ktl}}</option>\n            </select>\n          </span> -->\n        </td>\n        <td>\n          <span>{{yk.jimmedari}}</span>\n          <!-- <span *ngIf=\"i === 0\">\n            <select class=\"form-control\" [(ngModel)]=\"yk.jimmedari\">\n              <option *ngFor=\"let jl of jimmedariList\">{{jl}}</option>\n            </select>\n          </span> -->\n        </td>\n        <td>\n          <span>{{yk.surname}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.surname\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.middleName}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.middleName\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.name}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.name\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.contact}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.contact\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.dob | date}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input type=\"date\" class=\"form-control\" [(ngModel)]=\"yk.dob\"\n              (change)=\"getDob(yk)\" /></span> -->\n        </td>\n        <td>\n          <span>{{yk.age}}</span>\n        </td>\n        <td>\n          <span>{{yk.residence}}</span>\n          <!-- <span *ngIf=\"i === 0\"><input class=\"form-control\" [(ngModel)]=\"yk.residence\" /></span> -->\n        </td>\n        <td>\n          <button type=\"button\" (click)=\"delete(i)\" class=\"btn btn-primary btn-sm\">Delete</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n\n  <button *ngIf=\"ykList.length\" class=\"btn btn-primary btn-sm\" (click)=\"submit()\">Submit</button>\n</div>"
 
 /***/ }),
 
@@ -226,18 +226,18 @@ var DMilanComponent = /** @class */ (function () {
         this.clientHttp = clientHttp;
         this.router = router;
         this.ykList = [];
+        this.ykCurrData = { name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
         this.selectedIndex = 0;
         this.kendraTypeList = ["YK", "DPC"];
         this.jimmedariList = ["Sanchalak", "Sahasanchalak"];
         this.thalukaList = ["Armoor", "Bheemgal", "Bodhan", "Banswada", "Kamareddy", "Domakonda", "Nizamabad", "Yellareddy", "Madnoor"];
     }
+    ;
     DMilanComponent.prototype.ngOnInit = function () {
-        this.addToList();
     };
     DMilanComponent.prototype.addToList = function () {
-        this.selectedIndex = 0;
-        this.ykCurrData = { name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
         this.ykList.unshift(this.ykCurrData);
+        this.ykCurrData = { name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
         console.log(this.ykList);
     };
     DMilanComponent.prototype.delete = function (index) {
@@ -294,7 +294,10 @@ var HttpService = /** @class */ (function () {
     HttpService.prototype.create = function (data) {
         return this.http.post(this.configUrl, data);
     };
-    HttpService.prototype.getData = function (URL) {
+    HttpService.prototype.getReq = function (URL) {
+        return this.http.get(URL);
+    };
+    HttpService.prototype.getLogin = function (URL) {
         return this.http.get(URL);
     };
     HttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -344,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_login_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/login/login.service */ "./src/app/services/login/login.service.ts");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
@@ -375,7 +378,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_login_login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -432,7 +435,7 @@ var SearchdmilanComponent = /** @class */ (function () {
     }
     SearchdmilanComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.getData('http://localhost:8181/api/yuvan/getAll').subscribe(function (resp) {
+        this.http.getReq('http://localhost:8181/api/yuvan/getAll').subscribe(function (resp) {
             _this.ykList = resp;
         });
     };
@@ -448,42 +451,6 @@ var SearchdmilanComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], SearchdmilanComponent);
     return SearchdmilanComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/login/login.service.ts":
-/*!*************************************************!*\
-  !*** ./src/app/services/login/login.service.ts ***!
-  \*************************************************/
-/*! exports provided: LoginService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginService", function() { return LoginService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-var LoginService = /** @class */ (function () {
-    function LoginService(httpClient) {
-        this.httpClient = httpClient;
-    }
-    LoginService.prototype.getLogin = function (URL) {
-        return this.httpClient.get(URL);
-    };
-    LoginService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], LoginService);
-    return LoginService;
 }());
 
 

@@ -1,5 +1,133 @@
-<div class=" mt-4">
-  <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>
+<br>
+<div class="row">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="">Surname,Middle Name and Name</span>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="ykCurrData.surname" placeholder="surname" />
+    <input type="text" class="form-control" [(ngModel)]="ykCurrData.middleName" placeholder="middle name" />
+    <input type="text" class="form-control" [(ngModel)]="ykCurrData.name" placeholder="name" />
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Taluka</span>
+    </div>
+    <select class="form-control" [(ngModel)]="ykCurrData.taluka" aria-placeholder="Taluka">
+      <option *ngFor="let tl of thalukaList">{{tl}}</option>
+    </select>
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Patti</span>
+    </div>
+    <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti" placeholder="Patti" />
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Video Kendra</span>
+    </div>
+    <input class="form-control" [(ngModel)]="ykCurrData.videoKendra" placeholder="Video Kendra" />
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Kendra</span>
+    </div>
+    <input class="form-control" [(ngModel)]="ykCurrData.kendra" placeholder="Kendra" />
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Kendra Type</span>
+    </div>
+    <select class="form-control col" [(ngModel)]="ykCurrData.kendraType">
+      <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
+    </select>
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Jimmedari</span>
+    </div>
+    <select class="form-control col" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari">
+      <option *ngFor="let jl of jimmedariList">{{jl}}</option>
+    </select>
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Contact</span>
+    </div>
+    <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact" placeholder="contact" />
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
+    </div>
+    <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" (change)="getDob(ykCurrData)"
+      placeholder="dob" />
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Recidence</span>
+    </div>
+    <input class="form-control" [(ngModel)]="ykCurrData.residence" placeholder="Residence" />
+  </div>
+  <div class="input-group input-group-sm mb-3 col-sm-3">
+    <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>
+  </div>
+</div>
+
+
+
+
+<br>
+ <div class=" mt-4" style="align-content: center;">
+  <!--<div class="form-group">
+    <div class="row">
+     
+      <input class="form-control col-sm-3" type="text" [(ngModel)]="ykCurrData.patti" placeholder="Patti" />
+
+      <input class="form-control col-sm-3" [(ngModel)]="ykCurrData.videoKendra" placeholder="Video Kendra" />
+    </div>
+
+
+    <form class="row">
+      <input class="form-control col" [(ngModel)]="ykCurrData.kendra" placeholder="Kendra" />
+
+      kendraType:<select class="form-control col" [(ngModel)]="ykCurrData.kendraType" placeholder="kendra type:">
+        <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
+      </select>
+
+      Jimmedari:<select class="form-control col" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari">
+        <option *ngFor="let jl of jimmedariList">{{jl}}</option>
+      </select>
+    </form>
+    <br>
+    <form class="row"><span class="col">
+        <input type="text" class="form-control" [(ngModel)]="ykCurrData.surname" placeholder="surname" />
+        <input type="text" class="form-control" [(ngModel)]="ykCurrData.middleName" placeholder="middle name" />
+        <input type="text" class="form-control" [(ngModel)]="ykCurrData.name" placeholder="name" />
+      </span>
+
+      <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact" placeholder="contact" />
+
+      Date of Birth:<input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob"
+        (change)="getDob(ykCurrData)" placeholder="dob" />
+    </form>
+
+    <form class="form-inline">
+      <input class="form-control" [(ngModel)]="ykCurrData.residence" placeholder="Residence" />
+      <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button></form>
+  </div> -->
+  <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button> -->
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
       <tr>
@@ -21,71 +149,71 @@
       <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
 
         <td>
-          <span *ngIf="i !== 0">{{yk.taluka}}</span>
-          <span *ngIf="i === 0">
+          <span>{{yk.taluka}}</span>
+          <!-- <span *ngIf="i === 0">
             <select class="form-control" [(ngModel)]="yk.taluka">
               <option *ngFor="let tl of thalukaList">{{tl}}</option>
             </select>
-          </span>
+          </span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.patti}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.patti" /></span>
+          <span>{{yk.patti}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.patti" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.videoKendra}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.videoKendra" /></span>
+          <span>{{yk.videoKendra}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.videoKendra" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.kendra}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.kendra" /></span>
+          <span>{{yk.kendra}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.kendra" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.kendraType}}</span>
-          <span *ngIf="i === 0">
+          <span>{{yk.kendraType}}</span>
+          <!-- <span *ngIf="i === 0">
             <select class="form-control" [(ngModel)]="yk.kendraType">
               <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
             </select>
-          </span>
+          </span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.jimmedari}}</span>
-          <span *ngIf="i === 0">
+          <span>{{yk.jimmedari}}</span>
+          <!-- <span *ngIf="i === 0">
             <select class="form-control" [(ngModel)]="yk.jimmedari">
               <option *ngFor="let jl of jimmedariList">{{jl}}</option>
             </select>
-          </span>
+          </span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.surname}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.surname" /></span>
+          <span>{{yk.surname}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.surname" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.middleName}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.middleName" /></span>
+          <span>{{yk.middleName}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.middleName" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.name}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.name" /></span>
+          <span>{{yk.name}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.name" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.contact}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.contact" /></span>
+          <span>{{yk.contact}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.contact" /></span> -->
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.dob | date}}</span>
-          <span *ngIf="i === 0"><input type="date" class="form-control" [(ngModel)]="yk.dob"
-              (change)="getDob(yk)" /></span>
+          <span>{{yk.dob | date}}</span>
+          <!-- <span *ngIf="i === 0"><input type="date" class="form-control" [(ngModel)]="yk.dob"
+              (change)="getDob(yk)" /></span> -->
         </td>
         <td>
           <span>{{yk.age}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.residence}}</span>
-          <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.residence" /></span>
+          <span>{{yk.residence}}</span>
+          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.residence" /></span> -->
         </td>
         <td>
-          <button type="button" (click)="delete(i)" *ngIf="i !== 0" class="btn btn-primary btn-sm">Delete</button>
+          <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
         </td>
       </tr>
     </tbody>

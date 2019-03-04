@@ -12,7 +12,7 @@ export class DMilanComponent implements OnInit {
 
 
   public ykList: DmilanModel[] = [];
-  public ykCurrData: DmilanModel;
+  public ykCurrData: DmilanModel = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };;
   public selectedIndex: number = 0;
   public kendraTypeList = ["YK","DPC"];
   public jimmedariList = ["Sanchalak","Sahasanchalak"];
@@ -20,12 +20,11 @@ export class DMilanComponent implements OnInit {
   public thalukaList = ["Armoor","Bheemgal","Bodhan","Banswada","Kamareddy","Domakonda","Nizamabad","Yellareddy","Madnoor"];
   constructor(private clientHttp: HttpService, private router:Router) { }
   ngOnInit() {
-    this.addToList();
   }
   addToList() {
-    this.selectedIndex = 0;
-    this.ykCurrData = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
     this.ykList.unshift(this.ykCurrData);
+    this.ykCurrData = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
+
     console.log(this.ykList);
   }
   delete(index): void {

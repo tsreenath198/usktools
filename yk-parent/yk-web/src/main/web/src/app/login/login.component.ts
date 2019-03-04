@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginModel } from './login.model';
-import { LoginService } from '../services/login/login.service';
+import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router:Router) { }
+  constructor(private loginService: HttpService, private router:Router) { }
   username: string = "";
   password: string = "";
   ngOnInit() {

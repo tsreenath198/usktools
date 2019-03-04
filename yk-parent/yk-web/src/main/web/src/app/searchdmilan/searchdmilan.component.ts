@@ -13,7 +13,7 @@ export class SearchdmilanComponent implements OnInit {
   constructor(private http:HttpService, private router:Router) { }
 
   ngOnInit() {
-    this.http.getData('http://localhost:8181/api/yuvan/getAll').subscribe(resp => {
+    this.http.getReq('http://localhost:8181/api/yuvan/getAll').subscribe(resp => {
       this.ykList = resp as DmilanModel[]});
   }
   addToList(){

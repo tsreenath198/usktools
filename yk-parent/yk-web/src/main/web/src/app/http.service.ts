@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  configUrl: string = "http://" + window.location.hostname + ":8181/api/yuvan/"
+  configUrl: string = "http://" + window.location.hostname + ":8282/api/yuvan/"
   constructor(private http: HttpClient) { }
   create(data: any, url) {
     return this.http.post(this.configUrl + url, data);
@@ -14,6 +14,6 @@ export class HttpService {
     return this.http.get(this.configUrl + URL);
   }
   public getLogin(URL: string) {
-    return this.http.get(this.configUrl + URL);
+    return this.http.get(URL);
   }
 }

@@ -1,155 +1,158 @@
-<form name="form" (ngSubmit)="f.form.valid && addToList() && form.resetForm()" #f="ngForm" novalidate>
-  <!-- <div class="form-group">
-  </div> -->
-  <br>
-  <div class="row "  >
+<!-- Form to insert the details of a kendram person -->
+<form name="form" (ngSubmit)=" f.form.valid && addToList() && f.form.reset" #f="ngForm" novalidate>
+  <!-- Name section in form -->
+  <div class="row p">
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="">Full Name</span>
+        <span class="input-group-text">Full Name</span>
       </div>
       <div class="col-sm-3">
           <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && surname.invalid }" placeholder="surname" required />
+          [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="surname" required />
         <div *ngIf="f.submitted && surname.invalid" class="invalid-feedback">
           <div *ngIf="surname.errors.required">Surname is required</div>
         </div>
       </div>
       <div class="col-sm-3">
           <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName"
-          #middleName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }" placeholder="middle name" required />
+          #middleName="ngModel" [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="middle name" required />
         <div *ngIf="f.submitted && middleName.invalid" class="invalid-feedback">
           <div *ngIf="middleName.errors.required">Middle Name is required</div>
         </div>
       </div>
       <div class="col-sm-3">
           <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="name" required />
+          [ngClass]="{'is-invalid': f.submitted && name.invalid}" placeholder="name" required />
         <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
           <div *ngIf="name.errors.required">Surname is required</div>
         </div>
       </div>
     </div>
   </div>
-  <br>
-
-
-
-  <div class="row">
+  <div class="row p">
     <div class="input-group input-group-sm mb-3 col-sm-3">
+      <!-- Taluka Section in form -->
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka</span>
       </div>
       <select class="form-control" name="taluka" [(ngModel)]="ykCurrData.taluka"
-        #taluka="ngModel" [ngClass]="{ 'is-invalid': f.submitted && taluka.invalid }" required>
+        #taluka="ngModel">
         <option hidden selected></option>
         <option *ngFor="let tl of thalukaList">{{tl}}</option>
       </select>
-      <div *ngIf="f.submitted && taluka.invalid" class="invalid-feedback">
+      <!-- [ngClass]="{'is-invalid': f.submitted && taluka.invalid}"
+        <div *ngIf="f.submitted && taluka.invalid" class="invalid-feedback">
         <div *ngIf="taluka.errors.required">Taluka is required</div>
-      </div>
+      </div> -->
     </div>
+    <!-- Patti Section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Patti</span>
       </div>
-      <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti"  name="patti"  #patti="ngModel" 
-      [ngClass]="{ 'is-invalid': f.submitted && patti.invalid }" required/>
-      <div *ngIf="f.submitted && patti.invalid" class="invalid-feedback">
+      <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti"  name="patti"  #patti="ngModel" />
+      <!-- [ngClass]="{'is-invalid': f.submitted && patti.invalid}"
+        <div *ngIf="f.submitted && patti.invalid" class="invalid-feedback">
           <div *ngIf="patti.errors.required">Patti is required</div>
-        </div>
+        </div>-->
     </div>
+    <!-- Video kendra section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Video Kendra</span>
       </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.videoKendra"  name="videoKendra"  #videoKendra="ngModel" 
-      [ngClass]="{ 'is-invalid': f.submitted && videoKendra.invalid }" required/>
-      <div *ngIf="f.submitted && videoKendra.invalid" class="invalid-feedback">
+      <input class="form-control" [(ngModel)]="ykCurrData.videoKendra"  name="videoKendra"  #videoKendra="ngModel" />
+      <!-- [ngClass]="{'is-invalid': f.submitted && videoKendra.invalid}"
+        <div *ngIf="f.submitted && videoKendra.invalid" class="invalid-feedback">
           <div *ngIf="videoKendra.errors.required">Video Kendra is required</div>
-        </div>
+        </div> -->
     </div>
+    <!-- Kenra section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Kendra</span>
       </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.kendra"  name="kendra"  #kendra="ngModel" 
-      [ngClass]="{ 'is-invalid': f.submitted && kendra.invalid }" required/>
-      <div *ngIf="f.submitted && kendra.invalid" class="invalid-feedback">
+      <input class="form-control" [(ngModel)]="ykCurrData.kendra"  name="kendra"  #kendra="ngModel" />
+      <!-- [ngClass]="{ 'is-invalid': f.submitted && kendra.invalid }"
+        <div *ngIf="f.submitted && kendra.invalid" class="invalid-feedback">
           <div *ngIf="kendra.errors.required">Video Kendra is required</div>
-        </div>
+        </div> -->
     </div>
   </div>
-
-
-  <div class="row">
+  <div class="row p">
+    <!-- kendra type section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Kendra Type</span>
       </div>
       <select class="form-control col" name="kendraType" [(ngModel)]="ykCurrData.kendraType" 
-       #kendraType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && kendraType.invalid }" required>
+       #kendraType="ngModel">
         <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
       </select>
-      <div *ngIf="f.submitted && kendraType.invalid" class="invalid-feedback">
+      <!-- [ngClass]="{ 'is-invalid': f.submitted && kendraType.invalid }"
+        <div *ngIf="f.submitted && kendraType.invalid" class="invalid-feedback">
           <div *ngIf="kendraType.errors.required">Kendra Type is required</div>
-        </div>
+        </div> -->
     </div>
+    <!-- Jimmedari section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Jimmedari</span>
       </div>
       <select class="form-control col" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari" name="jimmedari"
-      #jimmedari="ngModel" [ngClass]="{ 'is-invalid': f.submitted && jimmedari.invalid }" required>
+      #jimmedari="ngModel">
         <option *ngFor="let jl of jimmedariList">{{jl}}</option>
       </select>
-      <div *ngIf="f.submitted && jimmedari.invalid" class="invalid-feedback">
+      <!-- [ngClass]="{'is-invalid': f.submitted && jimmedari.invalid}"
+        <div *ngIf="f.submitted && jimmedari.invalid" class="invalid-feedback">
           <div *ngIf="jimmedari.errors.required">Jimmedari is required</div>
-        </div>
+        </div> -->
     </div>
+    <!-- Contact section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Contact</span>
       </div>
       <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact"  name="contact"
-      #contact="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required/>
+      #contact="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10" maxlength="11"/>
       <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
           <div *ngIf="contact.errors.required">Contact is required</div>
         </div>
+        <div *ngIf="f.submitted && contact.minlength && contact.maxlength" class="invalid-feedback">
+            <div *ngIf="contact.errors.required">Please check number </div>
+          </div>
     </div>
+    <!-- Dob section in form  -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
       </div>
       <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" (change)="getDob(ykCurrData)"
         placeholder="dob" name="dob"
-        #dob="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dob.invalid }" required/>
-        <div *ngIf="f.submitted && dob.invalid" class="invalid-feedback">
+        #dob="ngModel"/>
+        <!-- [ngClass]="{ 'is-invalid': f.submitted && dob.invalid }"
+          <div *ngIf="f.submitted && dob.invalid" class="invalid-feedback">
             <div *ngIf="dob.errors.required">Date of Birth is required</div>
-          </div>
+          </div> -->
     </div>
   </div>
-
-
-    <div class="row">
+    <div class="row p">
+      <!-- Residence section section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Recidence</span>
       </div>
       <input class="form-control col" [(ngModel)]="ykCurrData.residence"  name="residence"
-      #residence="ngModel"  required/>
-    </div>
-    
+      #residence="ngModel" />
+    </div>   
   </div>
   <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
       <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
     </div>
 </form>
-
-
-
-
-<div class=" mt-4" style="align-content: center;">
+<!-- Displaying all the filled details in the above form. -->
+<div class="mt-4">
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
       <tr>
@@ -161,7 +164,7 @@
         <th>Jimmedari</th>
         <th colspan="3">Full Name</th>
         <th>Contact</th>
-        <th>DoB</th>
+        <th>DOB</th>
         <th>Age</th>
         <th>Residence</th>
         <th>Action</th>
@@ -169,77 +172,52 @@
     </thead>
     <tbody id="table_id">
       <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
-
         <td>
           <span>{{yk.taluka}}</span>
-          <!-- <span *ngIf="i === 0">
-            <select class="form-control" [(ngModel)]="yk.taluka">
-              <option *ngFor="let tl of thalukaList">{{tl}}</option>
-            </select>
-          </span> -->
         </td>
         <td>
           <span>{{yk.patti}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.patti" /></span> -->
         </td>
         <td>
           <span>{{yk.videoKendra}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.videoKendra" /></span> -->
         </td>
         <td>
           <span>{{yk.kendra}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.kendra" /></span> -->
         </td>
         <td>
           <span>{{yk.kendraType}}</span>
-          <!-- <span *ngIf="i === 0">
-            <select class="form-control" [(ngModel)]="yk.kendraType">
-              <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
-            </select>
-          </span> -->
         </td>
         <td>
           <span>{{yk.jimmedari}}</span>
-          <!-- <span *ngIf="i === 0">
-            <select class="form-control" [(ngModel)]="yk.jimmedari">
-              <option *ngFor="let jl of jimmedariList">{{jl}}</option>
-            </select>
-          </span> -->
         </td>
         <td>
           <span>{{yk.surname}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.surname" /></span> -->
         </td>
         <td>
           <span>{{yk.middleName}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.middleName" /></span> -->
         </td>
         <td>
           <span>{{yk.name}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.name" /></span> -->
         </td>
         <td>
           <span>{{yk.contact}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.contact" /></span> -->
         </td>
         <td>
           <span>{{yk.dob | date}}</span>
-          <!-- <span *ngIf="i === 0"><input type="date" class="form-control" [(ngModel)]="yk.dob"
-              (change)="getDob(yk)" /></span> -->
         </td>
         <td>
           <span>{{yk.age}}</span>
         </td>
         <td>
           <span>{{yk.residence}}</span>
-          <!-- <span *ngIf="i === 0"><input class="form-control" [(ngModel)]="yk.residence" /></span> -->
         </td>
         <td>
+          <!-- Delete's the particular row data from the table -->
           <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-
+  <!-- Submits all the data of the row to database -->
   <button *ngIf="ykList.length" class="btn btn-primary btn-sm" (click)="submit()">Submit</button>
 </div>

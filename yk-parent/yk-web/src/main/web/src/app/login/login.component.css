@@ -6,13 +6,15 @@
     min-height: 80vh;
   }
   .bg-color{
-    background: #62b220;
-    color:white;
+    color: #fff;
+    background-color: #286090;
+    background-image: none;
+    border-color: #204d74;
     padding-left: 20px;
     padding-right: 20px;
   }
   .x-color{
-      color:#49821c;
+      color:#286090;
   }
   .wth33{
       width: 33%;

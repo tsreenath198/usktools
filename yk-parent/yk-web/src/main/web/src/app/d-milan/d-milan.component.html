@@ -4,29 +4,17 @@
   <div class="row p">
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text">Full Name</span>
+        <span class="input-group-text">First and last name</span>
       </div>
-      <div class="col-sm-3">
-          <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
-          [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="surname" required />
-        <div *ngIf="f.submitted && surname.invalid" class="invalid-feedback">
-          <div *ngIf="surname.errors.required">Surname is required</div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-          <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName"
-          #middleName="ngModel" [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="middle name" required />
-        <div *ngIf="f.submitted && middleName.invalid" class="invalid-feedback">
-          <div *ngIf="middleName.errors.required">Middle Name is required</div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-          <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel"
-          [ngClass]="{'is-invalid': f.submitted && name.invalid}" placeholder="name" required />
-        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-          <div *ngIf="name.errors.required">Surname is required</div>
-        </div>
-      </div>
+      <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="surname" required />
+      <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName" #middleName="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="middle name" required />
+      <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel" [ngClass]="{'is-invalid': f.submitted && name.invalid}"
+        placeholder="name" required />
+        <div class="invalid-feedback">
+            Please choose a username.
+          </div>
     </div>
   </div>
   <div class="row p">
@@ -35,8 +23,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka</span>
       </div>
-      <select class="form-control" name="taluka" [(ngModel)]="ykCurrData.taluka"
-        #taluka="ngModel">
+      <select class="form-control" name="taluka" [(ngModel)]="ykCurrData.taluka" #taluka="ngModel">
         <option hidden selected></option>
         <option *ngFor="let tl of thalukaList">{{tl}}</option>
       </select>
@@ -50,7 +37,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Patti</span>
       </div>
-      <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti"  name="patti"  #patti="ngModel" />
+      <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti" name="patti" #patti="ngModel" />
       <!-- [ngClass]="{'is-invalid': f.submitted && patti.invalid}"
         <div *ngIf="f.submitted && patti.invalid" class="invalid-feedback">
           <div *ngIf="patti.errors.required">Patti is required</div>
@@ -61,7 +48,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Video Kendra</span>
       </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.videoKendra"  name="videoKendra"  #videoKendra="ngModel" />
+      <input class="form-control" [(ngModel)]="ykCurrData.videoKendra" name="videoKendra" #videoKendra="ngModel" />
       <!-- [ngClass]="{'is-invalid': f.submitted && videoKendra.invalid}"
         <div *ngIf="f.submitted && videoKendra.invalid" class="invalid-feedback">
           <div *ngIf="videoKendra.errors.required">Video Kendra is required</div>
@@ -72,11 +59,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Kendra</span>
       </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.kendra"  name="kendra"  #kendra="ngModel" />
-      <!-- [ngClass]="{ 'is-invalid': f.submitted && kendra.invalid }"
-        <div *ngIf="f.submitted && kendra.invalid" class="invalid-feedback">
-          <div *ngIf="kendra.errors.required">Video Kendra is required</div>
-        </div> -->
+      <input class="form-control" [(ngModel)]="ykCurrData.kendra" name="kendra" #kendra="ngModel" />
     </div>
   </div>
   <div class="row p">
@@ -85,42 +68,33 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Kendra Type</span>
       </div>
-      <select class="form-control col" name="kendraType" [(ngModel)]="ykCurrData.kendraType" 
-       #kendraType="ngModel">
+      <select class="custom-select" name="kendraType" [(ngModel)]="ykCurrData.kendraType" #kendraType="ngModel">
         <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
       </select>
-      <!-- [ngClass]="{ 'is-invalid': f.submitted && kendraType.invalid }"
-        <div *ngIf="f.submitted && kendraType.invalid" class="invalid-feedback">
-          <div *ngIf="kendraType.errors.required">Kendra Type is required</div>
-        </div> -->
     </div>
     <!-- Jimmedari section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Jimmedari</span>
       </div>
-      <select class="form-control col" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari" name="jimmedari"
-      #jimmedari="ngModel">
+      <select class="custom-select" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari" name="jimmedari"
+        #jimmedari="ngModel">
         <option *ngFor="let jl of jimmedariList">{{jl}}</option>
       </select>
-      <!-- [ngClass]="{'is-invalid': f.submitted && jimmedari.invalid}"
-        <div *ngIf="f.submitted && jimmedari.invalid" class="invalid-feedback">
-          <div *ngIf="jimmedari.errors.required">Jimmedari is required</div>
-        </div> -->
     </div>
     <!-- Contact section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Contact</span>
       </div>
-      <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact"  name="contact"
-      #contact="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10" maxlength="11"/>
-      <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
-          <div *ngIf="contact.errors.required">Contact is required</div>
-        </div>
-        <div *ngIf="f.submitted && contact.minlength && contact.maxlength" class="invalid-feedback">
-            <div *ngIf="contact.errors.required">Please check number </div>
-          </div>
+      <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact" name="contact" #contact="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10" maxlength="11" />
+      <!-- <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
+        <div *ngIf="contact.errors.required">Contact is required</div>
+      </div>
+      <div *ngIf="f.submitted && contact.minlength && contact.maxlength" class="invalid-feedback">
+        <div *ngIf="contact.errors.required">Please check number </div>
+      </div> -->
     </div>
     <!-- Dob section in form  -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -128,28 +102,22 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
       </div>
       <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" (change)="getDob(ykCurrData)"
-        placeholder="dob" name="dob"
-        #dob="ngModel"/>
-        <!-- [ngClass]="{ 'is-invalid': f.submitted && dob.invalid }"
-          <div *ngIf="f.submitted && dob.invalid" class="invalid-feedback">
-            <div *ngIf="dob.errors.required">Date of Birth is required</div>
-          </div> -->
+        placeholder="dob" name="dob" #dob="ngModel" />
     </div>
   </div>
-    <div class="row p">
-      <!-- Residence section section in form -->
+  <div class="row p">
+    <!-- Residence section section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Recidence</span>
       </div>
-      <input class="form-control col" [(ngModel)]="ykCurrData.residence"  name="residence"
-      #residence="ngModel" />
-    </div>   
+      <input class="form-control col" [(ngModel)]="ykCurrData.residence" name="residence" #residence="ngModel" />
+    </div>
   </div>
   <div class="input-group input-group-sm mb-3 col-sm-3">
-      <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
-      <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
-    </div>
+    <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
+    <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
+  </div>
 </form>
 <!-- Displaying all the filled details in the above form. -->
 <div class="mt-4">

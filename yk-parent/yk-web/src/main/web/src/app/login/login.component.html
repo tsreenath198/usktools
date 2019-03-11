@@ -1,27 +1,29 @@
 <div class="center-screen rounded">
   <div class="wth33" style="border: 1px solid lightgray;padding: 20px;border-radius: 5px;">
     <h2 class="txt-center">Kendram</h2>
-     <form name="form" (ngSubmit)="f.form.valid && validate()" #f="ngForm" novalidate>
-        <div class="form-group">
-            <small  class="text-muted">Username</small>
-            <input type="text" class="form-control" name="uname" [(ngModel)]="username" placeholder="Username" #uname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && uname.invalid }" required/>
-            <div *ngIf="f.submitted && uname.invalid" class="invalid-feedback">
-                <div *ngIf="uname.errors.required">Username is required</div>
-            </div>
+    <form name="form" (ngSubmit)="f.form.valid && validate()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <small class="text-muted">Username</small>
+        <input type="text" class="form-control" name="uname" [(ngModel)]="username" placeholder="Username" #uname="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && uname.invalid }" required />
+        <div *ngIf="f.submitted && uname.invalid" class="invalid-feedback">
+          <div *ngIf="uname.errors.required">Username is required</div>
         </div>
-        <div class="form-group">
-            <small  class="text-muted">Password</small>
-            <input type="password" class="form-control" name="pwd" [(ngModel)]="password" #pwd="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pwd.invalid }" required />
-            <div *ngIf="f.submitted && pwd.invalid" class="invalid-feedback">
-                <div *ngIf="pwd.errors.required">Password is required</div>
-            </div>
+      </div>
+      <div class="form-group">
+        <small class="text-muted">Password</small>
+        <input type="password" class="form-control" placeholder="Password" name="pwd" [(ngModel)]="password" #pwd="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && pwd.invalid }" required />
+        <div *ngIf="f.submitted && pwd.invalid" class="invalid-feedback">
+          <div *ngIf="pwd.errors.required">Password is required</div>
         </div>
-        <div class="clearfix form-group">
-            <span class="float-right">
-              <button type="submit" class="btn bg-color">Sign-in</button>
-            </span>
-          </div>
-         
+      </div>
+      <div class="clearfix form-group">
+        <span class="float-right">
+          <button type="submit" class="btn bg-color">Sign-in</button>
+        </span>
+      </div>
+
     </form>
     <!-- <div class="form-group">
       <small for="email" class="text-muted">Username</small>

@@ -1,23 +1,23 @@
 <!-- Form to insert the details of a kendram person -->
 <form name="form" (ngSubmit)=" f.form.valid && addToList()" #f="ngForm" novalidate>
   <!-- Name section in form -->
-  <div class="row p">
+  <div class="row pt10">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">First and last name</span>
       </div>
       <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
-        [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="surname" required />
+        [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="Surname" required />
       <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName" #middleName="ngModel"
-        [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="middle name" required />
+        [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="Middle Name" required />
       <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel" [ngClass]="{'is-invalid': f.submitted && name.invalid}"
-        placeholder="name" required />
+        placeholder="Name" required />
         <div class="invalid-feedback">
             Username is required field
           </div>
     </div>
   </div>
-  <div class="row p">
+  <div class="row pt10">
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- Taluka Section in form -->
       <div class="input-group-prepend">
@@ -62,7 +62,7 @@
       <input class="form-control" [(ngModel)]="ykCurrData.kendra" name="kendra" #kendra="ngModel" />
     </div>
   </div>
-  <div class="row p">
+  <div class="row pt10">
     <!-- kendra type section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -89,12 +89,15 @@
       </div>
       <input type="text" class="form-control col" [(ngModel)]="ykCurrData.contact" name="contact" #contact="ngModel"
         [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10" maxlength="11" />
-      <!-- <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
+       <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
         <div *ngIf="contact.errors.required">Contact is required</div>
       </div>
-      <div *ngIf="f.submitted && contact.minlength && contact.maxlength" class="invalid-feedback">
-        <div *ngIf="contact.errors.required">Please check number </div>
-      </div> -->
+      <div [hidden]="!name.errors.minlength">
+          Name must be at least 10 characters long.
+        </div>
+        <div [hidden]="!name.errors.maxlength">
+          Name cannot be more than 11 characters long.
+        </div>
     </div>
     <!-- Dob section in form  -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -105,7 +108,7 @@
         placeholder="dob" name="dob" #dob="ngModel" />
     </div>
   </div>
-  <div class="row p">
+  <div class="row pt10">
     <!-- Residence section section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -138,6 +141,7 @@
         <th>Action</th>
       </tr>
     </thead>
+    <!-- displays details filled in form -->
     <tbody id="table_id">
       <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
         <td>

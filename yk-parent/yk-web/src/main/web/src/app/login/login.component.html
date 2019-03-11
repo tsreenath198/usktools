@@ -1,7 +1,10 @@
 <div class="center-screen rounded">
-  <div class="wth33" style="border: 1px solid lightgray;padding: 20px;border-radius: 5px;">
-    <h2 class="txt-center">Kendram</h2>
+  <div class="wth33">
+    <!-- Login page form -->
+    <h2 class="text-center">Kendram</h2>
+    <!-- validate() checks the login id and logs to next page if valid -->
     <form name="form" (ngSubmit)="f.form.valid && validate()" #f="ngForm" novalidate>
+      <!-- Username field with validation -->
       <div class="form-group">
         <small class="text-muted">Username</small>
         <input type="text" class="form-control" name="uname" [(ngModel)]="username" placeholder="Username" #uname="ngModel"
@@ -10,6 +13,7 @@
           <div *ngIf="uname.errors.required">Username is required</div>
         </div>
       </div>
+      <!-- Password field with validation -->
       <div class="form-group">
         <small class="text-muted">Password</small>
         <input type="password" class="form-control" placeholder="Password" name="pwd" [(ngModel)]="password" #pwd="ngModel"
@@ -26,8 +30,8 @@
     </form>
     <hr>
     <div class="clearfix">
-      <a class="float-left x-color" href="">Forgot Password</a>
-      <a href="" class="float-right x-color">Register</a>
+      <a class="float-left text-color" href="">Forgot Password</a>
+      <a href="" class="float-right text-color">Register</a>
     </div>
   </div>
 </div>

@@ -1,12 +1,14 @@
 <div class=" mt-4">
     <div class="clearfix">
         <span class="float-left form-group col-3">
-          <input  type="text" class="form-control" placeholder="Add Y Detail">
+          <!-- inputfield helps to add the data in the list -->
+          <input  type="text" class="form-control" [(ngModel)]="yInput" placeholder="Add Y Detail">
         </span>
         <span class="float-right col-1">
           <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
         </span>
       </div>
+      <!-- Displays data which is retrived from database -->
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
       <tr>
@@ -25,46 +27,46 @@
       </tr>
     </thead>
     <tbody id="table_id">
-      <tr *ngFor="let yk of ykList">
+      <tr *ngFor="let yk of ykList;let i = index">
 
         <td>
-          <span *ngIf="i !== 0">{{yk.taluka}}</span>
+          <span >{{yk.taluka}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.patti}}</span>
+          <span >{{yk.patti}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.videoKendra}}</span>
+          <span >{{yk.videoKendra}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.kendra}}</span>
+          <span >{{yk.kendra}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.kendraType}}</span>
+          <span >{{yk.kendraType}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.jimmedari}}</span>
+          <span >{{yk.jimmedari}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.surname}}</span>
+          <span >{{yk.surname}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.middleName}}</span>
+          <span >{{yk.middleName}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.name}}</span>
+          <span >{{yk.name}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.contact}}</span>
+          <span >{{yk.contact}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.dob | date}}</span>
+          <span >{{yk.dob | date}}</span>
         </td>
         <td>
           <span>{{yk.age}}</span>
         </td>
         <td>
-          <span *ngIf="i !== 0">{{yk.residence}}</span>
+          <span >{{yk.residence}}</span>
         </td>
         <td>
             <!-- Delete's the particular row data from the table -->

@@ -9,15 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchdmilan.component.css']
 })
 export class SearchdmilanComponent implements OnInit {
+  public yInput:string;
+  public ykCurrData: DmilanModel = <DmilanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
   public ykList: DmilanModel[] = [];
-  constructor(private http:HttpService, private router:Router) { }
-
+  constructor(private http: HttpService, private router: Router) { }
+  //gets data from database
   ngOnInit() {
     this.http.getReq('getAll').subscribe(resp => {
-      this.ykList = resp as DmilanModel[]});
+      this.ykList = resp as DmilanModel[]
+    });
   }
-  addToList(){
-    this.router.navigate(['/', 'd-milan'])
+  //navigates to next page
+  addToList() {
+    if(this.yInput)
+    {
+      let temp;
+      temp=this.yInput.split(" ");
+      console.log(temp);
+    }
+      else{
+        this.router.navigate(['/', 'd-milan'])
+      }
   }
-
+  //deletes the row based on index value
+  delete(index): void {
+    this.ykList.splice(index, 1)
+  }
 }

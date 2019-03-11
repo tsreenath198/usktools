@@ -6,13 +6,16 @@
     min-height: 80vh;
   }
  
-  .x-color{
+  .text-color{
       color:#286090;
   }
   .wth33{
       width: 33%;
+      border: 1px solid lightgray;
+      padding: 20px;
+      border-radius: 5px;
   }
-  .txt-center{
+  .text-center{
         text-align: center;
   }
   .txt-right{

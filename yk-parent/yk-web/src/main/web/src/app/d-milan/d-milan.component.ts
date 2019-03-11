@@ -21,23 +21,16 @@ export class DMilanComponent implements OnInit {
   public thalukaList = ["Armoor", "Bheemgal", "Bodhan", "Banswada", "Kamareddy", "Domakonda", "Nizamabad", "Yellareddy", "Madnoor"];
   constructor(private clientHttp: HttpService, private router: Router, private formBuilder:FormBuilder) { }
   ngOnInit() {
-    
   }
   addToList() {
-        
         this.ykList.unshift(this.ykCurrData);
          this.ykCurrData = <DmilanModel>{ name: "", age: 0, contact:"", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
-         console.log(this.ykList);
-        
-    
   }
   delete(index): void {
     this.ykList.splice(index, 1)
   }
   getDob(yuvn) {
-    //let dob = new Date(yuvn.dob);
     let timeDiff = Math.abs(new Date().getTime() - new Date(yuvn.dob).getTime());
-    //Math.abs(Date.now() - dob);
     yuvn.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
   }
 

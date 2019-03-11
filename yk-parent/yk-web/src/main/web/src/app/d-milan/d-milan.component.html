@@ -1,5 +1,5 @@
 <!-- Form to insert the details of a kendram person -->
-<form name="form" (ngSubmit)=" f.form.valid && addToList() && f.form.reset" #f="ngForm" novalidate>
+<form name="form" (ngSubmit)=" f.form.valid && addToList()" #f="ngForm" novalidate>
   <!-- Name section in form -->
   <div class="row p">
     <div class="input-group">
@@ -13,7 +13,7 @@
       <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel" [ngClass]="{'is-invalid': f.submitted && name.invalid}"
         placeholder="name" required />
         <div class="invalid-feedback">
-            Please choose a username.
+            Username is required field
           </div>
     </div>
   </div>

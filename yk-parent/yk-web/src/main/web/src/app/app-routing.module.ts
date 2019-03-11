@@ -8,9 +8,9 @@ import { KLevelComponent } from './k-level/k-level.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {path:'searchdmilan',component: SearchdmilanComponent},
+  { path: 'searchdmilan', component: SearchdmilanComponent },
   { path: 'd-milan', component: DMilanComponent },
-  {path:'k-level' , component:KLevelComponent}
+  { path: 'k-level', component: KLevelComponent }
 ];
 
 @NgModule({

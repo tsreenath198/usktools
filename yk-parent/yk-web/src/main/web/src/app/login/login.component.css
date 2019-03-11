@@ -5,14 +5,7 @@
     align-items: center;
     min-height: 80vh;
   }
-  .bg-color{
-    color: #fff;
-    background-color: #286090;
-    background-image: none;
-    border-color: #204d74;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+ 
   .x-color{
       color:#286090;
   }

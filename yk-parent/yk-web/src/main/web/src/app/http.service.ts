@@ -16,4 +16,7 @@ export class HttpService {
   public getLogin(URL: string) {
     return this.http.get(URL);
   }
+  public getKLData(URL : string){
+    return this.http.get(URL);
+  }
 }

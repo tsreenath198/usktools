@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: com-yk-server
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: lenovo
+Built-By: User
 Implementation-Vendor-Id: com.yk.server
-Build-Jdk: 1.8.0_171
+Build-Jdk: 1.8.0_121
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/yk-parent/yk-server
 Created-By: Maven Integration for Eclipse

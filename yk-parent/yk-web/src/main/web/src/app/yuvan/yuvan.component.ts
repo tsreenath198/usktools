@@ -16,7 +16,7 @@ export class YuvanComponent implements OnInit {
   public kendraTypeList = ["YK", "DPC"];
   public jimmedariList = ["Sanchalak", "Sahasanchalak"];
   public thalukaList = ["Armoor", "Bheemgal", "Bodhan", "Banswada", "Kamareddy", "Domakonda", "Nizamabad", "Yellareddy", "Madnoor"];
-  public roleList = ["Sanchalak", "Avekshak"];
+  public roleList = ["Sanchalak", "Avekshak","Jilla-sannidhata","Taluka-sannidhata"];
   constructor(private clientHttp: HttpService, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit() {
   }

@@ -44,6 +44,8 @@ public class YuvanDetails {
 	private int age;
 	@Column(name = "residence")
 	private String residence;
+	@Column(name = "role")
+	private String role;
 
 	public String getTaluka() {
 		return taluka;
@@ -149,11 +151,28 @@ public class YuvanDetails {
 		this.residence = residence;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "YuvanDetails [taluka=" + taluka + ", patti=" + patti + ", videoKendra=" + videoKendra + ", kendra="
-				+ kendra + ", kendraType=" + kendraType + ", jimmedari=" + jimmedari + ", surname=" + surname
-				+ ", middleName=" + middleName + ", name=" + name + ", contact=" + contact + ", dob=" + dob + ", age="
-				+ age + ", residence=" + residence + "]";
+		return "YuvanDetails [id=" + id + ", taluka=" + taluka + ", patti=" + patti + ", videoKendra=" + videoKendra
+				+ ", kendra=" + kendra + ", kendraType=" + kendraType + ", jimmedari=" + jimmedari + ", surname="
+				+ surname + ", middleName=" + middleName + ", name=" + name + ", contact=" + contact + ", dob=" + dob
+				+ ", age=" + age + ", residence=" + residence + ", role=" + role + "]";
 	}
+
 }

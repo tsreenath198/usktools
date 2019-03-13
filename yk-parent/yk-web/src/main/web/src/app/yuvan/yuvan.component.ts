@@ -11,20 +11,20 @@ import { FormBuilder, NgForm } from '@angular/forms';
 })
 export class YuvanComponent implements OnInit {
   public ykList: YuvanModel[] = [];
-  public ykCurrData: YuvanModel = <YuvanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
+  public ykCurrData: YuvanModel = <YuvanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "", role: "" };
   public selectedIndex: number = 0;
   public kendraTypeList = ["YK", "DPC"];
   public jimmedariList = ["Sanchalak", "Sahasanchalak"];
   public thalukaList = ["Armoor", "Bheemgal", "Bodhan", "Banswada", "Kamareddy", "Domakonda", "Nizamabad", "Yellareddy", "Madnoor"];
-  constructor(private clientHttp: HttpService,private router: Router, private formBuilder: FormBuilder) { }
+  public roleList = ["Sanchalak", "Avekshak"];
+  constructor(private clientHttp: HttpService, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit() {
   }
   //addToList() pushes the data to the ykList array
   addToList(dMilanForm: NgForm) {
     this.ykList.unshift(this.ykCurrData);
-    this.ykCurrData = <YuvanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };
+    this.ykCurrData = <YuvanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "", role: "" };
     console.log(this.ykList);
-    dMilanForm.form.reset;
   }
   //delete() deletes the row based on index
   delete(index): void {

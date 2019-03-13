@@ -8,13 +8,14 @@
       </div>
       <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
         [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="Surname" required />
-      <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName" #middleName="ngModel"
-        [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="Middle Name" required />
-      <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel" [ngClass]="{'is-invalid': f.submitted && name.invalid}"
-        placeholder="Name" required />
-        <div class="invalid-feedback">
-            Username is required field
-          </div>
+      <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName"
+        #middleName="ngModel" [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="Middle Name"
+        required />
+      <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && name.invalid}" placeholder="Name" required />
+      <div class="invalid-feedback">
+        Username is required field
+      </div>
     </div>
   </div>
   <div class="row pt10">
@@ -63,6 +64,16 @@
     </div>
   </div>
   <div class="row pt10">
+    <!-- Role section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Role</span>
+      </div>
+      <select class="custom-select" [(ngModel)]="ykCurrData.role" placeholder="Role" name="role"
+        #role="ngModel">
+        <option *ngFor="let role of roleList">{{role}}</option>
+      </select>
+    </div>
     <!-- kendra type section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -87,15 +98,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Contact</span>
       </div>
-      <input type="number" class="form-control col quantity" [(ngModel)]="ykCurrData.contact" name="contact" #contact="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10" maxlength="11" />
-       <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
+      <input type="number" class="form-control col quantity" [(ngModel)]="ykCurrData.contact" name="contact"
+        #contact="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required minlength="10"
+        maxlength="11" />
+      <div *ngIf="f.submitted && contact.invalid" class="invalid-feedback">
         <div *ngIf="contact.errors.required">Contact is required</div>
       </div>
       <div *ngIf="contact.errors" class="invalid-feedback">
-          <div *ngIf="contact.errors.minlength">
-              Too short
-          </div> 
+        <div *ngIf="contact.errors.minlength">
+          Too short
+        </div>
       </div>
       <!-- <div [hidden]="!contact.errors.minlength">
           contact must be at least 10 characters long.
@@ -104,6 +116,9 @@
           Name cannot be more than 11 characters long.
         </div> -->
     </div>
+
+  </div>
+  <div class="row pt10">
     <!-- Dob section in form  -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -112,8 +127,6 @@
       <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" (change)="getDob(ykCurrData)"
         placeholder="dob" name="dob" #dob="ngModel" />
     </div>
-  </div>
-  <div class="row pt10">
     <!-- Residence section section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">

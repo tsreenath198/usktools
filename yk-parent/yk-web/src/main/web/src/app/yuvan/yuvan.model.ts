@@ -12,4 +12,5 @@ export interface YuvanModel{
     dob:Date;
     age:number;
     residence:string;
+    role:string;
 }

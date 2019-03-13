@@ -21,12 +21,12 @@ public class KendraController {
 	@Autowired
 	KendraService apiService;
 
-	@PostMapping(value = "/createKendrams", headers = "Accept=application/json")
+	@PostMapping(value = "/create", headers = "Accept=application/json")
 	public void createKendrams(@RequestBody List<KendramDetails> kendramDetails, UriComponentsBuilder ucBuilder) {
 		apiService.createKendrams(kendramDetails);
 	}
 
-	@GetMapping("/getAllKendrams")
+	@GetMapping("/getAll")
 	public List<KendramDetails> getAllKendrams() {
 		return apiService.getAllKendrams();
 	}

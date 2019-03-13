@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,23 +13,27 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.yk.server.app.model.YuvanDetails;
-import com.yk.server.app.service.APIService;
+import com.yk.server.app.service.YuvanService;
 
 @RestController
 @RequestMapping("/api/yuvan")
 @CrossOrigin
-public class APIController {
+public class YuvanController {
 	@Autowired
-	APIService apiService;
+	YuvanService apiService;
 
 	@PostMapping(value = "/create", headers = "Accept=application/json")
-	public void createUser(@RequestBody List<YuvanDetails> yuvanDetails, UriComponentsBuilder ucBuilder) {
-		System.out.println(yuvanDetails.toString());
-		apiService.createUser(yuvanDetails);
+	public void create(@RequestBody List<YuvanDetails> yuvanDetails, UriComponentsBuilder ucBuilder) {
+		apiService.create(yuvanDetails);
 	}
 
 	@GetMapping("/getAll")
 	public List<YuvanDetails> getAll() {
 		return apiService.getAll();
+	}
+
+	@GetMapping("/getAllByRole/{role}")
+	public List<YuvanDetails> getAllByRole(@PathVariable("role") String role) {
+		return apiService.getAllByRole(role);
 	}
 }

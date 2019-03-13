@@ -11,12 +11,12 @@ import com.yk.server.app.repository.APIRepository;
 
 @Service
 @Transactional
-public class APIServiceImp implements APIService {
+public class YuvanServiceImp implements YuvanService {
 	@Autowired
 	APIRepository apiRepository;
 
 	@Override
-	public void createUser(List<YuvanDetails> yuvanDetails) {
+	public void create(List<YuvanDetails> yuvanDetails) {
 		apiRepository.saveAll(yuvanDetails);
 	}
 
@@ -24,4 +24,10 @@ public class APIServiceImp implements APIService {
 	public List<YuvanDetails> getAll() {
 		return (List<YuvanDetails>) apiRepository.findAll();
 	}
+
+	@Override
+	public List<YuvanDetails> getAllByRole(String role) {
+		return apiRepository.getAllByRole(role);
+	}
+
 }

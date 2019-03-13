@@ -3,10 +3,16 @@ export interface KLevelModel{
     state : string;
     jillaName : string;
     jillaSannidhata : string;
+    jillaSannidhataDOB : string;
+    jillaSannidhataContact : string;
     talukaName : string;
     talukaSannidhata : string;
+    talukaSannidhataDOB : string;
+    talukaSannidhataContact : string;
     groupName : string;
     avekshakName : string;
+    avekshakDOB : string;
+    avekshakContact : string;
     kendraName : string;
     kendraType : string;
     yuvaYuvati : string;
@@ -17,7 +23,11 @@ export interface KLevelModel{
     yearMerged : string;
     mergedTo : string;
     sanchalak1 : string;
+    sanchalak1DOB : string;
+    sanchalak1Contact : string;
     sanchalak2 : string;
+    sanchalak2DOB : string;
+    sanchalak2Contact : string;
     minAttendance : string;
     maxAttendance : string;
     YKConducted : string;

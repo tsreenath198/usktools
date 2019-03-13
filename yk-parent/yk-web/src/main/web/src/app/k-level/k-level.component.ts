@@ -70,4 +70,30 @@ export class KLevelComponent implements OnInit {
     });
   }
 
+  setName(value: string, role: string): void {
+    switch (role) {
+      case "jilla": {
+        console.log("Excellent");
+        break;
+      }
+      case "taluka": {
+        console.log("Excellent");
+        break;
+      }
+      case "avekshak": {
+        console.log("Excellent");
+        break;
+      }
+      case "s1": {
+        console.log("Excellent");
+        break;
+      }
+      case "s2": {
+        console.log("Excellent");
+        break;
+      }
+
+    }
+  }
+
 }

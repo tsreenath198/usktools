@@ -1,0 +1,68 @@
+{
+  "jillaSannidhataList": [
+    {
+      "id": 1,
+      "name": "Srikanth Embaiah Swamy Bikkanti",
+      "dob": "29-Oct-1985",
+      "contactNo": "8008770880"
+    },
+    {
+      "id": 2,
+      "name": "Srikanth Embaiah Swamy XYZ",
+      "dob": "29-Oct-1986",
+      "contactNo": "8008770881"
+    }
+  ],
+  "talukaSannidhataList": [
+    {
+      "id": 1,
+      "name": "Murali Sailu Methari",
+      "dob": "25-Jan-1991",
+      "contactNo": "9491174355"
+    },
+    {
+      "id": 2,
+      "name": "Murali",
+      "dob": "29-Oct-1956",
+      "contactNo": "8008770771"
+    }
+  ],
+  "avekshakList": [
+    {
+      "id": 1,
+      "name": "Ramadolla Raja shekar",
+      "dob": "18-Aug-1993",
+      "contactNo": "9618212902"
+    },
+    {
+      "id": 2,
+      "name": "Murali",
+      "dob": "29-Oct-1956",
+      "contactNo": "8008770771"
+    }
+  ],
+  "sanchalakList": [
+    {
+      "id": 1,
+      "name": "Jangampally Tharun",
+      "dob": "24-Mar-1999",
+      "contactNo": "8184930292"
+    },
+    {
+      "id": 2,
+      "name": "Degari Akshay",
+      "dob": "06-Aug-2001",
+      "contactNo": "9133983040"
+    },
+    {
+      "id": 3,
+      "name": "Anil",
+      "dob": "06-Aug-1997",
+      "contactNo": "913398333"
+    }
+  ],
+  "weekdays": [
+    "Monday",
+    "Tuesday"
+  ]
+}

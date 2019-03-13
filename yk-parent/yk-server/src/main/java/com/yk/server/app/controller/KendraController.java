@@ -22,8 +22,8 @@ public class KendraController {
 	KendraService apiService;
 
 	@PostMapping(value = "/create", headers = "Accept=application/json")
-	public void createKendrams(@RequestBody List<KendramDetails> kendramDetails, UriComponentsBuilder ucBuilder) {
-		apiService.createKendrams(kendramDetails);
+	public void create(@RequestBody List<KendramDetails> kendramDetails, UriComponentsBuilder ucBuilder) {
+		apiService.create(kendramDetails);
 	}
 
 	@GetMapping("/getAll")

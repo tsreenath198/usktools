@@ -16,7 +16,7 @@ public class KendraServiceImp implements KendraService {
 	KendraRepository apiRepository;
 
 	@Override
-	public void createKendrams(List<KendramDetails> kendramDetails) {
+	public void create(List<KendramDetails> kendramDetails) {
 		apiRepository.saveAll(kendramDetails);
 	}
 

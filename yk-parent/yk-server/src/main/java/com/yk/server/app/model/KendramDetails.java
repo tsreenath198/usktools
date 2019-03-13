@@ -24,14 +24,26 @@ public class KendramDetails {
 	private String jillaName;
 	@Column(name = "jillaSannidhata")
 	private String jillaSannidhata;
+	@Column(name = "jillaSannidhataDob")
+	private String jillaSannidhataDob;
+	@Column(name = "jillaSannidhataContact")
+	private String jillaSannidhataContact;
 	@Column(name = "talukaName")
 	private String talukaName;
 	@Column(name = "talukaSannidhata")
 	private String talukaSannidhata;
+	@Column(name = "talukaSannidhataDob")
+	private String talukaSannidhataDob;
+	@Column(name = "talukaSannidhataContact")
+	private String talukaSannidhataContact;
 	@Column(name = "groupName")
 	private String groupName;
 	@Column(name = "avekshakName")
 	private String avekshakName;
+	@Column(name = "avekshakDob")
+	private String avekshakDob;
+	@Column(name = "avekshakContact")
+	private String avekshakContact;
 	@Column(name = "kendraName")
 	private String kendraName;
 	@Column(name = "kendraType")
@@ -52,8 +64,16 @@ public class KendramDetails {
 	private String mergedTo;
 	@Column(name = "sanchalak1")
 	private String sanchalak1;
+	@Column(name = "sanchalak1Dob")
+	private String sanchalak1Dob;
+	@Column(name = "sanchalak1Contact")
+	private String sanchalak1Contact;
 	@Column(name = "sanchalak2")
 	private String sanchalak2;
+	@Column(name = "sanchalak2Dob")
+	private String sanchalak2Dob;
+	@Column(name = "sanchalak2Contact")
+	private String sanchalak2Contact;
 	@Column(name = "minAttendance")
 	private String minAttendance;
 	@Column(name = "maxAttendance")
@@ -97,6 +117,86 @@ public class KendramDetails {
 
 	public String getState() {
 		return state;
+	}
+
+	public String getJillaSannidhataDob() {
+		return jillaSannidhataDob;
+	}
+
+	public void setJillaSannidhataDob(String jillaSannidhataDob) {
+		this.jillaSannidhataDob = jillaSannidhataDob;
+	}
+
+	public String getJillaSannidhataContact() {
+		return jillaSannidhataContact;
+	}
+
+	public void setJillaSannidhataContact(String jillaSannidhataContact) {
+		this.jillaSannidhataContact = jillaSannidhataContact;
+	}
+
+	public String getTalukaSannidhataDob() {
+		return talukaSannidhataDob;
+	}
+
+	public void setTalukaSannidhataDob(String talukaSannidhataDob) {
+		this.talukaSannidhataDob = talukaSannidhataDob;
+	}
+
+	public String getTalukaSannidhataContact() {
+		return talukaSannidhataContact;
+	}
+
+	public void setTalukaSannidhataContact(String talukaSannidhataContact) {
+		this.talukaSannidhataContact = talukaSannidhataContact;
+	}
+
+	public String getAvekshakDob() {
+		return avekshakDob;
+	}
+
+	public void setAvekshakDob(String avekshakDob) {
+		this.avekshakDob = avekshakDob;
+	}
+
+	public String getAvekshakContact() {
+		return avekshakContact;
+	}
+
+	public void setAvekshakContact(String avekshakContact) {
+		this.avekshakContact = avekshakContact;
+	}
+
+	public String getSanchalak1Dob() {
+		return sanchalak1Dob;
+	}
+
+	public void setSanchalak1Dob(String sanchalak1Dob) {
+		this.sanchalak1Dob = sanchalak1Dob;
+	}
+
+	public String getSanchalak1Contact() {
+		return sanchalak1Contact;
+	}
+
+	public void setSanchalak1Contact(String sanchalak1Contact) {
+		this.sanchalak1Contact = sanchalak1Contact;
+	}
+
+	public String getSanchalak2Dob() {
+		return sanchalak2Dob;
+	}
+
+	public void setSanchalak2Dob(String sanchalak2Dob) {
+		this.sanchalak2Dob = sanchalak2Dob;
+	}
+
+	public String getSanchalak2Contact() {
+		return sanchalak2Contact;
+	}
+
+	public void setSanchalak2Contact(String sanchalak2Contact) {
+		this.sanchalak2Contact = sanchalak2Contact;
 	}
 
 	public void setState(String state) {

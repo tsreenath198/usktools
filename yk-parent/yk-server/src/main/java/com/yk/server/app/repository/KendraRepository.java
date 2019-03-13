@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.yk.server.app.model.KendramDetails;
 
-public interface Repository extends CrudRepository<KendramDetails, Long> {
+public interface KendraRepository extends CrudRepository<KendramDetails, Long> {
 
 }

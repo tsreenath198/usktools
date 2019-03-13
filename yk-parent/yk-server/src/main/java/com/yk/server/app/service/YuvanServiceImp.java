@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yk.server.app.model.YuvanDetails;
-import com.yk.server.app.repository.APIRepository;
+import com.yk.server.app.repository.YuvanRepository;
 
 @Service
 @Transactional
 public class YuvanServiceImp implements YuvanService {
 	@Autowired
-	APIRepository apiRepository;
+	YuvanRepository apiRepository;
 
 	@Override
 	public void create(List<YuvanDetails> yuvanDetails) {

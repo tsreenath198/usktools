@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yk.server.app.model.KendramDetails;
-import com.yk.server.app.repository.Repository;
+import com.yk.server.app.repository.KendraRepository;
 
 @Service
 @Transactional
 public class KendraServiceImp implements KendraService {
 	@Autowired
-	Repository apiRepository;
+	KendraRepository apiRepository;
 
 	@Override
 	public void createKendrams(List<KendramDetails> kendramDetails) {

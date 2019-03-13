@@ -1,5 +1,115 @@
 <form name="form" (ngSubmit)=" addToList()" #f="ngForm" novalidate>
   <div class="row pt10">
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Name</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+    <!-- Jilla Sannidhata section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata</span>
+      </div>
+      <select class="custom-select" name="jillaSannidhata" [(ngModel)]="klCurrent.jillaSannidhata"
+        #jillaSannidhata="ngModel">
+        <option hidden selected></option>
+        <option *ngFor="let jsl of jSannidhataList">{{jsl.name}}</option>
+      </select>
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata DOB</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata Contact</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+  </div>
+  <div class="row pt10">
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <!-- Taluka Name Section in form -->
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Name</span>
+      </div>
+      <input class="form-control" type="text" placeholder="Taluka Name" [(ngModel)]="klCurrent.talukaName"
+        name="talukaName" #talukaName="ngModel" />
+    </div>
+    <!-- Taluka Sannidhata Section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata</span>
+      </div>
+      <select class="custom-select" name="talukaSannidhata" [(ngModel)]="klCurrent.talukaSannidhata"
+        #talukaSannidhata="ngModel">
+        <option hidden selected></option>
+        <option *ngFor="let tsl of tSannidhataList">{{tsl.name}}</option>
+      </select>
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata DOB</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata Contact</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+  </div>
+  <div class="row pt10">
+    <!-- Group Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Group Name</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.groupName" placeholder="Group Name" name="groupName"
+        #groupName="ngModel" />
+    </div>
+    <!-- Avekshak Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak</span>
+      </div>
+      <select class="custom-select" name="avekshakName" [(ngModel)]="klCurrent.avekshakName" #avekshakName="ngModel">
+        <option hidden selected></option>
+        <option *ngFor="let avl of avekshakList">{{avl.name}}</option>
+      </select>
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak DOB</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+    <!-- Jilla Name section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak Contact</span>
+      </div>
+      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
+        #jillaName="ngModel" />
+    </div>
+  </div>
+  <div class="row pt10">
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- Country Section in form -->
       <div class="input-group-prepend">
@@ -14,71 +124,6 @@
       </div>
       <input class="form-control" type="text" [(ngModel)]="klCurrent.state" name="state" #state="ngModel" />
     </div>
-    <!-- Jilla Name section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-      </div>
-      <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
-        #jillaName="ngModel" />
-    </div>
-    <!-- Jilla Sannidhata section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata</span>
-      </div>
-      <select class="custom-select" name="jillaSannidhata" [(ngModel)]="klCurrent.jillaSannidhata"
-        #jillaSannidhata="ngModel">
-        <option hidden selected></option>
-        <option *ngFor="let jsl of jSannidhata">{{jsl.name}}</option>
-      </select>
-    </div>
-  </div>
-
-
-  <div class="row pt10">
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <!-- Taluka Name Section in form -->
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-      </div>
-      <input class="form-control" type="text" placeholder="Taluka Name" [(ngModel)]="klCurrent.talukaName"
-        name="talukaName" #talukaName="ngModel" />
-    </div>
-    <!-- Taluka Sannidhata Section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata</span>
-      </div>
-      <select class="custom-select" name="talukaSannidhata" [(ngModel)]="klCurrent.talukaSannidhata"
-        #talukaSannidhata="ngModel">
-        <option hidden selected></option>
-        <option *ngFor="let tsl of tSannidhata">{{tsl.name}}</option>
-      </select>
-    </div>
-    <!-- Group Name section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-      </div>
-      <input class="form-control" [(ngModel)]="klCurrent.groupName" placeholder="Group Name" name="groupName"
-        #groupName="ngModel" />
-    </div>
-    <!-- Avekshak Name section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak</span>
-      </div>
-      <select class="custom-select" name="avekshakName" [(ngModel)]="klCurrent.avekshakName" #avekshakName="ngModel">
-        <option hidden selected></option>
-        <option *ngFor="let avl of avekshak">{{avl.name}}</option>
-      </select>
-    </div>
-  </div>
-
-
-
-  <div class="row pt10">
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- Kendra Name Section in form -->
       <div class="input-group-prepend">
@@ -97,6 +142,10 @@
         <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
       </select>
     </div>
+  </div>
+
+  <div class="row pt10">
+
     <!-- yuva/yuvati section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -117,12 +166,6 @@
         <option *ngFor="let cat of categoryList">{{cat}}</option>
       </select>
     </div>
-  </div>
-
-
-
-
-  <div class="row pt10">
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- Kendra Number Section in form -->
       <div class="input-group-prepend">
@@ -138,9 +181,16 @@
       </div>
       <select class="custom-select" name="status" [(ngModel)]="klCurrent.status" #status="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let stat of status">{{stat}}</option>
+        <option *ngFor="let stat of statusList">{{stat}}</option>
       </select>
     </div>
+  </div>
+
+
+
+
+  <div class="row pt10">
+
     <!-- year merged section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -157,12 +207,6 @@
       <input class="form-control" [(ngModel)]="klCurrent.mergedTo" placeholder="Merged To" name="mergedTo"
         #mergedTo="ngModel" />
     </div>
-  </div>
-
-
-
-  <div class="row pt10">
-
     <!-- sanchalak1 section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -170,7 +214,7 @@
       </div>
       <select class="custom-select" name="sanchalak1" [(ngModel)]="klCurrent.sanchalak1" #sanchalak1="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let sck of sanchalak">{{sck.name}}</option>
+        <option *ngFor="let sck of sanchalakList">{{sck.name}}</option>
       </select>
     </div>
     <!-- sanchalak2 section in form -->
@@ -180,9 +224,16 @@
       </div>
       <select class="custom-select" name="sanchalak2" [(ngModel)]="klCurrent.sanchalak2" #sanchalak2="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let sck of sanchalak">{{sck.name}}</option>
+        <option *ngFor="let sck of sanchalakList">{{sck.name}}</option>
       </select>
     </div>
+  </div>
+
+
+
+  <div class="row pt10">
+
+
     <!-- Minimum Attendance section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -199,12 +250,6 @@
       <input class="form-control" [(ngModel)]="klCurrent.maxAttendance" placeholder="Max Attendance"
         name="maxAttendance" #maxAttendance="ngModel" />
     </div>
-  </div>
-
-
-
-
-  <div class="row pt10">
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <!-- Yuva kendra conducted in Section in form -->
       <div class="input-group-prepend">
@@ -223,6 +268,13 @@
       <input class="form-control" [(ngModel)]="klCurrent.villageOfYK" placeholder="Village Of YK" name="villageOfYK"
         #villageOfYK="ngModel" />
     </div>
+  </div>
+
+
+
+
+  <div class="row pt10">
+
     <!-- Land Mark section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -238,15 +290,9 @@
       </div>
       <select class="custom-select" name="weekDay" [(ngModel)]="klCurrent.dayOfYK" #weekDay="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let day of day">{{day}}</option>
+        <option *ngFor="let day of daysList">{{day}}</option>
       </select>
     </div>
-  </div>
-
-
-
-  <div class="row pt10">
-
     <!-- Time Of Yuvakendra section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -262,6 +308,12 @@
       <input class="form-control" placeholder="Area/Village/Vistar" [(ngModel)]="klCurrent.swadhyayLoc"
         name="swadhyayLoc" #swadhyayLoc="ngModel" />
     </div>
+  </div>
+
+
+
+  <div class="row pt10">
+
     <!--  Village (As Per Swadhyay Kendra) section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
@@ -277,21 +329,15 @@
       </div>
       <input class="form-control" [(ngModel)]="klCurrent.yKSthalPin" name="yKSthalPin" #yKSthalPin="ngModel" />
     </div>
-  </div>
-
-
-
-  <div class="row pt10">
-
-      <!-- Yuvakendra Sthal - Complete postal Address section in form -->
-      <div class="input-group input-group-sm mb-3 col-sm-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
-        </div>
-        <textarea rows="4" cols="50" class="form-control" [(ngModel)]="klCurrent.yKSthal"
-          placeholder="Yuvakendra Sthal - Complete postal Address " name="yKSthal" #yKSthal="ngModel" ></textarea>
+    <!-- Yuvakendra Sthal - Complete postal Address section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
       </div>
+      <textarea class="form-control" [(ngModel)]="klCurrent.yKSthal"
+        placeholder="Yuvakendra Sthal - Complete postal Address " name="yKSthal" #yKSthal="ngModel"></textarea>
     </div>
+  </div>
 </form>
 <!--
   country - i/p box /

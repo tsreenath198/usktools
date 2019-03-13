@@ -71,25 +71,36 @@ export class KLevelComponent implements OnInit {
   }
 
   setName(value: string, role: string): void {
+    let temp: any;
     switch (role) {
       case "jilla": {
-        console.log("Excellent");
+        temp = this.jSannidhataList.filter(t => t.id == value);
+        this.klCurrent.jillaSannidhataContact = temp[0].contact;
+        this.klCurrent.jillaSannidhataDOB = new Date(temp[0].dob);
         break;
       }
       case "taluka": {
-        console.log("Excellent");
+        temp = this.tSannidhataList.filter(t => t.id == value);
+        this.klCurrent.talukaSannidhataContact = temp[0].contact;
+        this.klCurrent.talukaSannidhataDOB = new Date(temp[0].dob);
         break;
       }
       case "avekshak": {
-        console.log("Excellent");
+        temp = this.avekshakList.filter(t => t.id == value);
+        this.klCurrent.avekshakContact = temp[0].contact;
+        this.klCurrent.avekshakDOB = new Date(temp[0].dob);
         break;
       }
       case "s1": {
-        console.log("Excellent");
+        temp = this.sanchalakList.filter(t => t.id == value);
+        this.klCurrent.sanchalak1Contact = temp[0].contact;
+        this.klCurrent.sanchalak1DOB = new Date(temp[0].dob);
         break;
       }
       case "s2": {
-        console.log("Excellent");
+        temp = this.sanchalakList.filter(t => t.id == value);
+        this.klCurrent.sanchalak2Contact = temp[0].contact;
+        this.klCurrent.sanchalak2DOB = new Date(temp[0].dob);
         break;
       }
 

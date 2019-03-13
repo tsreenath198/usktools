@@ -6,7 +6,7 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Name</span>
       </div>
       <input class="form-control" [(ngModel)]="klCurrent.JillaName" placeholder="Jilla Name" name="jillaName"
-        #jillaName="ngModel" />
+        #jillaName="ngModel"/>
     </div>
     <!-- Jilla Sannidhata section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -24,8 +24,8 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata DOB</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.jillaSannidhataDOB" placeholder="Jilla Name" name="jillaName"
-        #jillaSannidhataDOB="ngModel" />
+      <input class="form-control" type="date" [(ngModel)]="klCurrent.jillaSannidhataDOB" placeholder="Jilla Name" name="jillaSannidhataDOB"
+        #jillaSannidhataDOB="ngModel"  readonly/>
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -33,7 +33,7 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata Contact</span>
       </div>
       <input class="form-control" [(ngModel)]="klCurrent.jillaSannidhataContact" placeholder="Jilla Name"
-        name="jillaSannidhataContact" #jillaSannidhataContact="ngModel" />
+        name="jillaSannidhataContact" #jillaSannidhataContact="ngModel" readonly />
     </div>
   </div>
   <div class="row pt10">
@@ -61,8 +61,8 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata DOB</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.talukaSannidhataDOB" placeholder="Jilla Name" name="jillaName"
-        #talukaSannidhataDOB="ngModel" />
+      <input class="form-control" type="date" [(ngModel)]="klCurrent.talukaSannidhataDOB" placeholder="Jilla Name" name="talukaSannidhataDOB"
+        #talukaSannidhataDOB="ngModel"  readonly/>
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -70,7 +70,7 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata Contact</span>
       </div>
       <input class="form-control" [(ngModel)]="klCurrent.talukaSannidhataContact" placeholder="Jilla Name"
-        name="talukaSannidhataContact" #jillaName="ngModel" />
+        name="talukaSannidhataContact" #talukaSannidhataContact="ngModel"  readonly/>
     </div>
   </div>
   <div class="row pt10">
@@ -98,16 +98,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak DOB</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.avekshakDOB" placeholder="Jilla Name" name="jillaName"
-        #avekshakDOB="ngModel" />
+      <input class="form-control" type="date" [(ngModel)]="klCurrent.avekshakDOB" placeholder="Jilla Name" name="avekshakDOB"
+        #avekshakDOB="ngModel"  readonly/>
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak Contact</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.avekshakContact" placeholder="Jilla Name" name="jillaName"
-        #avekshakContact="ngModel" />
+      <input class="form-control" [(ngModel)]="klCurrent.avekshakContact" placeholder="Jilla Name" name="avekshakContact"
+        #avekshakContact="ngModel"  readonly/>
     </div>
   </div>
   <div class="row pt10">
@@ -205,16 +205,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak1 DOB</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak1DOB" placeholder="Merged To" name="mergedTo"
-        #sanchalak1DOB="ngModel" />
+      <input class="form-control" type="date" [(ngModel)]="klCurrent.sanchalak1DOB" placeholder="Merged To" name="sanchalak1DOB"
+        #sanchalak1DOB="ngModel"  readonly/>
     </div>
     <!-- merged to section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak1 Contact</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak1Contact" placeholder="Merged To" name="mergedTo"
-        #sanchalak1Contact="ngModel" />
+      <input class="form-control" [(ngModel)]="klCurrent.sanchalak1Contact" placeholder="Merged To" name="sanchalak1Contact"
+        #sanchalak1Contact="ngModel"  readonly/>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak2 DOB</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak2DOB" placeholder="Merged To" name="mergedTo"
+      <input class="form-control" type="date"  [(ngModel)]="klCurrent.sanchalak2DOB" placeholder="Merged To" name="sanchalak2DOB"
         #sanchalak2DOB="ngModel" readonly />
     </div>
     <!-- merged to section in form -->
@@ -245,7 +245,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak2 Contact</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak2Contact" placeholder="Merged To" name="mergedTo"
+      <input class="form-control" [(ngModel)]="klCurrent.sanchalak2Contact" placeholder="Merged To" name="sanchalak2Contact"
         #sanchalak2Contact="ngModel" readonly />
     </div>
   </div>

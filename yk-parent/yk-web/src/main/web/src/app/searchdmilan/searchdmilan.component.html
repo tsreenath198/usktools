@@ -1,6 +1,10 @@
 <div class=" mt-4">
   <div class="clearfix">
     <span class="float-left form-group col-3">
+        <select name="Nav" [(ngModel)]="currLoc" (change)="navigate(currLoc)">
+            <option value="searchklevel">k-level</option>
+            <option value="searchdmilan">yuvan</option>
+          </select>
       <!-- inputfield helps to add the data in the list -->
       <input type="text" class="form-control" [(ngModel)]="ykInput" placeholder="Add Y Detail">
     </span>

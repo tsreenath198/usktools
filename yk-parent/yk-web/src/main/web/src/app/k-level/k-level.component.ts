@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KLevelModel } from './k-level.model';
 import { HttpService } from '../http.service';
 import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-k-level',
@@ -15,15 +16,15 @@ export class KLevelComponent implements OnInit {
     state: "",
     jillaName: "",
     jillaSannidhata: "",
-    jillaSannidhataDOB: new Date(),
+    jillaSannidhataDob: new Date(),
     jillaSannidhataContact: "",
     talukaName: "",
     talukaSannidhata: "",
-    talukaSannidhataDOB: new Date(),
+    talukaSannidhataDob: new Date(),
     talukaSannidhataContact: "",
     groupName: "",
     avekshakName: "",
-    avekshakDOB: new Date(),
+    avekshakDob: new Date(),
     avekshakContact: "",
     kendraName: "",
     kendraType: "",
@@ -35,10 +36,10 @@ export class KLevelComponent implements OnInit {
     yearMerged: "",
     mergedTo: "",
     sanchalak1: "",
-    sanchalak1DOB: new Date(),
+    sanchalak1Dob: new Date(),
     sanchalak1Contact: "",
     sanchalak2: "",
-    sanchalak2DOB: new Date(),
+    sanchalak2Dob: new Date(),
     sanchalak2Contact: "",
     minAttendance: "",
     maxAttendance: "",
@@ -63,7 +64,7 @@ export class KLevelComponent implements OnInit {
   public avekshakList: any;
   public sanchalakList: any;
   public daysList: any;
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService , private router:Router) { }
 
   ngOnInit() {
     let ak = this.http.getReq('yuvan/getAllByRole/Avekshak');
@@ -83,45 +84,45 @@ export class KLevelComponent implements OnInit {
     this.klList.unshift(this.klCurrent);
     this.klCurrent = <KLevelModel>{
       country: "",
-      state: "",
-      jillaName: "",
-      jillaSannidhata: "",
-      jillaSannidhataDOB: new Date(),
-      jillaSannidhataContact: "",
-      talukaName: "",
-      talukaSannidhata: "",
-      talukaSannidhataDOB: new Date(),
-      talukaSannidhataContact: "",
-      groupName: "",
-      avekshakName: "",
-      avekshakDOB: new Date(),
-      avekshakContact: "",
-      kendraName: "",
-      kendraType: "",
-      yuvaYuvati: "",
-      yearOfKendra: "",
-      category: "",
-      kendraNumber: "",
-      status: "",
-      yearMerged: "",
-      mergedTo: "",
-      sanchalak1: "",
-      sanchalak1DOB: new Date(),
-      sanchalak1Contact: "",
-      sanchalak2: "",
-      sanchalak2DOB: new Date(),
-      sanchalak2Contact: "",
-      minAttendance: "",
-      maxAttendance: "",
-      YKConducted: "",
-      villageOfYK: "",
-      landMark: "",
-      yKSthal: "",
-      yKSthalPin: "",
-      dayOfYK: "",
-      timeOfYK: "",
-      swadhyayLoc: "",
-      swadhyayVillage: ""
+    state: "",
+    jillaName: "",
+    jillaSannidhata: "",
+    jillaSannidhataDob: new Date(),
+    jillaSannidhataContact: "",
+    talukaName: "",
+    talukaSannidhata: "",
+    talukaSannidhataDob: new Date(),
+    talukaSannidhataContact: "",
+    groupName: "",
+    avekshakName: "",
+    avekshakDob: new Date(),
+    avekshakContact: "",
+    kendraName: "",
+    kendraType: "",
+    yuvaYuvati: "",
+    yearOfKendra: "",
+    category: "",
+    kendraNumber: "",
+    status: "",
+    yearMerged: "",
+    mergedTo: "",
+    sanchalak1: "",
+    sanchalak1Dob: new Date(),
+    sanchalak1Contact: "",
+    sanchalak2: "",
+    sanchalak2Dob: new Date(),
+    sanchalak2Contact: "",
+    minAttendance: "",
+    maxAttendance: "",
+    YKConducted: "",
+    villageOfYK: "",
+    landMark: "",
+    yKSthal: "",
+    yKSthalPin: "",
+    dayOfYK: "",
+    timeOfYK: "",
+    swadhyayLoc: "",
+    swadhyayVillage: ""
     };
     console.log(this.klList);
   }
@@ -132,31 +133,31 @@ export class KLevelComponent implements OnInit {
       case "jilla": {
         temp = this.jSannidhataList.filter(t => t.id == value);
         this.klCurrent.jillaSannidhataContact = temp[0].contact;
-        this.klCurrent.jillaSannidhataDOB = new Date(temp[0].dob);
+        this.klCurrent.jillaSannidhataDob = new Date(temp[0].dob);
         break;
       }
       case "taluka": {
         temp = this.tSannidhataList.filter(t => t.id == value);
         this.klCurrent.talukaSannidhataContact = temp[0].contact;
-        this.klCurrent.talukaSannidhataDOB = new Date(temp[0].dob);
+        this.klCurrent.talukaSannidhataDob = new Date(temp[0].dob);
         break;
       }
       case "avekshak": {
         temp = this.avekshakList.filter(t => t.id == value);
         this.klCurrent.avekshakContact = temp[0].contact;
-        this.klCurrent.avekshakDOB = new Date(temp[0].dob);
+        this.klCurrent.avekshakDob = new Date(temp[0].dob);
         break;
       }
       case "s1": {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak1Contact = temp[0].contact;
-        this.klCurrent.sanchalak1DOB = new Date(temp[0].dob);
+        this.klCurrent.sanchalak1Dob = new Date(temp[0].dob);
         break;
       }
       case "s2": {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak2Contact = temp[0].contact;
-        this.klCurrent.sanchalak2DOB = new Date(temp[0].dob);
+        this.klCurrent.sanchalak2Dob = new Date(temp[0].dob);
         break;
       }
 
@@ -165,6 +166,7 @@ export class KLevelComponent implements OnInit {
   submit(): void {
     console.log(this.klList);
     this.http.create(this.klList, 'kendra/create').subscribe(resp => {
+      this.router.navigate(['/', 'searchklevel'])
 
     })
   }

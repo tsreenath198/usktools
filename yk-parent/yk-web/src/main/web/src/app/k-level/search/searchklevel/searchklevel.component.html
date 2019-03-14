@@ -12,11 +12,46 @@
     <table class="table" id="table_id" *ngIf="klList.length">
       <thead class="thead-dark">
         <tr>
-          <th>Jilla Name</th>
-          <th>Taluka Name</th>
-          <th>Group Name</th>
           <th>Country</th>
-          <th>State</th>
+          <th>Sanghta/State</th>
+          <th>Jilla Name</th>
+          <th>Jilla Sannidhata</th>
+          <th>Jilla Sannidhata Dob</th>
+          <th>Jilla Sannidhata Contact</th>
+          <th>Taluka Name</th>
+          <th>Taluka Sannidhata</th>
+          <th>Taluka Sannidhata Dob</th>
+          <th>Taluka Sannidhata Contact</th>
+          <th>Group Name </th>
+          <th>Avekshak Name</th>
+          <th>Avekshak Contact</th>
+          <th>Avekshak Dob</th>
+          <th>Kendra Name</th>
+          <th>Kendra Type</th>
+          <th>Yuva/Yuvati</th>
+          <th>Year Started</th>
+          <th>Category</th>
+          <th>Kendra No.</th>
+          <th>Status</th>
+          <th>Year Merged</th>
+          <th>Merged to</th>
+          <th>Sanchalak1</th>
+          <th>Sanchalak1 Contact</th>
+          <th>Sanchalak1 Dob</th>
+          <th>Sanchalak2</th>
+          <th>Sanchalak2 Contact</th>
+          <th>Sanchalak2 Dob</th>
+          <th>Min Attendance</th>
+          <th>Max Attendance</th>
+          <th>YK Conducted In</th>
+          <th>Name of Village</th>
+          <th>Landmark</th>
+          <th>YK sthal</th>
+          <th>Pincode</th>
+          <th>Day</th>
+          <th>Time of YK</th>
+          <th>Swadhyay Based On</th>
+          <th>Village(swadhyay kendra)</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -24,20 +59,126 @@
         <tr *ngFor="let kl of klList;let i = index">
   
           <td>
-            <span>{{kl.jillaName}}</span>
-          </td>
-          <td>
-            <span>{{kl.talukaName}}</span>
-          </td>
-          <td>
-            <span>{{kl.groupName}}</span>
-          </td>
-          <td>
             <span>{{kl.country}}</span>
           </td>
           <td>
             <span>{{kl.state}}</span>
           </td>
+          <td>
+            <span>{{kl.jillaName}}</span>
+          </td>
+          <td>
+            <span>{{kl.jillaSannidhata}}</span>
+          </td>
+          <td>
+            <span>{{kl.jillaSannidhataDob}}</span>
+          </td>
+          <td>
+              <span>{{kl.jillaSannidhataContact}}</span>
+          </td>
+          <td>
+              <span>{{kl.talukaName}}</span>
+          </td>
+          <td>
+              <span>{{kl.talukaSannidhata}}</span>
+          </td>
+          <td>
+              <span>{{kl.talukaSannidhataDob}}</span>
+          </td>
+          <td>
+              <span>{{kl.talukaSannidhataContact}}</span>
+          </td>
+          <td>
+              <span>{{kl.groupName}}</span>
+          </td>
+          <td>
+              <span>{{kl.avekshakName}}</span>
+          </td>
+          <td>
+              <span>{{kl.avekshakContact}}</span>
+          </td>
+          <td>
+              <span>{{kl.avekshakDob}}</span>
+          </td>
+          <td>
+              <span>{{kl.kendraName}}</span>
+          </td>
+          <td>
+              <span>{{kl.kendraType}}</span>
+          </td>
+          <td>
+              <span>{{kl.yuvaYuvati}}</span>
+          </td>
+          <td>
+              <span>{{kl.yearOfKendra}}</span>
+          </td>
+          <td>
+              <span>{{kl.category}}</span>
+          </td>
+          <td>
+              <span>{{kl.kendraNumber}}</span>
+          </td>
+          <td>
+              <span>{{kl.status}}</span>
+          </td>
+          <td>
+              <span>{{kl.yearMerged}}</span>
+          </td>
+          <td>
+              <span>{{kl.mergedTo}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak1}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak1Contact}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak1Dob}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak2}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak2Contact}}</span>
+          </td>
+          <td>
+              <span>{{kl.sanchalak2Dob}}</span>
+          </td>
+          <td>
+              <span>{{kl.minAttendance}}</span>
+          </td>
+          <td>
+              <span>{{kl.maxAttendance}}</span>
+          </td>
+          <td>
+              <span>{{kl.YKConducted}}</span>
+          </td>
+          <td>
+              <span>{{kl.villageOfYK}}</span>
+          </td>
+          <td>
+              <span>{{kl.landMark}}</span>
+          </td>
+          <td>
+              <span>{{kl.yKSthal}}</span>
+          </td>
+          <td>
+              <span>{{kl.yKSthalPin}}</span>
+          </td>
+          <td>
+              <span>{{kl.dayOfYK}}</span>
+          </td>
+          <td>
+              <span>{{kl.timeOfYK}}</span>
+          </td>
+          <td>
+              <span>{{kl.swadhyayLoc}}</span>
+          </td>
+          <td>
+              <span>{{kl.swadhyayVillage}}</span>
+          </td>
+
           <td>
             <!-- Delete's the particular row data from the table -->
             <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.yk.server.app.model.KendramDetails;
+import com.yk.server.app.model.Kendra;
 import com.yk.server.app.service.KendraService;
 
 @RestController
@@ -22,12 +22,12 @@ public class KendraController {
 	KendraService apiService;
 
 	@PostMapping(value = "/create", headers = "Accept=application/json")
-	public void create(@RequestBody List<KendramDetails> kendramDetails, UriComponentsBuilder ucBuilder) {
+	public void create(@RequestBody List<Kendra> kendramDetails, UriComponentsBuilder ucBuilder) {
 		apiService.create(kendramDetails);
 	}
 
 	@GetMapping("/getAll")
-	public List<KendramDetails> getAllKendrams() {
+	public List<Kendra> getAllKendrams() {
 		return apiService.getAllKendrams();
 	}
 

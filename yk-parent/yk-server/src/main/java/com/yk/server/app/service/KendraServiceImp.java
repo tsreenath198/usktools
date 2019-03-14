@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yk.server.app.model.KendramDetails;
+import com.yk.server.app.model.Kendra;
 import com.yk.server.app.repository.KendraRepository;
 
 @Service
@@ -16,12 +16,12 @@ public class KendraServiceImp implements KendraService {
 	KendraRepository apiRepository;
 
 	@Override
-	public void create(List<KendramDetails> kendramDetails) {
+	public void create(List<Kendra> kendramDetails) {
 		apiRepository.saveAll(kendramDetails);
 	}
 
 	@Override
-	public List<KendramDetails> getAllKendrams() {
-		return (List<KendramDetails>) apiRepository.findAll();
+	public List<Kendra> getAllKendrams() {
+		return (List<Kendra>) apiRepository.findAll();
 	}
 }

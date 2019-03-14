@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.yk.server.app.model.YuvanDetails;
+import com.yk.server.app.model.Yuva;
 
-public interface YuvanRepository extends CrudRepository<YuvanDetails, Long> {
+public interface YuvanRepository extends CrudRepository<Yuva, Long> {
 
-	List<YuvanDetails> getAllByRole(String role);
+	List<Yuva> getAllByRole(String role);
 
 }

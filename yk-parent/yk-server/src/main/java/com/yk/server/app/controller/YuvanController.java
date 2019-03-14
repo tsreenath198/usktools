@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.yk.server.app.model.YuvanDetails;
+import com.yk.server.app.model.Yuva;
 import com.yk.server.app.service.YuvanService;
 
 @RestController
@@ -23,17 +23,17 @@ public class YuvanController {
 	YuvanService apiService;
 
 	@PostMapping(value = "/create", headers = "Accept=application/json")
-	public void create(@RequestBody List<YuvanDetails> yuvanDetails, UriComponentsBuilder ucBuilder) {
+	public void create(@RequestBody List<Yuva> yuvanDetails, UriComponentsBuilder ucBuilder) {
 		apiService.create(yuvanDetails);
 	}
 
 	@GetMapping("/getAll")
-	public List<YuvanDetails> getAll() {
+	public List<Yuva> getAll() {
 		return apiService.getAll();
 	}
 
 	@GetMapping("/getAllByRole/{role}")
-	public List<YuvanDetails> getAllByRole(@PathVariable("role") String role) {
+	public List<Yuva> getAllByRole(@PathVariable("role") String role) {
 		return apiService.getAllByRole(role);
 	}
 }

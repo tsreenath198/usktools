@@ -1,2 +1,11 @@
+com\yk\server\app\service\YuvanService.class
+com\yk\server\app\model\KendramDetails.class
+com\yk\server\app\service\YuvanServiceImp.class
+com\yk\server\app\service\KendraServiceImp.class
 com\yk\server\app\model\YuvanDetails.class
+com\yk\server\app\controller\YuvanController.class
+com\yk\server\app\controller\KendraController.class
+com\yk\server\app\repository\KendraRepository.class
+com\yk\server\app\repository\YuvanRepository.class
 com\yk\server\app\AppApplication.class
+com\yk\server\app\service\KendraService.class

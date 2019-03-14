@@ -2,8 +2,8 @@ package com.yk.server.app.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.yk.server.app.model.KendramDetails;
+import com.yk.server.app.model.Kendra;
 
-public interface KendraRepository extends CrudRepository<KendramDetails, Long> {
+public interface KendraRepository extends CrudRepository<Kendra, Long> {
 
 }

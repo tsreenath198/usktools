@@ -30,7 +30,7 @@ public class Yuva {
 	private String role;
 
 	public Yuva() {
-
+		
 	}
 
 	public Yuva(String role) {

@@ -70,7 +70,7 @@ export class SearchdmilanComponent implements OnInit {
           this.ykTemp.age=age;
         }
         this.ykPush.unshift(this.ykTemp);
-        this.http.create(this.ykPush, 'create').subscribe(resp => {
+        this.http.create(this.ykPush, 'yuvan/create').subscribe(resp => {
           this.router.navigate(['/', 'searchdmilan'])
         })
         this.ykTemp = <YuvanModel>{ name: "", age: 0, contact: "", dob: new Date(), jimmedari: "", kendra: "", kendraType: "", middleName: "", patti: "", residence: "", surname: "", taluka: "", videoKendra: "" };

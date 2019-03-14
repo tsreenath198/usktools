@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  configUrl: string = "http://106.0.37.69:8282/api/yuvan/"
+  configUrl: string = "http://106.0.37.69:8282/api/"
   constructor(private http: HttpClient) { }
   create(data: any, url) {
     return this.http.post(this.configUrl + url, data);

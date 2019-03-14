@@ -37,7 +37,7 @@ export class YuvanComponent implements OnInit {
   }
   //submit() submits all data to database and navigate to searchdmilan component
   submit(): void {
-    this.clientHttp.create(this.ykList, 'create').subscribe(resp => {
+    this.clientHttp.create(this.ykList, 'yuvan/create').subscribe(resp => {
       this.router.navigate(['/', 'searchdmilan'])
     })
   }

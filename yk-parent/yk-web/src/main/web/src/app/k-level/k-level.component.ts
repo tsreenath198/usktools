@@ -15,10 +15,16 @@ export class KLevelComponent implements OnInit {
     state: "",
     jillaName: "",
     jillaSannidhata: "",
+    jillaSannidhataDOB: new Date(),
+    jillaSannidhataContact: "",
     talukaName: "",
     talukaSannidhata: "",
+    talukaSannidhataDOB: new Date(),
+    talukaSannidhataContact: "",
     groupName: "",
     avekshakName: "",
+    avekshakDOB: new Date(),
+    avekshakContact: "",
     kendraName: "",
     kendraType: "",
     yuvaYuvati: "",
@@ -29,7 +35,11 @@ export class KLevelComponent implements OnInit {
     yearMerged: "",
     mergedTo: "",
     sanchalak1: "",
+    sanchalak1DOB: new Date(),
+    sanchalak1Contact: "",
     sanchalak2: "",
+    sanchalak2DOB: new Date(),
+    sanchalak2Contact: "",
     minAttendance: "",
     maxAttendance: "",
     YKConducted: "",
@@ -56,10 +66,10 @@ export class KLevelComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit() {
-    let ak = this.http.getReq('getAllByRole/Avekshak');
-    let sk = this.http.getReq('getAllByRole/Sanchalak');
-    let js = this.http.getReq('getAllByRole/Jilla-sannidhata');
-    let ts = this.http.getReq('getAllByRole/Taluka-sannidhata');
+    let ak = this.http.getReq('yuvan/getAllByRole/Avekshak');
+    let sk = this.http.getReq('yuvan/getAllByRole/Sanchalak');
+    let js = this.http.getReq('yuvan/getAllByRole/Jilla-sannidhata');
+    let ts = this.http.getReq('yuvan/getAllByRole/Taluka-sannidhata');
     let wd = this.http.getLogin('assets/weekdays.json');
     forkJoin([ak, sk, js, ts, wd]).subscribe(resultList => {
       this.avekshakList = resultList[0];
@@ -68,6 +78,52 @@ export class KLevelComponent implements OnInit {
       this.tSannidhataList = resultList[3];
       this.daysList = resultList[4];
     });
+  }
+  addToList() {
+    this.klList.unshift(this.klCurrent);
+    this.klCurrent = <KLevelModel>{
+      country: "",
+      state: "",
+      jillaName: "",
+      jillaSannidhata: "",
+      jillaSannidhataDOB: new Date(),
+      jillaSannidhataContact: "",
+      talukaName: "",
+      talukaSannidhata: "",
+      talukaSannidhataDOB: new Date(),
+      talukaSannidhataContact: "",
+      groupName: "",
+      avekshakName: "",
+      avekshakDOB: new Date(),
+      avekshakContact: "",
+      kendraName: "",
+      kendraType: "",
+      yuvaYuvati: "",
+      yearOfKendra: "",
+      category: "",
+      kendraNumber: "",
+      status: "",
+      yearMerged: "",
+      mergedTo: "",
+      sanchalak1: "",
+      sanchalak1DOB: new Date(),
+      sanchalak1Contact: "",
+      sanchalak2: "",
+      sanchalak2DOB: new Date(),
+      sanchalak2Contact: "",
+      minAttendance: "",
+      maxAttendance: "",
+      YKConducted: "",
+      villageOfYK: "",
+      landMark: "",
+      yKSthal: "",
+      yKSthalPin: "",
+      dayOfYK: "",
+      timeOfYK: "",
+      swadhyayLoc: "",
+      swadhyayVillage: ""
+    };
+    console.log(this.klList);
   }
 
   setName(value: string, role: string): void {
@@ -105,6 +161,12 @@ export class KLevelComponent implements OnInit {
       }
 
     }
+  }
+  submit(): void {
+    console.log(this.klList);
+    this.http.create(this.klList, 'kendra/create').subscribe(resp => {
+
+    })
   }
 
 }

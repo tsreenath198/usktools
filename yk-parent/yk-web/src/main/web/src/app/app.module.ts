@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchdmilanComponent } from './searchdmilan/searchdmilan.component';
 import { KLevelComponent } from './k-level/k-level.component';
 import { YuvanComponent } from './yuvan/yuvan.component';
+import { SearchklevelComponent } from './k-level/search/searchklevel/searchklevel.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { YuvanComponent } from './yuvan/yuvan.component';
     YuvanComponent,
     LoginComponent,
     SearchdmilanComponent,
-    KLevelComponent
+    KLevelComponent,
+    SearchklevelComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,16 @@
 package com.yk.server.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,24 +29,29 @@ public class Kendra {
 	private String jilla;
 	@Column(name = "taluka")
 	private String taluka;
-	@Column(name = "group")
+	@Column(name = "patti")
 	private String group;
 	@Column(name = "kendra")
 	private String kendra;
 
-	@OneToOne(mappedBy = "yuva")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "jsann_id")
 	private Yuva jSannidatha = new Yuva("Jilla Sannidatha");
 
-	@OneToOne(mappedBy = "yuva")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "tsann_id")
 	private Yuva tSannidatha = new Yuva("Taluka Sannidatha");;
 
-	@OneToOne(mappedBy = "yuva")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "avekshak_id")
 	private Yuva avekshak = new Yuva("Avekshak");;
 
-	@OneToOne(mappedBy = "yuva")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "sanchalak1_id")
 	private Yuva sanchalak1 = new Yuva("Sanchalak");;
 
-	@OneToOne(mappedBy = "yuva")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "sanchalak2_id")
 	private Yuva sanchalak2 = new Yuva("Sanchalak");;
 
 	@Column(name = "kendraType")

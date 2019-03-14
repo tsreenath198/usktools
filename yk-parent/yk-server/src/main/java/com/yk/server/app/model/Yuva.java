@@ -29,6 +29,10 @@ public class Yuva {
 	@Column(name = "role")
 	private String role;
 
+	public Yuva() {
+
+	}
+
 	public Yuva(String role) {
 		super();
 		this.role = role;

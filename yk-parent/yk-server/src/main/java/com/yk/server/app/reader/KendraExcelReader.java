@@ -59,9 +59,10 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		}
 		errors.addAll(kendraDataValidator.validate(kendra));
 		if (errors.size() > 0) {
-			System.err.println("ROW " + rowObj.getRowNum() + "ERRORS : " + errors);
-			kendra.setErrors(
-					kendra.getTaluka() + " " + kendra.getKendra() + " " + rowObj.getRowNum() + " ERRORS : " + errors);
+			System.err.println(kendra.getTaluka() + " " + kendra.getKendra() + " " + kendra.getYuvaYuvati() + " "
+					+ (rowObj.getRowNum() + 1) + " ERRORS : " + errors);
+			kendra.setErrors(kendra.getTaluka() + " " + kendra.getKendra() + " " + kendra.getYuvaYuvati() + " "
+					+ (rowObj.getRowNum() + 1) + " ERRORS : " + errors);
 		}
 		kendras.add(kendra);
 	}

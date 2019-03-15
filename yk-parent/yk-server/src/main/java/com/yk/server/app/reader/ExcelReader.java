@@ -12,7 +12,7 @@ import com.yk.server.app.util.DateUtil;
 public abstract class ExcelReader<T> {
 	public abstract Set<T> read(String filePath) throws Exception;
 
-	private static final String[] DATE_FORMATS = { "dd-MMM-yyyy", "dd/MM/yyyy", "dd-MMM-yyyy" };
+	private static final String[] DATE_FORMATS = { "dd-MMM-yyyy", "dd/MM/yyyy", "dd/MM/yy", "dd-MM-yyyy", "dd-MM-yy" };
 
 	public String getCellValue(Row row, int col) {
 		Cell cell = row.getCell(col);

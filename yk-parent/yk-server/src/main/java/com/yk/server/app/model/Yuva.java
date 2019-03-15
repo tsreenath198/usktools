@@ -18,7 +18,7 @@ public class Yuva {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
 	@Column(name = "name")
 	private String name;
@@ -29,8 +29,16 @@ public class Yuva {
 	@Column(name = "role")
 	private String role;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Yuva() {
-		
+
 	}
 
 	public Yuva(String role) {

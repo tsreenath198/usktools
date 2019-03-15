@@ -30,7 +30,6 @@
         <th>Role</th>
         <th>Contact</th>
         <th>DOB</th>
-        <th>Action</th>
       </tr>
     </thead>
     <tbody id="table_id">
@@ -47,10 +46,6 @@
             <td>
               <span>{{yk.dob | date}}</span>
             </td>
-        <td>
-          <!-- Delete's the particular row data from the table -->
-          <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
-        </td>
       </tr>
     </tbody>
   </table>

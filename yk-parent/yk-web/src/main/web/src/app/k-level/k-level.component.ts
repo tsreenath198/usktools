@@ -49,8 +49,8 @@ export class KLevelComponent implements OnInit {
   public statusList = ["Active", "Merged", "Inactive"];
   public conducted = ["Home", "School", "College", "Classes", "Other"];
   public klData: object[];
-  public jSannidhataList: any;
-  public tSannidhataList: any;
+  public jSannidathaList: any;
+  public tSannidathaList: any;
   public avekshakList: any;
   public sanchalakList: any;
   public daysList: any;
@@ -65,8 +65,8 @@ export class KLevelComponent implements OnInit {
     forkJoin([ak, sk, js, ts, wd]).subscribe(resultList => {
       this.avekshakList = resultList[0];
       this.sanchalakList = resultList[1];
-      this.jSannidhataList = resultList[2];
-      this.tSannidhataList = resultList[3];
+      this.jSannidathaList = resultList[2];
+      this.tSannidathaList = resultList[3];
       this.daysList = resultList[4];
     });
   }
@@ -111,31 +111,31 @@ export class KLevelComponent implements OnInit {
     let temp: any;
     switch (role) {
       case "jilla": {
-        temp = this.jSannidhataList.filter(t => t.name == value);
+        temp = this.jSannidathaList.filter(t => t.id == value);
         this.klCurrent.jSannidatha.phone = temp[0].phone;
         this.klCurrent.jSannidatha.dob = new Date(temp[0].dob);
         break;
       }
       case "taluka": {
-        temp = this.tSannidhataList.filter(t => t.name == value);
+        temp = this.tSannidathaList.filter(t => t.id == value);
         this.klCurrent.tSannidatha.phone = temp[0].phone;
         this.klCurrent.tSannidatha.dob = new Date(temp[0].dob);
         break;
       }
       case "avekshak": {
-        temp = this.avekshakList.filter(t => t.name == value);
+        temp = this.avekshakList.filter(t => t.id == value);
         this.klCurrent.avekshak.phone = temp[0].phone;
         this.klCurrent.avekshak.dob = new Date(temp[0].dob);
         break;
       }
       case "s1": {
-        temp = this.sanchalakList.filter(t => t.name == value);
+        temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak1.phone = temp[0].phone;
         this.klCurrent.sanchalak1.dob = new Date(temp[0].dob);
         break;
       }
       case "s2": {
-        temp = this.sanchalakList.filter(t => t.name == value);
+        temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak2.phone = temp[0].phone;
         this.klCurrent.sanchalak2.dob = new Date(temp[0].dob);
         break;

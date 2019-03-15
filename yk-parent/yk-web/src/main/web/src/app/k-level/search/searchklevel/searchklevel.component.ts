@@ -30,9 +30,11 @@ export class SearchklevelComponent implements OnInit {
     this.selectedIndex = index;
   }
 
+  navigate(pth: string): void {
+    this.router.navigate(['/', pth]);
+  }
   update(obj){
-    console.log(this.klList[obj]);
-     this.http.postReq('kendra/update',this.klList[obj]).subscribe(resp => {
+     this.http.postReq('kendra/update',obj).subscribe(resp => {
       this.init();
      });
   }

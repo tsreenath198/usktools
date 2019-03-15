@@ -16,22 +16,14 @@ export class HttpService {
   public getReq(URL: string) {
     return this.http.get(this.configUrl + URL);
   }
+  public postReq(URL: string, obj: any) {
+    return this.http.post(this.configUrl + URL, obj);
+  }
   public getLogin(URL: string) {
     return this.http.get(URL);
   }
-  public getKLData(URL : string){
+  public getKLData(URL: string) {
     return this.http.get(URL);
   }
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const formdata: FormData = new FormData();
- 
-    formdata.append('file', file);
- 
-    const req = new HttpRequest('POST', 'http://localhost:8080/downloadApiResponse', formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
- 
-    return this.http.request(req);
-  }
+
 }

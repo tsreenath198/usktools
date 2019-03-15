@@ -1,190 +1,233 @@
 <div class=" mt-4">
     <div class="clearfix">
-      <span class="float-left form-group col-3">
-        <!-- inputfield helps to add the data in the list -->
-        <input type="text" class="form-control" [(ngModel)]="klInput" placeholder="Add K Detail">
-      </span>
-      <span class="float-right col-1">
-        <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
-      </span>
+        <span class="float-left form-group col-3">
+            <!-- inputfield helps to add the data in the list -->
+            <input type="text" class="form-control" [(ngModel)]="klInput" placeholder="Add K Detail">
+        </span>
+        <span class="float-right col-1">
+            <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
+        </span>
     </div>
     <!-- Displays data which is retrived from database -->
     <table class="table" id="table_id" *ngIf="klList.length">
-      <thead class="thead-dark">
-        <tr>
-          <th>Country</th>
-          <th>Sanghta/State</th>
-          <th>Jilla Name</th>
-          <th>Jilla Sannidhata</th>
-          <th>Jilla Sannidhata Dob</th>
-          <th>Jilla Sannidhata Contact</th>
-          <th>Taluka Name</th>
-          <th>Taluka Sannidhata</th>
-          <th>Taluka Sannidhata Dob</th>
-          <th>Taluka Sannidhata Contact</th>
-          <th>Group Name </th>
-          <th>Avekshak Name</th>
-          <th>Avekshak Contact</th>
-          <th>Avekshak Dob</th>
-          <th>Kendra Name</th>
-          <th>Kendra Type</th>
-          <th>Yuva/Yuvati</th>
-          <th>Year Started</th>
-          <th>Category</th>
-          <th>Kendra No.</th>
-          <th>Status</th>
-          <th>Year Merged</th>
-          <th>Merged to</th>
-          <th>Sanchalak1</th>
-          <th>Sanchalak1 Contact</th>
-          <th>Sanchalak1 Dob</th>
-          <th>Sanchalak2</th>
-          <th>Sanchalak2 Contact</th>
-          <th>Sanchalak2 Dob</th>
-          <th>Min Attendance</th>
-          <th>Max Attendance</th>
-          <th>YK Conducted In</th>
-          <th>Name of Village</th>
-          <th>Landmark</th>
-          <th>YK sthal</th>
-          <th>Pincode</th>
-          <th>Day</th>
-          <th>Time of YK</th>
-          <th>Swadhyay Based On</th>
-          <th>Village(swadhyay kendra)</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="table_id">
-        <tr *ngFor="let kl of klList;let i = index">
-  
-          <td>
-            <span>{{kl.country}}</span>
-          </td>
-          <td>
-            <span>{{kl.state}}</span>
-          </td>
-          <td>
-            <span>{{kl.jillaName}}</span>
-          </td>
-          <td>
-            <span>{{kl.jillaSannidhata}}</span>
-          </td>
-          <td>
-            <span>{{kl.jillaSannidhataDob}}</span>
-          </td>
-          <td>
-              <span>{{kl.jillaSannidhataContact}}</span>
-          </td>
-          <td>
-              <span>{{kl.talukaName}}</span>
-          </td>
-          <td>
-              <span>{{kl.talukaSannidhata}}</span>
-          </td>
-          <td>
-              <span>{{kl.talukaSannidhataDob}}</span>
-          </td>
-          <td>
-              <span>{{kl.talukaSannidhataContact}}</span>
-          </td>
-          <td>
-              <span>{{kl.groupName}}</span>
-          </td>
-          <td>
-              <span>{{kl.avekshakName}}</span>
-          </td>
-          <td>
-              <span>{{kl.avekshakContact}}</span>
-          </td>
-          <td>
-              <span>{{kl.avekshakDob}}</span>
-          </td>
-          <td>
-              <span>{{kl.kendraName}}</span>
-          </td>
-          <td>
-              <span>{{kl.kendraType}}</span>
-          </td>
-          <td>
-              <span>{{kl.yuvaYuvati}}</span>
-          </td>
-          <td>
-              <span>{{kl.yearOfKendra}}</span>
-          </td>
-          <td>
-              <span>{{kl.category}}</span>
-          </td>
-          <td>
-              <span>{{kl.kendraNumber}}</span>
-          </td>
-          <td>
-              <span>{{kl.status}}</span>
-          </td>
-          <td>
-              <span>{{kl.yearMerged}}</span>
-          </td>
-          <td>
-              <span>{{kl.mergedTo}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak1}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak1Contact}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak1Dob}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak2}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak2Contact}}</span>
-          </td>
-          <td>
-              <span>{{kl.sanchalak2Dob}}</span>
-          </td>
-          <td>
-              <span>{{kl.minAttendance}}</span>
-          </td>
-          <td>
-              <span>{{kl.maxAttendance}}</span>
-          </td>
-          <td>
-              <span>{{kl.YKConducted}}</span>
-          </td>
-          <td>
-              <span>{{kl.villageOfYK}}</span>
-          </td>
-          <td>
-              <span>{{kl.landMark}}</span>
-          </td>
-          <td>
-              <span>{{kl.yKSthal}}</span>
-          </td>
-          <td>
-              <span>{{kl.yKSthalPin}}</span>
-          </td>
-          <td>
-              <span>{{kl.dayOfYK}}</span>
-          </td>
-          <td>
-              <span>{{kl.timeOfYK}}</span>
-          </td>
-          <td>
-              <span>{{kl.swadhyayLoc}}</span>
-          </td>
-          <td>
-              <span>{{kl.swadhyayVillage}}</span>
-          </td>
+        <thead class="thead-dark">
+            <tr>
+                <th>Country</th>
+                <th>Sanghta/State</th>
+                <th>Jilla Name</th>
+                <th>Jilla Sannidhata</th>
+                <th>Jilla Sannidhata Dob</th>
+                <th>Jilla Sannidhata Contact</th>
+                <th>Taluka Name</th>
+                <th>Taluka Sannidhata</th>
+                <th>Taluka Sannidhata Dob</th>
+                <th>Taluka Sannidhata Contact</th>
+                <th>Group Name </th>
+                <th>Avekshak Name</th>
+                <th>Avekshak Contact</th>
+                <th>Avekshak Dob</th>
+                <th>Kendra Name</th>
+                <th>Kendra Type</th>
+                <th>Yuva/Yuvati</th>
+                <th>Year Started</th>
+                <th>Category</th>
+                <th>Kendra No.</th>
+                <th>Status</th>
+                <th>Year Merged</th>
+                <th>Merged to</th>
+                <th>Sanchalak1</th>
+                <th>Sanchalak1 Contact</th>
+                <th>Sanchalak1 Dob</th>
+                <th>Sanchalak2</th>
+                <th>Sanchalak2 Contact</th>
+                <th>Sanchalak2 Dob</th>
+                <th>Min Attendance</th>
+                <th>Max Attendance</th>
+                <th>YK Conducted In</th>
+                <th>Name of Village</th>
+                <th>Landmark</th>
+                <th>YK sthal</th>
+                <th>Pincode</th>
+                <th>Day</th>
+                <th>Time of YK</th>
+                <th>Swadhyay Based On</th>
+                <th>Village(swadhyay kendra)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="table_id">
+            <tr *ngFor="let kl of klList;let i = index">
 
-          <td>
-            <!-- Delete's the particular row data from the table -->
-            <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.country}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.country"/></span>
+
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanghat}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.sanghat"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jilla}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.jilla"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.name}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.jSannidatha.name"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.dob}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.jSannidatha.dob"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.phone}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.jSannidatha.phone"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.taluka}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.taluka"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.name}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.tSannidatha.name"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.dob}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="date" [(ngModel)]="kl.tSannidatha.dob"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.phone}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.tSannidatha.phone"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.group}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.group"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.name}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.avekshak.name"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.phone}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.avekshak.phone"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.dob}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="date" [(ngModel)]="kl.avekshak.dob"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.kendra}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.kendra"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.kendraType}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.kendraType"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.yuvaYuvati}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.yuvaYuvati"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.yearOfKendra}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.yearOfKendra"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.category}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.category"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.kendraNumber}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.kendraNumber"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.status}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.status"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.yearMerged}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.yearMerged"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.mergedTo}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.mergedTo"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.name}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.sanchalak1.name"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.phone}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.sanchalak1.phone"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.dob}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="date" [(ngModel)]="kl.sanchalak1.dob"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.name}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.sanchalak2.name"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.phone}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.sanchalak2.phone"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.dob}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="date" [(ngModel)]="kl.sanchalak2.dob"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.minAttendance}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.minAttendance"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.maxAttendance}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.maxAttendance"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.ykConducted}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.ykConducted"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.villageOfYK}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.villageOfYK"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.landMark}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.landMark"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.yKSthal}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.yKSthal"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.yKSthalPin}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.yKSthalPin"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.dayOfYK}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.dayOfYK"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.timeOfYK}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.timeOfYK"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.swadhyayLoc}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.swadhyayLoc"/></span>
+                </td>
+                <td>
+                    <span *ngIf="selectedIndex !== i ">{{kl.swadhyayVillage}}</span>
+                    <span *ngIf="selectedIndex === i " ><input type="text" [(ngModel)]="kl.swadhyayVillage"/></span>
+                </td>
+
+                <td>
+                    <!-- Delete's the particular row data from the table -->
+                    <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
+                    <button type="button" *ngIf="selectedIndex == -1" (click)="edit(i)" class="btn btn-primary btn-sm">Edit</button>
+                    <button type="button" *ngIf="selectedIndex !== -1" (click)="update(i)" class="btn btn-primary btn-sm">Update</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
-  
-  </div>
+
+</div>

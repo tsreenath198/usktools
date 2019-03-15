@@ -16,7 +16,7 @@
       <select class="custom-select" name="jillaSannidhata" [(ngModel)]="klCurrent.jSannidhata.name"
         #jillaSannidhata="ngModel" (change)="setName(klCurrent.jSannidhata.name,'jilla')">
         <option hidden selected></option>
-        <option *ngFor="let jsl of jSannidhataList" [ngValue]="jsl.id">{{jsl.name}}</option>
+        <option *ngFor="let jsl of jSannidhataList" [ngValue]="jsl.name">{{jsl.name}}</option>
       </select>
     </div>
     <!-- Jilla Name section in form -->
@@ -24,16 +24,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata DOB</span>
       </div>
-      <input class="form-control" type="date" [(ngModel)]="klCurrent.jSannidhata.dob" placeholder="Jilla Name"
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.jSannidhata.dob" 
         name="jillaSannidhataDOB" #jillaSannidhataDOB="ngModel" readonly />
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata Contact</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Sannidhata phone</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.jSannidhata.contact" placeholder="Jilla Name"
-        name="jillaSannidhataContact" #jillaSannidhataContact="ngModel" readonly />
+      <input class="form-control" [(ngModel)]="klCurrent.jSannidhata.phone"
+        name="jillaSannidhataphone" #jillaSannidhataphone="ngModel" readonly />
     </div>
   </div>
   <div class="row pt10">
@@ -42,8 +42,8 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Name</span>
       </div>
-      <input class="form-control" type="text" placeholder="Taluka Name" [(ngModel)]="klCurrent.taluka"
-        name="talukaName" #talukaName="ngModel" />
+      <input class="form-control" type="text" placeholder="Taluka Name" [(ngModel)]="klCurrent.taluka" name="talukaName"
+        #talukaName="ngModel" />
     </div>
     <!-- Taluka Sannidhata Section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -53,7 +53,7 @@
       <select class="custom-select" name="talukaSannidhata" [(ngModel)]="klCurrent.tSannidhata.name"
         #talukaSannidhata="ngModel" (change)="setName(klCurrent.tSannidhata.name,'taluka')">
         <option hidden selected></option>
-        <option *ngFor="let tsl of tSannidhataList" [ngValue]="tsl.id">{{tsl.name}}</option>
+        <option *ngFor="let tsl of tSannidhataList" [ngValue]="tsl.name">{{tsl.name}}</option>
       </select>
     </div>
     <!-- Jilla Name section in form -->
@@ -61,16 +61,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata DOB</span>
       </div>
-      <input class="form-control" type="date" [(ngModel)]="klCurrent.tSannidhata.dOB" placeholder="Jilla Name"
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.tSannidhata.dOB" 
         name="talukaSannidhataDOB" #talukaSannidhataDOB="ngModel" readonly />
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">`
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata Contact</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka Sannidhata phone</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.tSannidhata.contact" placeholder="Jilla Name"
-        name="talukaSannidhataContact" #talukaSannidhataContact="ngModel" readonly />
+      <input class="form-control" [(ngModel)]="klCurrent.tSannidhata.phone" 
+        name="talukaSannidhataphone" #talukaSannidhataphone="ngModel" readonly />
     </div>
   </div>
   <div class="row pt10">
@@ -90,7 +90,7 @@
       <select class="custom-select" name="avekshakName" (change)="setName(klCurrent.avekshak.name,'avekshak')"
         [(ngModel)]="klCurrent.avekshak.name" #avekshakName="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let avl of avekshakList" [ngValue]="avl.id">{{avl.name}}</option>
+        <option *ngFor="let avl of avekshakList" [ngValue]="avl.name">{{avl.name}}</option>
       </select>
     </div>
     <!-- Jilla Name section in form -->
@@ -98,16 +98,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak DOB</span>
       </div>
-      <input class="form-control" type="date" [(ngModel)]="klCurrent.avekshak.dob" placeholder="Jilla Name"
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.avekshak.dob"
         name="avekshakDOB" #avekshakDOB="ngModel" readonly />
     </div>
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak Contact</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Avekshak phone</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.avekshak.contact" placeholder="Jilla Name"
-        name="avekshakContact" #avekshakContact="ngModel" readonly />
+      <input class="form-control" [(ngModel)]="klCurrent.avekshak.phone" 
+        name="avekshakphone" #avekshakphone="ngModel" readonly />
     </div>
   </div>
   <div class="row pt10">
@@ -130,8 +130,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Kendra Name</span>
       </div>
-      <input class="form-control" type="text" [(ngModel)]="klCurrent.kendra" name="kendraName"
-        #kendraName="ngModel" />
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.kendra" name="kendraName" #kendraName="ngModel" />
     </div>
     <!-- Kendra Type Section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -197,7 +196,7 @@
       <select class="custom-select" name="sanchalak1" (change)="setName(klCurrent.sanchalak1.name,'s1')"
         [(ngModel)]="klCurrent.sanchalak1.name" #sanchalak1="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let sck of sanchalakList" [ngValue]="sck.id">{{sck.name}}</option>
+        <option *ngFor="let sck of sanchalakList" [ngValue]="sck.name">{{sck.name}}</option>
       </select>
     </div>
     <!-- merged to section in form -->
@@ -205,16 +204,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak1 DOB</span>
       </div>
-      <input class="form-control" type="date" [(ngModel)]="klCurrent.sanchalak1.dob" placeholder="Merged To"
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.sanchalak1.dob" placeholder="Merged To"
         name="sanchalak1DOB" #sanchalak1DOB="ngModel" readonly />
     </div>
     <!-- merged to section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak1 Contact</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak1 phone</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak1.contact" placeholder="Merged To"
-        name="sanchalak1Contact" #sanchalak1Contact="ngModel" readonly />
+      <input class="form-control" [(ngModel)]="klCurrent.sanchalak1.phone" placeholder="Merged To"
+        name="sanchalak1phone" #sanchalak1phone="ngModel" readonly />
     </div>
   </div>
 
@@ -229,7 +228,7 @@
       <select class="custom-select" name="sanchalak2" (change)="setName(klCurrent.sanchalak2.name,'s2')"
         [(ngModel)]="klCurrent.sanchalak2.name" #sanchalak2="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let sck of sanchalakList" [ngValue]="sck.id">{{sck.name}}</option>
+        <option *ngFor="let sck of sanchalakList" [ngValue]="sck.name">{{sck.name}}</option>
       </select>
     </div>
     <!-- merged to section in form -->
@@ -237,16 +236,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak2 DOB</span>
       </div>
-      <input class="form-control" type="date" [(ngModel)]="klCurrent.sanchalak2.dob" placeholder="Merged To"
+      <input class="form-control" type="text" [(ngModel)]="klCurrent.sanchalak2.dob" placeholder="Merged To"
         name="sanchalak2DOB" #sanchalak2DOB="ngModel" readonly />
     </div>
     <!-- merged to section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak2 Contact</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm">Sanchalak2 phone</span>
       </div>
-      <input class="form-control" [(ngModel)]="klCurrent.sanchalak2.contact" placeholder="Merged To"
-        name="sanchalak2Contact" #sanchalak2Contact="ngModel" readonly />
+      <input class="form-control" [(ngModel)]="klCurrent.sanchalak2.phone" placeholder="Merged To"
+        name="sanchalak2phone" #sanchalak2phone="ngModel" readonly />
     </div>
   </div>
   <div class="row pt10">
@@ -394,14 +393,14 @@
         <th>Jilla Name</th>
         <th>Jilla Sannidhata</th>
         <th>Jilla Sannidhata Dob</th>
-        <th>Jilla Sannidhata Contact</th>
+        <th>Jilla Sannidhata phone</th>
         <th>Taluka Name</th>
         <th>Taluka Sannidhata</th>
         <th>Taluka Sannidhata Dob</th>
-        <th>Taluka Sannidhata Contact</th>
+        <th>Taluka Sannidhata phone</th>
         <th>Group Name </th>
         <th>Avekshak Name</th>
-        <th>Avekshak Contact</th>
+        <th>Avekshak phone</th>
         <th>Avekshak Dob</th>
         <th>Kendra Name</th>
         <th>Kendra Type</th>
@@ -413,10 +412,10 @@
         <th>Year Merged</th>
         <th>Merged to</th>
         <th>Sanchalak1</th>
-        <th>Sanchalak1 Contact</th>
+        <th>Sanchalak1 phone</th>
         <th>Sanchalak1 Dob</th>
         <th>Sanchalak2</th>
-        <th>Sanchalak2 Contact</th>
+        <th>Sanchalak2 phone</th>
         <th>Sanchalak2 Dob</th>
         <th>Min Attendance</th>
         <th>Max Attendance</th>
@@ -439,46 +438,46 @@
           <span>{{kl.country}}</span>
         </td>
         <td>
-          <span>{{kl.state}}</span>
+          <span>{{kl.sanghat}}</span>
         </td>
         <td>
-          <span>{{kl.jillaName}}</span>
+          <span>{{kl.jilla}}</span>
         </td>
         <td>
-          <span>{{kl.jillaSannidhata}}</span>
+          <span>{{kl.jSannidhata.name}}</span>
         </td>
         <td>
-          <span>{{kl.jillaSannidhataDob}}</span>
+          <span>{{kl.jSannidhata.dob}}</span>
         </td>
         <td>
-          <span>{{kl.jillaSannidhataContact}}</span>
+          <span>{{kl.jSannidhata.phone}}</span>
         </td>
         <td>
-          <span>{{kl.talukaName}}</span>
+          <span>{{kl.taluka}}</span>
         </td>
         <td>
-          <span>{{kl.talukaSannidhata}}</span>
+          <span>{{kl.tSannidhata.name}}</span>
         </td>
         <td>
-          <span>{{kl.talukaSannidhataDob}}</span>
+          <span>{{kl.tSannidhata.dob}}</span>
         </td>
         <td>
-          <span>{{kl.talukaSannidhataContact}}</span>
+          <span>{{kl.tSannidhata.phone}}</span>
         </td>
         <td>
-          <span>{{kl.groupName}}</span>
+          <span>{{kl.group}}</span>
         </td>
         <td>
-          <span>{{kl.avekshakName}}</span>
+          <span>{{kl.avekshak.name}}</span>
         </td>
         <td>
-          <span>{{kl.avekshakContact}}</span>
+          <span>{{kl.avekshak.phone}}</span>
         </td>
         <td>
-          <span>{{kl.avekshakDob}}</span>
+          <span>{{kl.avekshak.dob}}</span>
         </td>
         <td>
-          <span>{{kl.kendraName}}</span>
+          <span>{{kl.kendra}}</span>
         </td>
         <td>
           <span>{{kl.kendraType}}</span>
@@ -505,22 +504,22 @@
           <span>{{kl.mergedTo}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak1}}</span>
+          <span>{{kl.sanchalak1.name}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak1Contact}}</span>
+          <span>{{kl.sanchalak1.phone}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak1Dob}}</span>
+          <span>{{kl.sanchalak1.dob}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak2}}</span>
+          <span>{{kl.sanchalak2.name}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak2Contact}}</span>
+          <span>{{kl.sanchalak2.phone}}</span>
         </td>
         <td>
-          <span>{{kl.sanchalak2Dob}}</span>
+          <span>{{kl.sanchalak2.dob}}</span>
         </td>
         <td>
           <span>{{kl.minAttendance}}</span>
@@ -529,7 +528,7 @@
           <span>{{kl.maxAttendance}}</span>
         </td>
         <td>
-          <span>{{kl.YKConducted}}</span>
+          <span>{{kl.ykConducted}}</span>
         </td>
         <td>
           <span>{{kl.villageOfYK}}</span>

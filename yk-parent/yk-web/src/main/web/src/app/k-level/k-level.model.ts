@@ -7,8 +7,8 @@ export interface KLevelModel{
     taluka : string;
     group : string;
     kendra : string;
-    jSannidhata : YuvanModel;
-    tSannidhata : YuvanModel;
+    jSannidatha : YuvanModel;
+    tSannidatha : YuvanModel;
     avekshak : YuvanModel;
     sanchalak1 : YuvanModel;
     sanchalak2 : YuvanModel;

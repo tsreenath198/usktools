@@ -13,7 +13,7 @@ import { HttpResponse, HttpEventType } from '@angular/common/http';
 export class SearchdmilanComponent implements OnInit {
   public ykPush: YuvanModel[] = [];
   public ykInput: string;
-  public ykTemp: YuvanModel = <YuvanModel>{ name: "",  contact: "", dob: new Date(), role: "" };
+  public ykTemp: YuvanModel = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
   public ykList: YuvanModel[] = [];
   selectedFiles: FileList;
   currentFileUpload: File;

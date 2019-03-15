@@ -14,7 +14,7 @@ export class YuvanComponent implements OnInit {
   public middlename;
   public name;
   public ykList: YuvanModel[] = [];
-  public ykCurrData: YuvanModel = <YuvanModel>{ name: "",  contact: "", dob: new Date(), role: "" };
+  public ykCurrData: YuvanModel = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
   public selectedIndex: number = 0;
   public roleList = ["Sanchalak", "Avekshak","Jilla-sannidhata","Taluka-sannidhata"];
   constructor(private clientHttp: HttpService, private router: Router, private formBuilder: FormBuilder) { }
@@ -24,7 +24,7 @@ export class YuvanComponent implements OnInit {
   addToList(dMilanForm: NgForm) {
     this.ykCurrData.name=this.surname+" "+this.middlename+" "+this.name;
     this.ykList.unshift(this.ykCurrData);
-    this.ykCurrData = <YuvanModel>{ name: "",  contact: "", dob: new Date(), role: "" };
+    this.ykCurrData = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
     this.name=null;
     this.middlename=null;
     this.name=null;

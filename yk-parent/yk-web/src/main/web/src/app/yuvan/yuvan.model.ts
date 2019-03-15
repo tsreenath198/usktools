@@ -1,6 +1,6 @@
 export interface YuvanModel{
     name:string;
-    contact:string;
+    phone:string;
     dob:Date;
     role:string;
 }

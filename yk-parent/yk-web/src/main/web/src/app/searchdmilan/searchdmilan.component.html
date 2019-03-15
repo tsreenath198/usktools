@@ -10,7 +10,7 @@
       <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
     </span>
   </div>
-  <div class="card-body">
+  <!-- <div class="card-body">
     <div *ngIf="currentFileUpload" class="progress">
       <div class="progress-bar progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
         aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
@@ -21,7 +21,7 @@
         style="background-color: lightgrey">
     </label>
     <button class="btn i-color" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
-  </div>
+  </div> -->
   <!-- Displays data which is retrived from database -->
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
@@ -42,7 +42,7 @@
               <span>{{yk.role}}</span>
             </td>
             <td>
-              <span>{{yk.contact}}</span>
+              <span>{{yk.phone}}</span>
             </td>
             <td>
               <span>{{yk.dob | date}}</span>

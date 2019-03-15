@@ -9,17 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchklevel.component.css']
 })
 export class SearchklevelComponent implements OnInit {
-  public klList: KLevelModel [] = [];
-
-  constructor(private http:HttpService , private router:Router) { }
+  public klList: KLevelModel[] = [];
+  public selectedIndex: number = -1;
+  constructor(private http: HttpService, private router: Router) { }
 
   ngOnInit() {
+    this.init();
+  }
+  init(){
     this.http.getReq('kendra/getAll').subscribe(resp => {
-      this.klList = resp as KLevelModel[]
+      this.klList = resp as KLevelModel[];
+      this.selectedIndex = -1;
     });
   }
-  addToList(){
+  addToList() {
     this.router.navigate(['/', 'k-level'])
+  }
+
+  edit(index) {
+    this.selectedIndex = index;
+  }
+
+  update(obj){
+    console.log(this.klList[obj]);
+     this.http.postReq('kendra/update',this.klList[obj]).subscribe(resp => {
+      this.init();
+     });
   }
 
 }

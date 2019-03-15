@@ -94,6 +94,17 @@ public class Kendra {
 	@Column(name = "swadhyayVillage")
 	private String swadhyayVillage;
 
+	@Column(name = "errors")
+	private String errors;
+
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = errors;
+	}
+
 	public long getId() {
 		return id;
 	}

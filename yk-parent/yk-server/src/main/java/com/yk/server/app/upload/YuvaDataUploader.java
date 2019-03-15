@@ -17,7 +17,7 @@ public class YuvaDataUploader {
 
 	@Autowired
 	private YuvaRepository yuvaRepo;
-	
+
 	@Autowired
 	private KendraRepository kendraRepo;
 
@@ -25,10 +25,12 @@ public class YuvaDataUploader {
 	private KendraExcelReader kendramExcelReader;
 
 	public void uploadAllData(String filePath) throws Exception {
-//		Set<Kendra> allKendras = readAllYuvans();
-//		for (Kendra kendra : allKendras) {
-//			System.out.println(kendra);
-//		}
+		// Set<Kendra> allKendras = readAllYuvans();
+		// for (Kendra kendra : allKendras) {
+		// System.out.println(kendra);
+		// }
+		kendraRepo.deleteAll();
+		yuvaRepo.deleteAll();
 		Set<Kendra> newKendras = kendramExcelReader.read(filePath);
 		for (Kendra kendram : newKendras) {
 			System.out.println(kendram);

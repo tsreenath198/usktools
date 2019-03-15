@@ -20,8 +20,10 @@ public class KendraDataValidator extends DataValidator {
 
 	public List<String> validate(Kendra kendra) {
 		List<String> errors = new ArrayList<String>();
-		yuvaValidator.checkYuva(kendra.getjSannidatha(), errors);
-		yuvaValidator.checkYuva(kendra.gettSannidatha(), errors);
+		if (!"Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
+			yuvaValidator.checkYuva(kendra.getjSannidatha(), errors);
+			yuvaValidator.checkYuva(kendra.gettSannidatha(), errors);
+		}
 		yuvaValidator.checkYuva(kendra.getAvekshak(), errors);
 		yuvaValidator.checkYuva(kendra.getSanchalak1(), errors);
 		yuvaValidator.checkYuva(kendra.getSanchalak2(), errors);

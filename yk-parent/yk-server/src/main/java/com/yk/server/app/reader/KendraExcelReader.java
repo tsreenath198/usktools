@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -54,18 +53,35 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 	private void addKendram(Row rowObj, Set<Kendra> kendras) {
 		Kendra kendra = new Kendra();
 		List<String> errors = new ArrayList<>();
+		populateOtherFields(rowObj, kendra);
 		for (RoleColMapEnum rcMap : RoleColMapEnum.values()) {
 			setPersonalFields(kendra, rowObj, rcMap, errors);
 		}
-		populateOtherFields(rowObj, kendra);
 		errors.addAll(kendraDataValidator.validate(kendra));
 		if (errors.size() > 0) {
 			System.err.println("ROW " + rowObj.getRowNum() + "ERRORS : " + errors);
+			kendra.setErrors(
+					kendra.getTaluka() + " " + kendra.getKendra() + " " + rowObj.getRowNum() + " ERRORS : " + errors);
 		}
 		kendras.add(kendra);
 	}
 
 	private void setPersonalFields(Kendra kendra, Row rowObj, RoleColMapEnum rcMap, List<String> errors) {
+
+		if ("Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
+			if (rcMap.equals(RoleColMapEnum.J_SANNIDATHA)) {
+				kendra.getjSannidatha().setName("N/A");
+				kendra.getjSannidatha().setDob(null);
+				kendra.getjSannidatha().setPhone(null);
+				return;
+			}
+			if (rcMap.equals(RoleColMapEnum.T_SANNIDATHA)) {
+				kendra.gettSannidatha().setName("N/A");
+				kendra.gettSannidatha().setDob(null);
+				kendra.gettSannidatha().setPhone(null);
+				return;
+			}
+		}
 		String name = super.getCellValue(rowObj, rcMap.getNameCol());
 		Date dob = null;
 		try {
@@ -74,6 +90,18 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 			errors.add(rcMap.getRole() + " DOB : " + e.getMessage());
 		}
 		String phone = super.getCellValue(rowObj, rcMap.getPhoneCol());
+		if ("Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
+			if (rcMap.equals(RoleColMapEnum.J_SANNIDATHA)) {
+				kendra.getjSannidatha().setName("N/A");
+				kendra.getjSannidatha().setDob(null);
+				kendra.getjSannidatha().setPhone(null);
+			}
+			if (rcMap.equals(RoleColMapEnum.T_SANNIDATHA)) {
+				kendra.gettSannidatha().setName("N/A");
+				kendra.gettSannidatha().setDob(null);
+				kendra.gettSannidatha().setPhone(null);
+			}
+		}
 		switch (rcMap) {
 		case SANCHALAK_1:
 			kendra.getSanchalak1().setName(name);
@@ -103,7 +131,6 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		default:
 			break;
 		}
-
 	}
 
 	private void populateOtherFields(Row rowObj, Kendra kendra) {

@@ -12,46 +12,36 @@ import { Router } from '@angular/router';
 export class KLevelComponent implements OnInit {
   public klList: KLevelModel[] = [];
   public klCurrent: KLevelModel = <KLevelModel>{
-    country: "",
-    state: "",
-    jillaName: "",
-    jillaSannidhata: "",
-    jillaSannidhataDob: new Date(),
-    jillaSannidhataContact: "",
-    talukaName: "",
-    talukaSannidhata: "",
-    talukaSannidhataDob: new Date(),
-    talukaSannidhataContact: "",
-    groupName: "",
-    avekshakName: "",
-    avekshakDob: new Date(),
-    avekshakContact: "",
-    kendraName: "",
-    kendraType: "",
-    yuvaYuvati: "",
-    yearOfKendra: "",
-    category: "",
-    kendraNumber: "",
-    status: "",
-    yearMerged: "",
-    mergedTo: "",
-    sanchalak1: "",
-    sanchalak1Dob: new Date(),
-    sanchalak1Contact: "",
-    sanchalak2: "",
-    sanchalak2Dob: new Date(),
-    sanchalak2Contact: "",
-    minAttendance: "",
-    maxAttendance: "",
-    YKConducted: "",
-    villageOfYK: "",
-    landMark: "",
-    yKSthal: "",
-    yKSthalPin: "",
-    dayOfYK: "",
-    timeOfYK: "",
-    swadhyayLoc: "",
-    swadhyayVillage: ""
+    country : "",
+    sanghat : "",
+    jilla : "",
+    taluka : "",
+    group : "",
+    kendra : "",
+    jSannidhata : {"contact":"","dob":new Date(),"name":"","role":""},
+    tSannidhata : {"contact":"","dob":new Date(),"name":"","role":""},
+    avekshak : {"contact":"","dob":new Date(),"name":"","role":""},
+    sanchalak1 : {"contact":"","dob":new Date(),"name":"","role":""},
+    sanchalak2 : {"contact":"","dob":new Date(),"name":"","role":""},
+    kendraType : "",
+    yuvaYuvati : "",
+    yearOfKendra : "",
+    category : "",
+    kendraNumber : "",
+    status : "",
+    yearMerged : "",
+    mergedTo : "",   
+    minAttendance : "",
+    maxAttendance : "",
+    villageOfYK : "",
+    landMark : "",
+    yKSthal : "",
+    yKSthalPin : "",
+    dayOfYK : "",
+    timeOfYK : "",
+    swadhyayLoc : "",
+    swadhyayVillage : "",
+    ykConducted : "",
   };
   public kendraTypeList = ["YK", "DPC"];
   public genderType = ["yuva", "yuvati"];
@@ -83,81 +73,71 @@ export class KLevelComponent implements OnInit {
   addToList() {
     this.klList.unshift(this.klCurrent);
     this.klCurrent = <KLevelModel>{
-      country: "",
-    state: "",
-    jillaName: "",
-    jillaSannidhata: "",
-    jillaSannidhataDob: new Date(),
-    jillaSannidhataContact: "",
-    talukaName: "",
-    talukaSannidhata: "",
-    talukaSannidhataDob: new Date(),
-    talukaSannidhataContact: "",
-    groupName: "",
-    avekshakName: "",
-    avekshakDob: new Date(),
-    avekshakContact: "",
-    kendraName: "",
-    kendraType: "",
-    yuvaYuvati: "",
-    yearOfKendra: "",
-    category: "",
-    kendraNumber: "",
-    status: "",
-    yearMerged: "",
-    mergedTo: "",
-    sanchalak1: "",
-    sanchalak1Dob: new Date(),
-    sanchalak1Contact: "",
-    sanchalak2: "",
-    sanchalak2Dob: new Date(),
-    sanchalak2Contact: "",
-    minAttendance: "",
-    maxAttendance: "",
-    YKConducted: "",
-    villageOfYK: "",
-    landMark: "",
-    yKSthal: "",
-    yKSthalPin: "",
-    dayOfYK: "",
-    timeOfYK: "",
-    swadhyayLoc: "",
-    swadhyayVillage: ""
+      country : "",
+    sanghat : "",
+    jilla : "",
+    taluka : "",
+    group : "",
+    kendra : "",
+    jSannidhata : {"contact":"","dob":new Date(),"name":"","role":""},
+    tSannidhata : {"contact":"","dob":new Date(),"name":"","role":""},
+    avekshak : {"contact":"","dob":new Date(),"name":"","role":""},
+    sanchalak1 : {"contact":"","dob":new Date(),"name":"","role":""},
+    sanchalak2 : {"contact":"","dob":new Date(),"name":"","role":""},
+    kendraType : "",
+    yuvaYuvati : "",
+    yearOfKendra : "",
+    category : "",
+    kendraNumber : "",
+    status : "",
+    yearMerged : "",
+    mergedTo : "",   
+    minAttendance : "",
+    maxAttendance : "",
+    villageOfYK : "",
+    landMark : "",
+    yKSthal : "",
+    yKSthalPin : "",
+    dayOfYK : "",
+    timeOfYK : "",
+    swadhyayLoc : "",
+    swadhyayVillage : "",
+    ykConducted : "",
     };
     console.log(this.klList);
   }
 
-  setName(value: string, role: string): void {
+  setName(value , role): void {
     let temp: any;
     switch (role) {
       case "jilla": {
         temp = this.jSannidhataList.filter(t => t.id == value);
-        this.klCurrent.jillaSannidhataContact = temp[0].contact;
-        this.klCurrent.jillaSannidhataDob = new Date(temp[0].dob);
+        this.klCurrent.jSannidhata.contact = temp[0].contact;
+        this.klCurrent.jSannidhata.dob = new Date(temp[0].dob);
         break;
       }
       case "taluka": {
         temp = this.tSannidhataList.filter(t => t.id == value);
-        this.klCurrent.talukaSannidhataContact = temp[0].contact;
-        this.klCurrent.talukaSannidhataDob = new Date(temp[0].dob);
+        this.klCurrent.tSannidhata.contact = temp[0].contact;
+        this.klCurrent.tSannidhata.dob = new Date(temp[0].dob);
         break;
       }
       case "avekshak": {
         temp = this.avekshakList.filter(t => t.id == value);
-        this.klCurrent.avekshakContact = temp[0].contact;
-        this.klCurrent.avekshakDob = new Date(temp[0].dob);
+        this.klCurrent.avekshak.contact = temp[0].contact;
+        this.klCurrent.avekshak.dob = new Date(temp[0].dob);
         break;
       }
       case "s1": {
         temp = this.sanchalakList.filter(t => t.id == value);
-        this.klCurrent.sanchalak1Contact = temp[0].contact;
-        this.klCurrent.sanchalak1Dob = new Date(temp[0].dob);
+        this.klCurrent.sanchalak1.contact = temp[0].contact;
+        this.klCurrent.sanchalak1.dob = new Date(temp[0].dob);
         break;
       }
       case "s2": {
         temp = this.sanchalakList.filter(t => t.id == value);
-        this.klCurrent.sanchalak2Contact = temp[0].contact;
-        this.klCurrent.sanchalak2Dob = new Date(temp[0].dob);
+        this.klCurrent.sanchalak2.contact = temp[0].contact;
+        this.klCurrent.sanchalak2.dob = new Date(temp[0].dob);
         break;
       }
 

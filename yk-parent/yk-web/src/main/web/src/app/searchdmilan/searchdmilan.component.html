@@ -1,81 +1,52 @@
 <div class=" mt-4">
   <div class="clearfix">
     <span class="float-left form-group col-3">
-        <select name="Nav" [(ngModel)]="currLoc" (change)="navigate(currLoc)">
-            <option value="searchklevel">k-level</option>
-            <option value="searchdmilan">yuvan</option>
-          </select>
-      <!-- inputfield helps to add the data in the list -->
-      <input type="text" class="form-control" [(ngModel)]="ykInput" placeholder="Add Y Detail">
+      <select name="Nav" [(ngModel)]="currLoc" (change)="navigate(currLoc)">
+        <option value="searchklevel">k-level</option>
+        <option value="searchdmilan">yuvan</option>
+      </select>
     </span>
     <span class="float-right col-1">
       <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
     </span>
   </div>
+  <div class="card-body">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%</div>
+    </div>
+    <label class="btn btn-default">
+      <input type="file" placeholder="Host Validation" (change)="selectFile($event)"
+        style="background-color: lightgrey">
+    </label>
+    <button class="btn i-color" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+  </div>
   <!-- Displays data which is retrived from database -->
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
       <tr>
-        <th>Taluka</th>
-        <th>Patti</th>
-        <th>Video Kendra</th>
-        <th>Kendra</th>
-        <th>Kendra Type</th>
-        <th>Jimmedari</th>
-        <th colspan="3">Full Name</th>
+        <th>Full Name</th>
         <th>Role</th>
         <th>Contact</th>
         <th>DOB</th>
-        <th>Age</th>
-        <th>Residence</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody id="table_id">
       <tr *ngFor="let yk of ykList;let i = index">
-
-        <td>
-          <span>{{yk.taluka}}</span>
-        </td>
-        <td>
-          <span>{{yk.patti}}</span>
-        </td>
-        <td>
-          <span>{{yk.videoKendra}}</span>
-        </td>
-        <td>
-          <span>{{yk.kendra}}</span>
-        </td>
-        <td>
-          <span>{{yk.kendraType}}</span>
-        </td>
-        <td>
-          <span>{{yk.jimmedari}}</span>
-        </td>
-        <td>
-          <span>{{yk.surname}}</span>
-        </td>
-        <td>
-          <span>{{yk.middleName}}</span>
-        </td>
-        <td>
-          <span>{{yk.name}}</span>
-        </td>
-        <td>
-          <span>{{yk.role}}</span>
-        </td>
-        <td>
-          <span>{{yk.contact}}</span>
-        </td>
-        <td>
-          <span>{{yk.dob | date}}</span>
-        </td>
-        <td>
-          <span>{{yk.age}}</span>
-        </td>
-        <td>
-          <span>{{yk.residence}}</span>
-        </td>
+          <td>
+              <span>{{yk.name}}</span>
+            </td>
+            <td>
+              <span>{{yk.role}}</span>
+            </td>
+            <td>
+              <span>{{yk.contact}}</span>
+            </td>
+            <td>
+              <span>{{yk.dob | date}}</span>
+            </td>
         <td>
           <!-- Delete's the particular row data from the table -->
           <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>

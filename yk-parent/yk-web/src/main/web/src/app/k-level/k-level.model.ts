@@ -1,19 +1,17 @@
+import { YuvanModel } from '../yuvan/yuvan.model';
+
 export interface KLevelModel{
     country : string;
-    state : string;
-    jillaName : string;
-    jillaSannidhata : string;
-    jillaSannidhataDob : Date;
-    jillaSannidhataContact : string;
-    talukaName : string;
-    talukaSannidhata : string;
-    talukaSannidhataDob : Date;
-    talukaSannidhataContact : string;
-    groupName : string;
-    avekshakName : string;
-    avekshakDob : Date;
-    avekshakContact : string;
-    kendraName : string;
+    sanghat : string;
+    jilla : string;
+    taluka : string;
+    group : string;
+    kendra : string;
+    jSannidhata : YuvanModel;
+    tSannidhata : YuvanModel;
+    avekshak : YuvanModel;
+    sanchalak1 : YuvanModel;
+    sanchalak2 : YuvanModel;
     kendraType : string;
     yuvaYuvati : string;
     yearOfKendra : string;
@@ -21,16 +19,9 @@ export interface KLevelModel{
     kendraNumber : string;
     status : string;
     yearMerged : string;
-    mergedTo : string;
-    sanchalak1 : string;
-    sanchalak1Dob : Date;
-    sanchalak1Contact : string;
-    sanchalak2 : string;
-    sanchalak2Dob : Date;
-    sanchalak2Contact : string;
+    mergedTo : string;   
     minAttendance : string;
     maxAttendance : string;
-    YKConducted : string;
     villageOfYK : string;
     landMark : string;
     yKSthal : string;
@@ -39,4 +30,5 @@ export interface KLevelModel{
     timeOfYK : string;
     swadhyayLoc : string;
     swadhyayVillage : string;
+    ykConducted : string;
 }

@@ -6,61 +6,16 @@
       <div class="input-group-prepend">
         <span class="input-group-text">First and last name</span>
       </div>
-      <input type="text" class="form-control" name="surname" [(ngModel)]="ykCurrData.surname" #surname="ngModel"
-        [ngClass]="{'is-invalid': f.submitted && surname.invalid}" placeholder="Surname" required />
-      <input type="text" class="form-control" name="middleName" [(ngModel)]="ykCurrData.middleName"
+      <input type="text" class="form-control" name="surName" [(ngModel)]="surname" #surName="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && surName.invalid}" placeholder="Surname" required />
+      <input type="text" class="form-control" name="middleName" [(ngModel)]="middlename"
         #middleName="ngModel" [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="Middle Name"
         required />
-      <input type="text" class="form-control" name="name" [(ngModel)]="ykCurrData.name" #name="ngModel"
-        [ngClass]="{'is-invalid': f.submitted && name.invalid}" placeholder="Name" required />
+      <input type="text" class="form-control" name="Name" [(ngModel)]="name" #Name="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && Name.invalid}" placeholder="Name" required />
       <div class="invalid-feedback">
         Username is required field
       </div>
-    </div>
-  </div>
-  <div class="row pt10">
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <!-- Taluka Section in form -->
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Taluka</span>
-      </div>
-      <select class="form-control" name="taluka" [(ngModel)]="ykCurrData.taluka" #taluka="ngModel">
-        <option hidden selected></option>
-        <option *ngFor="let tl of thalukaList">{{tl}}</option>
-      </select>
-      <!-- [ngClass]="{'is-invalid': f.submitted && taluka.invalid}"
-        <div *ngIf="f.submitted && taluka.invalid" class="invalid-feedback">
-        <div *ngIf="taluka.errors.required">Taluka is required</div>
-      </div> -->
-    </div>
-    <!-- Patti Section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Patti</span>
-      </div>
-      <input class="form-control" type="text" [(ngModel)]="ykCurrData.patti" name="patti" #patti="ngModel" />
-      <!-- [ngClass]="{'is-invalid': f.submitted && patti.invalid}"
-        <div *ngIf="f.submitted && patti.invalid" class="invalid-feedback">
-          <div *ngIf="patti.errors.required">Patti is required</div>
-        </div>-->
-    </div>
-    <!-- Video kendra section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Video Kendra</span>
-      </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.videoKendra" name="videoKendra" #videoKendra="ngModel" />
-      <!-- [ngClass]="{'is-invalid': f.submitted && videoKendra.invalid}"
-        <div *ngIf="f.submitted && videoKendra.invalid" class="invalid-feedback">
-          <div *ngIf="videoKendra.errors.required">Video Kendra is required</div>
-        </div> -->
-    </div>
-    <!-- Kenra section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Kendra</span>
-      </div>
-      <input class="form-control" [(ngModel)]="ykCurrData.kendra" name="kendra" #kendra="ngModel" />
     </div>
   </div>
   <div class="row pt10">
@@ -69,28 +24,8 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Role</span>
       </div>
-      <select class="custom-select" [(ngModel)]="ykCurrData.role" placeholder="Role" name="role"
-        #role="ngModel">
+      <select class="custom-select" [(ngModel)]="ykCurrData.role" placeholder="Role" name="role" #role="ngModel">
         <option *ngFor="let role of roleList">{{role}}</option>
-      </select>
-    </div>
-    <!-- kendra type section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Kendra Type</span>
-      </div>
-      <select class="custom-select" name="kendraType" [(ngModel)]="ykCurrData.kendraType" #kendraType="ngModel">
-        <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
-      </select>
-    </div>
-    <!-- Jimmedari section in form -->
-    <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Jimmedari</span>
-      </div>
-      <select class="custom-select" [(ngModel)]="ykCurrData.jimmedari" placeholder="Jimmedari" name="jimmedari"
-        #jimmedari="ngModel">
-        <option *ngFor="let jl of jimmedariList">{{jl}}</option>
       </select>
     </div>
     <!-- Contact section in form -->
@@ -116,28 +51,18 @@
           Name cannot be more than 11 characters long.
         </div> -->
     </div>
-
-  </div>
-  <div class="row pt10">
     <!-- Dob section in form  -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
       </div>
-      <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" (change)="getDob(ykCurrData)"
+      <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" 
         placeholder="dob" name="dob" #dob="ngModel" />
     </div>
-    <!-- Residence section section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Recidence</span>
-      </div>
-      <input class="form-control col" [(ngModel)]="ykCurrData.residence" name="residence" #residence="ngModel" />
+      <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
+      <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
     </div>
-  </div>
-  <div class="input-group input-group-sm mb-3 col-sm-3">
-    <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
-    <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
   </div>
 </form>
 <!-- Displaying all the filled details in the above form. -->
@@ -145,17 +70,10 @@
   <table class="table" id="table_id" *ngIf="ykList.length">
     <thead class="thead-dark">
       <tr>
-        <th>Taluka</th>
-        <th>Patti</th>
-        <th>Video Kendra</th>
-        <th>Kendra</th>
-        <th>Kendra Type</th>
-        <th>Jimmedari</th>
-        <th colspan="3">Full Name</th>
+        <th>Full Name</th>
+        <th>Role</th>
         <th>Contact</th>
         <th>DOB</th>
-        <th>Age</th>
-        <th>Residence</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -163,43 +81,16 @@
     <tbody id="table_id">
       <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
         <td>
-          <span>{{yk.taluka}}</span>
-        </td>
-        <td>
-          <span>{{yk.patti}}</span>
-        </td>
-        <td>
-          <span>{{yk.videoKendra}}</span>
-        </td>
-        <td>
-          <span>{{yk.kendra}}</span>
-        </td>
-        <td>
-          <span>{{yk.kendraType}}</span>
-        </td>
-        <td>
-          <span>{{yk.jimmedari}}</span>
-        </td>
-        <td>
-          <span>{{yk.surname}}</span>
-        </td>
-        <td>
-          <span>{{yk.middleName}}</span>
-        </td>
-        <td>
           <span>{{yk.name}}</span>
+        </td>
+        <td>
+          <span>{{yk.role}}</span>
         </td>
         <td>
           <span>{{yk.contact}}</span>
         </td>
         <td>
           <span>{{yk.dob | date}}</span>
-        </td>
-        <td>
-          <span>{{yk.age}}</span>
-        </td>
-        <td>
-          <span>{{yk.residence}}</span>
         </td>
         <td>
           <!-- Delete's the particular row data from the table -->

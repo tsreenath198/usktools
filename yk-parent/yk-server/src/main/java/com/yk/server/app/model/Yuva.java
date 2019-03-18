@@ -14,7 +14,6 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.yk.server.app.util.FormatterUtil;
-import com.yk.server.app.util.Role;
 
 @Entity
 @Table(name = "yuva", uniqueConstraints = { @UniqueConstraint(columnNames = { "name", "phone", "role" }) })
@@ -32,8 +31,7 @@ public class Yuva {
 	@Column(name = "dob")
 	private Date dob;
 	@Column(name = "role")
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private String role;
 
 	public Long getId() {
 		return id;
@@ -47,7 +45,7 @@ public class Yuva {
 
 	}
 
-	public Yuva(Role role) {
+	public Yuva(String role) {
 		super();
 		this.role = role;
 	}
@@ -76,7 +74,7 @@ public class Yuva {
 		this.dob = dob;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 

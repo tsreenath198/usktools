@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.yk.server.app.model.Yuva;
-import com.yk.server.app.util.Role;
 
 @Component
 public class YuvaValidator extends DataValidator {
@@ -25,14 +24,14 @@ public class YuvaValidator extends DataValidator {
 		checkPhone(yuva.getRole(), yuva.getPhone(), errors);
 	}
 
-	private void checkName(Role role, String name, List<String> errors) {
+	private void checkName(String role, String name, List<String> errors) {
 		String[] namesArr = name.split(" ");
 		if (namesArr.length < 3) {
 			errors.add(role + " Name : " + name);
 		}
 	}
 
-	private String checkPhone(Role role, String phone, List<String> errors) {
+	private String checkPhone(String role, String phone, List<String> errors) {
 		if (phone == null || phone.length() < 10) {
 			errors.add(role + " Phone : " + phone);
 		}

@@ -23,7 +23,10 @@ public class KendraController {
 
 	@PostMapping(value = "/create", headers = "Accept=application/json")
 	public void create(@RequestBody List<Kendra> kendramDetails, UriComponentsBuilder ucBuilder) {
-		apiService.create(kendramDetails);
+		//apiService.create(kendramDetails);
+		for (Kendra kendra : kendramDetails) {
+			System.out.println(kendra);
+		}
 	}
 
 	@GetMapping("/getAll")

@@ -1,4 +1,4 @@
-package com.yk.server.app.util;
+package com.yk.server.app.model;
 
 public enum Role {
 	J_SANNIDATHA("Jilla Sannidatha", 4, 5, 6), T_SANNIDATHA("Taluka Sannidatha", 8, 9, 10), AVEKSHAK("Avekshak", 12, 14,

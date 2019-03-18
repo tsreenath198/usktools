@@ -18,8 +18,8 @@ import com.yk.server.app.model.Kendra;
 import com.yk.server.app.model.KendraCategory;
 import com.yk.server.app.model.KendraStatus;
 import com.yk.server.app.model.KendraType;
+import com.yk.server.app.model.Role;
 import com.yk.server.app.model.YuvaYuvati;
-import com.yk.server.app.util.Role;
 import com.yk.server.app.validation.KendraDataValidator;
 
 @Component

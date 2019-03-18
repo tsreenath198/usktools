@@ -4,15 +4,20 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.yk.server.app.util.FormatterUtil;
+import com.yk.server.app.util.Role;
 
 @Entity
-@Table(name = "yuva")
+@Table(name = "yuva", uniqueConstraints = { @UniqueConstraint(columnNames = { "name", "phone", "role" }) })
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Yuva {
 
@@ -27,7 +32,8 @@ public class Yuva {
 	@Column(name = "dob")
 	private Date dob;
 	@Column(name = "role")
-	private String role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -41,7 +47,7 @@ public class Yuva {
 
 	}
 
-	public Yuva(String role) {
+	public Yuva(Role role) {
 		super();
 		this.role = role;
 	}
@@ -51,7 +57,7 @@ public class Yuva {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = FormatterUtil.format(name);
 	}
 
 	public String getPhone() {
@@ -70,7 +76,7 @@ public class Yuva {
 		this.dob = dob;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 

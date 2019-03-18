@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.yk.server.app.model.Kendra;
+import com.yk.server.app.model.KendraStatus;
+import com.yk.server.app.model.KendraType;
+import com.yk.server.app.model.YuvaYuvati;
 
 @Component
 public class KendraDataValidator extends DataValidator {
@@ -20,7 +23,7 @@ public class KendraDataValidator extends DataValidator {
 
 	public List<String> validate(Kendra kendra) {
 		List<String> errors = new ArrayList<String>();
-		if (!"Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
+		if (YuvaYuvati.YUVA.equals(kendra.getYuvaYuvati())) {
 			yuvaValidator.checkYuva(kendra.getjSannidatha(), errors);
 			yuvaValidator.checkYuva(kendra.gettSannidatha(), errors);
 		}
@@ -34,28 +37,9 @@ public class KendraDataValidator extends DataValidator {
 		checkNotNull("Group", kendra.getGroup(), errors);
 		checkNotNull("Taluka", kendra.getTaluka(), errors);
 
-		checkKendraStatus(kendra.getStatus(), errors);
-		checkKendraType(kendra.getKendraType(), errors);
-		checkYuvaType(kendra.getYuvaYuvati(), errors);
+		checkNotNull("Status", kendra.getStatus(), errors);
+		checkNotNull("Kendra Type", kendra.getKendraType(), errors);
+		checkNotNull("Yuva_Yuvati", kendra.getYuvaYuvati(), errors);
 		return errors;
 	}
-
-	private void checkYuvaType(String kendraYuvati, List<String> errors) {
-		if (!yuvaTypes.contains(kendraYuvati)) {
-			errors.add("YuvaYuvatiType must be : " + yuvaTypes);
-		}
-	}
-
-	private void checkKendraType(String kendraType, List<String> errors) {
-		if (!kendraTypes.contains(kendraType)) {
-			errors.add("kendraType must be : " + kendraTypes);
-		}
-	}
-
-	private void checkKendraStatus(String status, List<String> errors) {
-		if (!kendraStatuses.contains(status)) {
-			errors.add("Actual : " + status + "status must be : " + kendraStatuses);
-		}
-	}
-
 }

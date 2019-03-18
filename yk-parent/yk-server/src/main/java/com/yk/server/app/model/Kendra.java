@@ -3,24 +3,28 @@ package com.yk.server.app.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.yk.server.app.util.FormatterUtil;
+import com.yk.server.app.util.Role;
 
 @Entity
-@Table(name = "kendra")
+@Table(name = "kendra", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "sanghat", "jilla", "taluka", "patti", "kendra", "yuva_yuvati" }) })
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Kendra {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	@Column(name = "country")
 	private String country;
 	@Column(name = "sanghat")
@@ -34,82 +38,78 @@ public class Kendra {
 	@Column(name = "kendra")
 	private String kendra;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "jsann_id")
-	private Yuva jSannidatha = new Yuva("Jilla Sannidatha");
+	private Yuva jSannidatha = new Yuva(Role.J_SANNIDATHA);
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "tsann_id")
-	private Yuva tSannidatha = new Yuva("Taluka Sannidatha");;
+	private Yuva tSannidatha = new Yuva(Role.T_SANNIDATHA);
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "avekshak_id")
-	private Yuva avekshak = new Yuva("Avekshak");;
+	private Yuva avekshak = new Yuva(Role.AVEKSHAK);;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "sanchalak1_id")
-	private Yuva sanchalak1 = new Yuva("Sanchalak");;
+	private Yuva sanchalak1 = new Yuva(Role.SANCHALAK_1);
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "sanchalak2_id")
-	private Yuva sanchalak2 = new Yuva("Sanchalak");;
+	private Yuva sanchalak2 = new Yuva(Role.SANCHALAK_2);
 
-	@Column(name = "kendraType")
-	private String kendraType;
-	@Column(name = "yuvaYuvati")
-	private String yuvaYuvati;
-	@Column(name = "yearOfKendra")
+	@Column(name = "kendra_type")
+	@Enumerated(EnumType.STRING)
+	private KendraType kendraType;
+	@Column(name = "yuva_yuvati")
+	@Enumerated(EnumType.STRING)
+	private YuvaYuvati yuvaYuvati;
+	@Column(name = "year_of_kendra")
 	private String yearOfKendra;
 	@Column(name = "category")
-	private String category;
-	@Column(name = "kendraNumber")
+	@Enumerated(EnumType.STRING)
+	private KendraCategory category;
+	@Column(name = "kendra_number")
 	private String kendraNumber;
 	@Column(name = "status")
-	private String status;
-	@Column(name = "yearMerged")
+	@Enumerated(EnumType.STRING)
+	private KendraStatus status;
+	@Column(name = "year_merged")
 	private String yearMerged;
-	@Column(name = "mergedTo")
+	@Column(name = "merged_to")
 	private String mergedTo;
 
-	@Column(name = "minAttendance")
+	@Column(name = "min_attendance")
 	private String minAttendance;
-	@Column(name = "maxAttendance")
+	@Column(name = "max_attendance")
 	private String maxAttendance;
-	@Column(name = "YKConducted")
+	@Column(name = "yk_conducted")
 	private String YKConducted;
-	@Column(name = "villageOfYK")
+	@Column(name = "village_of_yk")
 	private String villageOfYK;
-	@Column(name = "landMark")
-	private String landMark;
-	@Column(name = "yKSthal")
+	@Column(name = "landmark")
+	private String landmark;
+	@Column(name = "yK_sthal")
 	private String yKSthal;
-	@Column(name = "yKSthalPin")
+	@Column(name = "yK_sthal_pin")
 	private String yKSthalPin;
-	@Column(name = "dayOfYK")
+	@Column(name = "day_of_yk")
 	private String dayOfYK;
-	@Column(name = "timeOfYK")
+	@Column(name = "time_of_yk")
 	private String timeOfYK;
-	@Column(name = "swadhyayLoc")
+	@Column(name = "swadhyay_loc")
 	private String swadhyayLoc;
-	@Column(name = "swadhyayVillage")
+	@Column(name = "swadhyay_village")
 	private String swadhyayVillage;
 
 	@Column(name = "errors")
 	private String errors;
 
-	public String getErrors() {
-		return errors;
-	}
-
-	public void setErrors(String errors) {
-		this.errors = errors;
-	}
-
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -118,7 +118,7 @@ public class Kendra {
 	}
 
 	public void setCountry(String country) {
-		this.country = country;
+		this.country = FormatterUtil.format(country);
 	}
 
 	public String getSanghat() {
@@ -126,7 +126,7 @@ public class Kendra {
 	}
 
 	public void setSanghat(String sanghat) {
-		this.sanghat = sanghat;
+		this.sanghat = FormatterUtil.format(sanghat);
 	}
 
 	public String getJilla() {
@@ -134,7 +134,7 @@ public class Kendra {
 	}
 
 	public void setJilla(String jilla) {
-		this.jilla = jilla;
+		this.jilla = FormatterUtil.format(jilla);
 	}
 
 	public String getTaluka() {
@@ -142,7 +142,7 @@ public class Kendra {
 	}
 
 	public void setTaluka(String taluka) {
-		this.taluka = taluka;
+		this.taluka = FormatterUtil.format(taluka);
 	}
 
 	public String getGroup() {
@@ -150,7 +150,7 @@ public class Kendra {
 	}
 
 	public void setGroup(String group) {
-		this.group = group;
+		this.group = FormatterUtil.format(group);
 	}
 
 	public String getKendra() {
@@ -158,7 +158,7 @@ public class Kendra {
 	}
 
 	public void setKendra(String kendra) {
-		this.kendra = kendra;
+		this.kendra = FormatterUtil.format(kendra);
 	}
 
 	public Yuva getjSannidatha() {
@@ -201,19 +201,19 @@ public class Kendra {
 		this.sanchalak2 = sanchalak2;
 	}
 
-	public String getKendraType() {
+	public KendraType getKendraType() {
 		return kendraType;
 	}
 
-	public void setKendraType(String kendraType) {
+	public void setKendraType(KendraType kendraType) {
 		this.kendraType = kendraType;
 	}
 
-	public String getYuvaYuvati() {
+	public YuvaYuvati getYuvaYuvati() {
 		return yuvaYuvati;
 	}
 
-	public void setYuvaYuvati(String yuvaYuvati) {
+	public void setYuvaYuvati(YuvaYuvati yuvaYuvati) {
 		this.yuvaYuvati = yuvaYuvati;
 	}
 
@@ -225,11 +225,11 @@ public class Kendra {
 		this.yearOfKendra = yearOfKendra;
 	}
 
-	public String getCategory() {
+	public KendraCategory getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(KendraCategory category) {
 		this.category = category;
 	}
 
@@ -238,14 +238,14 @@ public class Kendra {
 	}
 
 	public void setKendraNumber(String kendraNumber) {
-		this.kendraNumber = kendraNumber;
+		this.kendraNumber = FormatterUtil.format(kendraNumber);
 	}
 
-	public String getStatus() {
+	public KendraStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(KendraStatus status) {
 		this.status = status;
 	}
 
@@ -254,7 +254,7 @@ public class Kendra {
 	}
 
 	public void setYearMerged(String yearMerged) {
-		this.yearMerged = yearMerged;
+		this.yearMerged = FormatterUtil.format(yearMerged);
 	}
 
 	public String getMergedTo() {
@@ -262,7 +262,7 @@ public class Kendra {
 	}
 
 	public void setMergedTo(String mergedTo) {
-		this.mergedTo = mergedTo;
+		this.mergedTo = FormatterUtil.format(mergedTo);
 	}
 
 	public String getMinAttendance() {
@@ -270,7 +270,7 @@ public class Kendra {
 	}
 
 	public void setMinAttendance(String minAttendance) {
-		this.minAttendance = minAttendance;
+		this.minAttendance = FormatterUtil.format(minAttendance);
 	}
 
 	public String getMaxAttendance() {
@@ -278,7 +278,7 @@ public class Kendra {
 	}
 
 	public void setMaxAttendance(String maxAttendance) {
-		this.maxAttendance = maxAttendance;
+		this.maxAttendance = FormatterUtil.format(maxAttendance);
 	}
 
 	public String getYKConducted() {
@@ -286,7 +286,7 @@ public class Kendra {
 	}
 
 	public void setYKConducted(String yKConducted) {
-		YKConducted = yKConducted;
+		YKConducted = FormatterUtil.format(yKConducted);
 	}
 
 	public String getVillageOfYK() {
@@ -294,15 +294,15 @@ public class Kendra {
 	}
 
 	public void setVillageOfYK(String villageOfYK) {
-		this.villageOfYK = villageOfYK;
+		this.villageOfYK = FormatterUtil.format(villageOfYK);
 	}
 
-	public String getLandMark() {
-		return landMark;
+	public String getLandmark() {
+		return landmark;
 	}
 
-	public void setLandMark(String landMark) {
-		this.landMark = landMark;
+	public void setLandmark(String landmark) {
+		this.landmark = FormatterUtil.format(landmark);
 	}
 
 	public String getyKSthal() {
@@ -310,7 +310,7 @@ public class Kendra {
 	}
 
 	public void setyKSthal(String yKSthal) {
-		this.yKSthal = yKSthal;
+		this.yKSthal = FormatterUtil.format(yKSthal);
 	}
 
 	public String getyKSthalPin() {
@@ -318,7 +318,7 @@ public class Kendra {
 	}
 
 	public void setyKSthalPin(String yKSthalPin) {
-		this.yKSthalPin = yKSthalPin;
+		this.yKSthalPin = FormatterUtil.format(yKSthalPin);
 	}
 
 	public String getDayOfYK() {
@@ -326,7 +326,7 @@ public class Kendra {
 	}
 
 	public void setDayOfYK(String dayOfYK) {
-		this.dayOfYK = dayOfYK;
+		this.dayOfYK = FormatterUtil.format(dayOfYK);
 	}
 
 	public String getTimeOfYK() {
@@ -334,7 +334,7 @@ public class Kendra {
 	}
 
 	public void setTimeOfYK(String timeOfYK) {
-		this.timeOfYK = timeOfYK;
+		this.timeOfYK = FormatterUtil.format(timeOfYK);
 	}
 
 	public String getSwadhyayLoc() {
@@ -342,7 +342,7 @@ public class Kendra {
 	}
 
 	public void setSwadhyayLoc(String swadhyayLoc) {
-		this.swadhyayLoc = swadhyayLoc;
+		this.swadhyayLoc = FormatterUtil.format(swadhyayLoc);
 	}
 
 	public String getSwadhyayVillage() {
@@ -350,7 +350,17 @@ public class Kendra {
 	}
 
 	public void setSwadhyayVillage(String swadhyayVillage) {
-		this.swadhyayVillage = swadhyayVillage;
+		this.swadhyayVillage = FormatterUtil.format(swadhyayVillage);
 	}
+
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = FormatterUtil.format(errors);
+	}
+
+	
 
 }

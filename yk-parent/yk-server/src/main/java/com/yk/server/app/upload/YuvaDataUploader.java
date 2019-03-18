@@ -3,6 +3,8 @@ package com.yk.server.app.upload;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,21 +24,43 @@ public class YuvaDataUploader {
 	private KendraRepository kendraRepo;
 
 	@Autowired
-	private KendraExcelReader kendramExcelReader;
+	private KendraExcelReader kendraExcelReader;
 
 	public void uploadAllData(String filePath) throws Exception {
-		// Set<Kendra> allKendras = readAllYuvans();
-		// for (Kendra kendra : allKendras) {
-		// System.out.println(kendra);
-		// }
 		kendraRepo.deleteAll();
 		yuvaRepo.deleteAll();
-		Set<Kendra> newKendras = kendramExcelReader.read(filePath);
-		for (Kendra kendram : newKendras) {
-			System.out.println(kendram);
-			break;
+		Set<Kendra> newKendras = kendraExcelReader.read(filePath);
+		for (Kendra kendra : newKendras) {
+			System.out.println(kendra);
+			save(kendra.getjSannidatha());
+			save(kendra.gettSannidatha());
+			save(kendra.getAvekshak());
+			save(kendra.getSanchalak1());
+			save(kendra.getSanchalak2());
+			saveKendram(kendra);
 		}
-		kendraRepo.saveAll(newKendras);
+		System.out.println("SAVED!!!");
+	}
+
+	private void saveKendram(Kendra kendra) {
+		if (kendra != null) {
+			Kendra pObj = kendraRepo.find(kendra.getSanghat(), kendra.getJilla(), kendra.getTaluka(), kendra.getGroup(),
+					kendra.getKendra(), kendra.getYuvaYuvati().toString());
+			if (pObj != null) {
+				kendra.setId(pObj.getId());
+			}
+			kendra = kendraRepo.save(kendra);
+		}
+	}
+
+	private void save(Yuva yuva) {
+		if (yuva != null) {
+			Yuva pObj = yuvaRepo.find(yuva.getName(), yuva.getPhone(), yuva.getRole());
+			if (pObj != null) {
+				yuva.setId(pObj.getId());
+			}
+			yuva = yuvaRepo.save(yuva);
+		}
 	}
 
 	private Set<Kendra> readAllYuvans() {

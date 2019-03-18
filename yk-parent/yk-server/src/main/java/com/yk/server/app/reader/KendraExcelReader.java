@@ -12,9 +12,14 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.yk.server.app.model.Kendra;
-import com.yk.server.app.util.RoleColMapEnum;
+import com.yk.server.app.model.KendraCategory;
+import com.yk.server.app.model.KendraStatus;
+import com.yk.server.app.model.KendraType;
+import com.yk.server.app.model.YuvaYuvati;
+import com.yk.server.app.util.Role;
 import com.yk.server.app.validation.KendraDataValidator;
 
 @Component
@@ -31,9 +36,17 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 
 			workbook = new XSSFWorkbook(new File(filePath));
 			XSSFSheet sheet = workbook.getSheetAt(0);
+			List<Integer> colWidths = new ArrayList<>();
+			Row rowObj = sheet.getRow(0);
+			for (int col = 0; col < rowObj.getLastCellNum(); col++) {
+				colWidths.add(sheet.getColumnWidth(col) / 256);
+			}
+			System.out.println(colWidths);
 			for (int row = 1; row < sheet.getLastRowNum(); row++) {
-				Row rowObj = sheet.getRow(row);
-				addKendram(rowObj, kendrans);
+				rowObj = sheet.getRow(row);
+				if (rowObj != null && StringUtils.hasText(getCellValue(rowObj, 0))) {
+					addKendram(rowObj, kendrans);
+				}
 			}
 
 		} catch (Exception e) {
@@ -54,7 +67,7 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		Kendra kendra = new Kendra();
 		List<String> errors = new ArrayList<>();
 		populateOtherFields(rowObj, kendra);
-		for (RoleColMapEnum rcMap : RoleColMapEnum.values()) {
+		for (Role rcMap : Role.values()) {
 			setPersonalFields(kendra, rowObj, rcMap, errors);
 		}
 		errors.addAll(kendraDataValidator.validate(kendra));
@@ -67,16 +80,16 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		kendras.add(kendra);
 	}
 
-	private void setPersonalFields(Kendra kendra, Row rowObj, RoleColMapEnum rcMap, List<String> errors) {
+	private void setPersonalFields(Kendra kendra, Row rowObj, Role rcMap, List<String> errors) {
 
-		if ("Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
-			if (rcMap.equals(RoleColMapEnum.J_SANNIDATHA)) {
+		if (YuvaYuvati.YUVATI.equals(kendra.getYuvaYuvati())) {
+			if (rcMap.equals(Role.J_SANNIDATHA)) {
 				kendra.getjSannidatha().setName("N/A");
 				kendra.getjSannidatha().setDob(null);
 				kendra.getjSannidatha().setPhone(null);
 				return;
 			}
-			if (rcMap.equals(RoleColMapEnum.T_SANNIDATHA)) {
+			if (rcMap.equals(Role.T_SANNIDATHA)) {
 				kendra.gettSannidatha().setName("N/A");
 				kendra.gettSannidatha().setDob(null);
 				kendra.gettSannidatha().setPhone(null);
@@ -91,28 +104,24 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 			errors.add(rcMap.getRole() + " DOB : " + e.getMessage());
 		}
 		String phone = super.getCellValue(rowObj, rcMap.getPhoneCol());
-		if ("Yuvati".equalsIgnoreCase(kendra.getYuvaYuvati())) {
-			if (rcMap.equals(RoleColMapEnum.J_SANNIDATHA)) {
-				kendra.getjSannidatha().setName("N/A");
-				kendra.getjSannidatha().setDob(null);
-				kendra.getjSannidatha().setPhone(null);
-			}
-			if (rcMap.equals(RoleColMapEnum.T_SANNIDATHA)) {
-				kendra.gettSannidatha().setName("N/A");
-				kendra.gettSannidatha().setDob(null);
-				kendra.gettSannidatha().setPhone(null);
-			}
-		}
 		switch (rcMap) {
 		case SANCHALAK_1:
-			kendra.getSanchalak1().setName(name);
-			kendra.getSanchalak1().setPhone(phone);
-			kendra.getSanchalak1().setDob(dob);
+			if (!StringUtils.hasText(name)) {
+				kendra.setSanchalak1(null);
+			} else {
+				kendra.getSanchalak1().setName(name);
+				kendra.getSanchalak1().setPhone(phone);
+				kendra.getSanchalak1().setDob(dob);
+			}
 			break;
 		case SANCHALAK_2:
-			kendra.getSanchalak2().setName(name);
-			kendra.getSanchalak2().setPhone(phone);
-			kendra.getSanchalak2().setDob(dob);
+			if (!StringUtils.hasText(name)) {
+				kendra.setSanchalak2(null);
+			} else {
+				kendra.getSanchalak2().setName(name);
+				kendra.getSanchalak2().setPhone(phone);
+				kendra.getSanchalak2().setDob(dob);
+			}
 			break;
 		case AVEKSHAK:
 			kendra.getAvekshak().setName(name);
@@ -142,24 +151,63 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		kendra.setGroup(getCellValue(rowObj, 11));
 		kendra.setKendra(getCellValue(rowObj, 15));
 
-		kendra.setKendraType(getCellValue(rowObj, 16));
-		kendra.setYuvaYuvati(getCellValue(rowObj, 17));
-		kendra.setCategory(getCellValue(rowObj, 19));
+		kendra.setKendraType(findKendramType(getCellValue(rowObj, 16)));
+		kendra.setYuvaYuvati(findYuvaYuvati(getCellValue(rowObj, 17)));
+		kendra.setYearOfKendra(getCellValue(rowObj, 18));
+		kendra.setCategory(findKendraCategory(getCellValue(rowObj, 19)));
 		kendra.setKendraNumber(getCellValue(rowObj, 20));
-		kendra.setStatus(getCellValue(rowObj, 21));
+		kendra.setStatus(findKendraStatus(getCellValue(rowObj, 21)));
 		kendra.setYearMerged(getCellValue(rowObj, 22));
 		kendra.setMergedTo(getCellValue(rowObj, 23));
 		kendra.setMinAttendance(getCellValue(rowObj, 30));
 		kendra.setMaxAttendance(getCellValue(rowObj, 31));
 		kendra.setYKConducted(getCellValue(rowObj, 32));
 		kendra.setVillageOfYK(getCellValue(rowObj, 33));
-		kendra.setLandMark(getCellValue(rowObj, 34));
+		kendra.setLandmark(getCellValue(rowObj, 34));
 		kendra.setyKSthal(getCellValue(rowObj, 35));
 		kendra.setyKSthalPin(getCellValue(rowObj, 36));
 		kendra.setDayOfYK(getCellValue(rowObj, 37));
+		if (rowObj.getRowNum() == 1) {
+			System.out.println();
+		}
 		kendra.setTimeOfYK(getCellValue(rowObj, 38));
 		kendra.setSwadhyayLoc(getCellValue(rowObj, 39));
 		kendra.setSwadhyayVillage(getCellValue(rowObj, 40));
 	}
 
+	private KendraStatus findKendraStatus(String cellValue) {
+		for (KendraStatus e : KendraStatus.values()) {
+			if (e.toString().equalsIgnoreCase(cellValue)) {
+				return e;
+			}
+		}
+		return null;
+	}
+
+	private KendraCategory findKendraCategory(String cellValue) {
+		for (KendraCategory e : KendraCategory.values()) {
+			if (e.toString().equalsIgnoreCase(cellValue)) {
+				return e;
+			}
+		}
+		return null;
+	}
+
+	private YuvaYuvati findYuvaYuvati(String cellValue) {
+		for (YuvaYuvati e : YuvaYuvati.values()) {
+			if (e.toString().equalsIgnoreCase(cellValue)) {
+				return e;
+			}
+		}
+		return null;
+	}
+
+	private KendraType findKendramType(String cellValue) {
+		for (KendraType e : KendraType.values()) {
+			if (e.toString().equalsIgnoreCase(cellValue)) {
+				return e;
+			}
+		}
+		return null;
+	}
 }

@@ -139,7 +139,7 @@
       </div>
       <select class="custom-select" name="kendraType" [(ngModel)]="klCurrent.kendraType" #kendraType="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
+        <option *ngFor="let ktl of kendraTypeList" [ngValue]="ktl.key">{{ktl.value}}</option>
       </select>
     </div>
   </div>
@@ -152,7 +152,7 @@
       </div>
       <select class="custom-select" name="yuvaYuvati" [(ngModel)]="klCurrent.yuvaYuvati" #yuvaYuvati="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let gt of genderType">{{gt}}</option>
+        <option *ngFor="let gt of genderType" [ngValue]="gt.key">{{gt.value}}</option>
       </select>
     </div>
     <!-- Category section in form -->
@@ -162,7 +162,7 @@
       </div>
       <select class="custom-select" name="category" [(ngModel)]="klCurrent.category" #category="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let cat of categoryList">{{cat}}</option>
+        <option *ngFor="let cat of categoryList" [ngValue]="cat.key">{{cat.value}}</option>
       </select>
     </div>
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -180,7 +180,7 @@
       </div>
       <select class="custom-select" name="status" [(ngModel)]="klCurrent.status" #status="ngModel">
         <option hidden selected></option>
-        <option *ngFor="let stat of statusList">{{stat}}</option>
+        <option *ngFor="let stat of statusList" [ngValue]="stat.key">{{stat.value}}</option>
       </select>
     </div>
   </div>

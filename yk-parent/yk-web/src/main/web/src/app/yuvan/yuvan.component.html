@@ -24,7 +24,7 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Role</span>
       </div>
       <select class="custom-select" [(ngModel)]="ykCurrData.role" placeholder="Role" name="role" #role="ngModel">
-        <option *ngFor="let role of roleList">{{role}}</option>
+        <option *ngFor="let role of roleList" [ngValue]="role.key">{{role.value}}</option>
       </select>
     </div>
     <!-- Contact section in form -->

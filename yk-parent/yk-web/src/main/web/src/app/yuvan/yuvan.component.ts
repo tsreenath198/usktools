@@ -16,7 +16,7 @@ export class YuvanComponent implements OnInit {
   public ykList: YuvanModel[] = [];
   public ykCurrData: YuvanModel = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
   public selectedIndex: number = 0;
-  public roleList = ["Sanchalak", "Avekshak","Jilla-sannidhata","Taluka-sannidhata"];
+  public roleList = [{"key":"J_SANNIDATHA","value":"Jilla Sannidatha"},{"key":"J_SANNIDATHA","value":"Taluka Sannidatha"},{"key":"AVEKSHAK","value":"Avekshak"},{"key":"SANCHALAK_1","value":"Sanchalak"}];
   constructor(private clientHttp: HttpService, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit() {
   }

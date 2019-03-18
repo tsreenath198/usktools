@@ -43,10 +43,11 @@ export class KLevelComponent implements OnInit {
     swadhyayVillage: "",
     ykConducted: "",
   };
-  public kendraTypeList = ["YK", "DPC"];
-  public genderType = ["yuva", "yuvati"];
-  public categoryList = ["Village", "City Vistar"];
-  public statusList = ["Active", "Merged", "Inactive"];
+  public kendraTypeList = [{"key":"YK","value":"Yuva Kendra"},{"key":"DPC","value":"DPC"}];
+  public genderType = [{"key":"YUVA","value":"Yuva"},{"key":"YUVATI","value":"Yuvati"}];
+  public categoryList = [{"key":"VILLAGE","value":"Village"},{"key":"CITY_VISTAR","value":"City Vistar"}];
+  public statusList = [{"key":"ACTIVE","value":"Active"},{"key":"INACTIVE","value":"Inactive"},{"key":"MERGED","value":"Merged"}];
+ 
   public conducted = ["Home", "School", "College", "Classes", "Other"];
   public klData: object[];
   public jSannidathaList: any;
@@ -57,10 +58,10 @@ export class KLevelComponent implements OnInit {
   constructor(private http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    let ak = this.http.getReq('yuvan/getAllByRole/Avekshak');
-    let sk = this.http.getReq('yuvan/getAllByRole/Sanchalak');
-    let js = this.http.getReq('yuvan/getAllByRole/Jilla-sannidhata');
-    let ts = this.http.getReq('yuvan/getAllByRole/Taluka-sannidhata');
+    let ak = this.http.getReq('yuvan/getAllByRole/AVEKSHAK');
+    let sk = this.http.getReq('yuvan/getAllByRole/SANCHALAK_1');
+    let js = this.http.getReq('yuvan/getAllByRole/J_SANNIDATHA');
+    let ts = this.http.getReq('yuvan/getAllByRole/T_SANNIDATHA');
     let wd = this.http.getLogin('assets/weekdays.json');
     forkJoin([ak, sk, js, ts, wd]).subscribe(resultList => {
       this.avekshakList = resultList[0];
@@ -141,7 +142,7 @@ export class KLevelComponent implements OnInit {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak1.phone = temp[0].phone;
         this.klCurrent.sanchalak1.name = temp[0].name;
-        this.klCurrent.sanchalak1.role = temp[0].role;
+        this.klCurrent.sanchalak1.role = "SANCHALAK_1";
         this.klCurrent.sanchalak1.id = temp[0].id;
         this.klCurrent.sanchalak1.dob = new Date(temp[0].dob);
         break;
@@ -150,7 +151,7 @@ export class KLevelComponent implements OnInit {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak2.phone = temp[0].phone;
         this.klCurrent.sanchalak2.name = temp[0].name;
-        this.klCurrent.sanchalak2.role = temp[0].role;
+        this.klCurrent.sanchalak2.role = "SANCHALAK_2";
         this.klCurrent.sanchalak2.id = temp[0].id;
         this.klCurrent.sanchalak2.dob = new Date(temp[0].dob);
         break;

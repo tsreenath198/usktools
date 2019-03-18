@@ -28,6 +28,30 @@ public class KendraSummary {
 		this.taluka = taluka;
 	}
 
+	public String getSanghat() {
+		return sanghat;
+	}
+
+	public void setSanghat(String sanghat) {
+		this.sanghat = sanghat;
+	}
+
+	public String getJilla() {
+		return jilla;
+	}
+
+	public void setJilla(String jilla) {
+		this.jilla = jilla;
+	}
+
+	public String getTaluka() {
+		return taluka;
+	}
+
+	public void setTaluka(String taluka) {
+		this.taluka = taluka;
+	}
+
 	public int getJillaCount() {
 		return jillaCount;
 	}
@@ -164,16 +188,85 @@ public class KendraSummary {
 		this.totalDPCCount = totalDPCCount;
 	}
 
-	public String getSanghat() {
-		return sanghat;
+	public void addJillaCount(int jillaCount) {
+		this.jillaCount += jillaCount;
 	}
 
-	public String getJilla() {
-		return jilla;
+	public void addJsannidathaCount(int jsannidathaCount) {
+		this.jsannidathaCount += jsannidathaCount;
 	}
 
-	public String getTaluka() {
-		return taluka;
+	public void addTalukaCount(int talukaCount) {
+		this.talukaCount += talukaCount;
+	}
+
+	public void addTalukaSannidathCount(int talukaSannidathCount) {
+		this.talukaSannidathCount += talukaSannidathCount;
+	}
+
+	public void addYuvaGroupCount(int yuvaGroupCount) {
+		this.yuvaGroupCount += yuvaGroupCount;
+	}
+
+	public void addYuvaAvekshakCount(int yuvaAvekshakCount) {
+		this.yuvaAvekshakCount += yuvaAvekshakCount;
+	}
+
+	public void addYuvatiGroupCount(int yuvatiGroupCount) {
+		this.yuvatiGroupCount += yuvatiGroupCount;
+	}
+
+	public void addYuvatiAvekshakCount(int yuvatiAvekshakCount) {
+		this.yuvatiAvekshakCount += yuvatiAvekshakCount;
+	}
+
+	public void addYuvaKendraCount(int yuvaKendraCount) {
+		this.yuvaKendraCount += yuvaKendraCount;
+	}
+
+	public void addYuvaDPCCount(int yuvaDPCCount) {
+		this.yuvaDPCCount += yuvaDPCCount;
+	}
+
+	public void addYuvaSanchalakCount(int yuvaSanchalakCount) {
+		this.yuvaSanchalakCount += yuvaSanchalakCount;
+	}
+
+	public void addYuvatiKendraCount(int yuvatiKendraCount) {
+		this.yuvatiKendraCount += yuvatiKendraCount;
+	}
+
+	public void addYuvatiDPCCount(int yuvatiDPCCount) {
+		this.yuvatiDPCCount += yuvatiDPCCount;
+	}
+
+	public void addYuvatiSanchalakCount(int yuvatiSanchalakCount) {
+		this.yuvatiSanchalakCount += yuvatiSanchalakCount;
+	}
+
+	public void addNonActiveKendraCount(int nonActiveKendraCount) {
+		this.nonActiveKendraCount += nonActiveKendraCount;
+	}
+
+	public void addTotalKendraCount(int totalKendraCount) {
+		this.totalKendraCount += totalKendraCount;
+	}
+
+	public void addTotalDPCCount(int totalDPCCount) {
+		this.totalDPCCount += totalDPCCount;
+	}
+
+	@Override
+	public String toString() {
+		return "KendraSummary [sanghat=" + sanghat + ", jilla=" + jilla + ", taluka=" + taluka + ", jillaCount="
+				+ jillaCount + ", jsannidathaCount=" + jsannidathaCount + ", talukaCount=" + talukaCount
+				+ ", talukaSannidathCount=" + talukaSannidathCount + ", yuvaGroupCount=" + yuvaGroupCount
+				+ ", yuvaAvekshakCount=" + yuvaAvekshakCount + ", yuvatiGroupCount=" + yuvatiGroupCount
+				+ ", yuvatiAvekshakCount=" + yuvatiAvekshakCount + ", yuvaKendraCount=" + yuvaKendraCount
+				+ ", yuvaDPCCount=" + yuvaDPCCount + ", yuvaSanchalakCount=" + yuvaSanchalakCount
+				+ ", yuvatiKendraCount=" + yuvatiKendraCount + ", yuvatiDPCCount=" + yuvatiDPCCount
+				+ ", yuvatiSanchalakCount=" + yuvatiSanchalakCount + ", nonActiveKendraCount=" + nonActiveKendraCount
+				+ ", totalKendraCount=" + totalKendraCount + ", totalDPCCount=" + totalDPCCount + "]";
 	}
 
 }

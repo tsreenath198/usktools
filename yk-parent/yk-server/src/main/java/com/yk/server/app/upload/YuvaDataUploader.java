@@ -1,6 +1,5 @@
 package com.yk.server.app.upload;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,6 @@ public class YuvaDataUploader {
 		yuvaRepo.deleteAll();
 		Set<Kendra> newKendras = kendraExcelReader.read(filePath);
 		for (Kendra kendra : newKendras) {
-			System.out.println(kendra);
 			save(kendra.getjSannidatha());
 			save(kendra.gettSannidatha());
 			save(kendra.getAvekshak());
@@ -59,9 +57,5 @@ public class YuvaDataUploader {
 			}
 			yuva = yuvaRepo.save(yuva);
 		}
-	}
-
-	private Set<Kendra> readAllYuvans() {
-		return new HashSet<Kendra>(kendraRepo.findAll());
 	}
 }

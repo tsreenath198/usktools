@@ -36,13 +36,8 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 
 			workbook = new XSSFWorkbook(new File(filePath));
 			XSSFSheet sheet = workbook.getSheetAt(0);
-			List<Integer> colWidths = new ArrayList<>();
 			Row rowObj = sheet.getRow(0);
-			for (int col = 0; col < rowObj.getLastCellNum(); col++) {
-				colWidths.add(sheet.getColumnWidth(col) / 256);
-			}
-			System.out.println(colWidths);
-			for (int row = 1; row < sheet.getLastRowNum(); row++) {
+			for (int row = 1; row <= sheet.getLastRowNum(); row++) {
 				rowObj = sheet.getRow(row);
 				if (rowObj != null && StringUtils.hasText(getCellValue(rowObj, 0))) {
 					addKendram(rowObj, kendrans);
@@ -84,15 +79,11 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 
 		if (YuvaYuvati.YUVATI.equals(kendra.getYuvaYuvati())) {
 			if (rcMap.equals(Role.J_SANNIDATHA)) {
-				kendra.getjSannidatha().setName("N/A");
-				kendra.getjSannidatha().setDob(null);
-				kendra.getjSannidatha().setPhone(null);
+				kendra.setjSannidatha(null);
 				return;
 			}
 			if (rcMap.equals(Role.T_SANNIDATHA)) {
-				kendra.gettSannidatha().setName("N/A");
-				kendra.gettSannidatha().setDob(null);
-				kendra.gettSannidatha().setPhone(null);
+				kendra.settSannidatha(null);
 				return;
 			}
 		}

@@ -20,7 +20,7 @@ public class FormatterUtil {
 			if (ch == ' ' && str.charAt(i) != ' ')
 				s.append(Character.toUpperCase(str.charAt(i)));
 			else
-				s.append(str.charAt(i));
+				s.append(Character.toLowerCase(str.charAt(i)));
 			ch = str.charAt(i);
 		}
 		return s.toString().trim();

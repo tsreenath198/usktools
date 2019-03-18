@@ -15,7 +15,6 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.yk.server.app.util.FormatterUtil;
-import com.yk.server.app.util.Role;
 
 @Entity
 @Table(name = "kendra", uniqueConstraints = {
@@ -40,23 +39,23 @@ public class Kendra {
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "jsann_id")
-	private Yuva jSannidatha = new Yuva(Role.J_SANNIDATHA);
+	private Yuva jSannidatha = new Yuva(Role.J_SANNIDATHA.getRole());
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "tsann_id")
-	private Yuva tSannidatha = new Yuva(Role.T_SANNIDATHA);
+	private Yuva tSannidatha = new Yuva(Role.T_SANNIDATHA.getRole());
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "avekshak_id")
-	private Yuva avekshak = new Yuva(Role.AVEKSHAK);;
+	private Yuva avekshak = new Yuva(Role.AVEKSHAK.getRole());;
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "sanchalak1_id")
-	private Yuva sanchalak1 = new Yuva(Role.SANCHALAK_1);
+	private Yuva sanchalak1 = new Yuva(Role.SANCHALAK_1.getRole());
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "sanchalak2_id")
-	private Yuva sanchalak2 = new Yuva(Role.SANCHALAK_2);
+	private Yuva sanchalak2 = new Yuva(Role.SANCHALAK_2.getRole());
 
 	@Column(name = "kendra_type")
 	@Enumerated(EnumType.STRING)
@@ -360,7 +359,5 @@ public class Kendra {
 	public void setErrors(String errors) {
 		this.errors = FormatterUtil.format(errors);
 	}
-
-	
 
 }

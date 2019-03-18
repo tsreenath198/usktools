@@ -38,49 +38,177 @@ public interface KendraRepository extends JpaRepository<Kendra, Long> {
 	@Query(value = "select count (distinct tsann_id) from kendra where sanghat = ?1", nativeQuery = true)
 	int counttSannidathas(String s);
 
-	@Query(value = "select count (distinct patti) from kendra where yuva_yuvati = 'Yuva' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (distinct jilla||taluka||patti) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1", nativeQuery = true)
 	int countYuvaGroups(String s);
 
-	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'Yuva' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1", nativeQuery = true)
 	int countYuvaAvekshaks(String s);
 
-	@Query(value = "select count (distinct patti) from kendra where yuva_yuvati = 'Yuvati' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (distinct jilla||taluka||patti) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1", nativeQuery = true)
 	int countYuvatiGroups(String s);
 
-	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'Yuvati' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1", nativeQuery = true)
 	int countYuvatiAvekshaks(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
 	int countKendrasDPC(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where kendra_type = 'Yuva Kendra' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'YK' and sanghat = ?1", nativeQuery = true)
 	int countKendrasYK(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where status <> 'Active' and merged_to is null and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where status <> 'Active' and merged_to is null and sanghat = ?1", nativeQuery = true)
 	int countInActive(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuva' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1", nativeQuery = true)
 	int countYuvaKendras(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuvati' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1", nativeQuery = true)
 	int countYuvatiKendras(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuva' and kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
 	int countYuvaKendrasDPC(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuvati' and kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'DPC' and sanghat = ?1", nativeQuery = true)
 	int countYuvatiKendrasDPC(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuva' and kendra_type = 'Yuva Kendra' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'YK' and sanghat = ?1", nativeQuery = true)
 	int countYuvaKendrasYK(String s);
 
-	@Query(value = "select count (distinct kendra) from kendra where yuva_yuvati = 'Yuvati' and kendra_type = 'Yuva Kendra' and sanghat = ?1", nativeQuery = true)
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'YK' and sanghat = ?1", nativeQuery = true)
 	int countYuvatiKendrasYK(String s);
 
-	@Query(value = "select count (distinct sanchalak1_id) + count (distinct sanchalak2_id) from kendra where sanchalak1_id is not null and sanchalak2_id is not null and yuva_yuvati = 'Yuva' and sanghat = ?1", nativeQuery = true)
-	int countYuvaSanchalaks(String s);
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1", nativeQuery = true)
+	int countYuvaSanchalaks1(String s);
 
-	@Query(value = "select count (distinct sanchalak1_id) + count (distinct sanchalak2_id) from kendra where sanchalak1_id is not null and sanchalak2_id is not null and yuva_yuvati = 'Yuvati' and sanghat = ?1", nativeQuery = true)
-	int countYuvatiSanchalaks(String s);
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1", nativeQuery = true)
+	int countYuvaSanchalaks2(String s);
+
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1", nativeQuery = true)
+	int countYuvatiSanchalaks1(String s);
+
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1", nativeQuery = true)
+	int countYuvatiSanchalaks2(String s);
+
+	// jilla queries
+	@Query(value = "select count (distinct jsann_id) from kendra where sanghat = ?1 and jilla = ?2 ", nativeQuery = true)
+	int countjSannidathas(String s, String j);
+
+	@Query(value = "select count (distinct taluka) from kendra where sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countTalukas(String s, String j);
+
+	@Query(value = "select count (distinct tsann_id) from kendra where sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int counttSannidathas(String s, String j);
+
+	@Query(value = "select count (distinct taluka||patti) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaGroups(String s, String j);
+
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaAvekshaks(String s, String j);
+
+	@Query(value = "select count (distinct taluka||patti) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiGroups(String s, String j);
+
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiAvekshaks(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countKendrasDPC(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'YK' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countKendrasYK(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where status <> 'Active' and merged_to is null and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countInActive(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaKendras(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiKendras(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaKendrasDPC(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiKendrasDPC(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'YK' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaKendrasYK(String s, String j);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'YK' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiKendrasYK(String s, String j);
+
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaSanchalaks1(String s, String j);
+
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvaSanchalaks2(String s, String j);
+
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiSanchalaks1(String s, String j);
+
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2", nativeQuery = true)
+	int countYuvatiSanchalaks2(String s, String j);
+
+	// taluka queries
+	@Query(value = "select count (distinct jsann_id) from kendra where sanghat = ?1 and jilla = ?2 and taluka = ?3 ", nativeQuery = true)
+	int countjSannidathas(String s, String j, String t);
+
+	@Query(value = "select count (distinct taluka) from kendra where sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countTalukas(String s, String j, String t);
+
+	@Query(value = "select count (distinct tsann_id) from kendra where sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int counttSannidathas(String s, String j, String t);
+
+	@Query(value = "select count (distinct patti) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaGroups(String s, String j, String t);
+
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaAvekshaks(String s, String j, String t);
+
+	@Query(value = "select count (distinct patti) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiGroups(String s, String j, String t);
+
+	@Query(value = "select count (distinct avekshak_id) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiAvekshaks(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countKendrasDPC(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where kendra_type = 'YK' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countKendrasYK(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where status <> 'Active' and merged_to is null and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countInActive(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaKendras(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiKendras(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaKendrasDPC(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'DPC' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiKendrasDPC(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVA' and kendra_type = 'YK' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaKendrasYK(String s, String j, String t);
+
+	@Query(value = "select count (kendra) from kendra where yuva_yuvati = 'YUVATI' and kendra_type = 'YK' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiKendrasYK(String s, String j, String t);
+
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaSanchalaks1(String s, String j, String t);
+
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVA' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvaSanchalaks2(String s, String j, String t);
+
+	@Query(value = "select count (distinct sanchalak1_id) from kendra where sanchalak1_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiSanchalaks1(String s, String j, String t);
+
+	@Query(value = "select count (distinct sanchalak2_id) from kendra where sanchalak2_id is not null and yuva_yuvati = 'YUVATI' and sanghat = ?1 and jilla = ?2 and taluka = ?3", nativeQuery = true)
+	int countYuvatiSanchalaks2(String s, String j, String t);
 
 }

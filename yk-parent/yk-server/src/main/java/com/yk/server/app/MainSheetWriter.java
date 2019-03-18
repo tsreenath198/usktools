@@ -1,6 +1,5 @@
 package com.yk.server.app;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -55,7 +53,7 @@ public class MainSheetWriter {
 	@Autowired
 	private KendraRepository kendraRepository;
 
-	public String createMainSheet(Workbook workbook, String fileName) throws IOException, InvalidFormatException {
+	public void createMainSheet(Workbook workbook) throws IOException, InvalidFormatException {
 		Sort sort = new Sort(Direction.ASC,
 				Arrays.asList("yuvaYuvati", "sanghat", "jilla", "taluka", "group", "kendraNumber"));
 		List<Kendra> kendraList = kendraRepository.findAll(sort);
@@ -72,12 +70,6 @@ public class MainSheetWriter {
 			addValues(dateCellStyle, employee, row, rowNum);
 			rowNum++;
 		}
-		String filename = "F:\\Swadhyay\\2019\\District Data\\generated\\" + System.currentTimeMillis() + "_" + fileName
-				+ ".xlsx";
-		FileOutputStream fileOut = new FileOutputStream(filename);
-		workbook.write(fileOut);
-		fileOut.close();
-		return filename;
 	}
 
 	private void addValues(CellStyle dateStyle, Kendra kendra, Row row, int rowNum) {
@@ -86,60 +78,84 @@ public class MainSheetWriter {
 		row.createCell(i++).setCellValue(kendra.getCountry());
 		row.createCell(i++).setCellValue(kendra.getSanghat());
 		row.createCell(i++).setCellValue(kendra.getJilla());
-		row.createCell(i++).setCellValue(kendra.getjSannidatha().getName());
-
-		Cell dobCell = row.createCell(i++);
-		if (kendra.getjSannidatha().getDob() != null) {
-			dobCell.setCellStyle(dateStyle);
-			dobCell.setCellValue(kendra.getjSannidatha().getDob());
+		Cell dobCell;
+		if (kendra.getjSannidatha() != null) {
+			row.createCell(i++).setCellValue(kendra.getjSannidatha().getName());
+			dobCell = row.createCell(i++);
+			if (kendra.getjSannidatha().getDob() != null) {
+				dobCell.setCellStyle(dateStyle);
+				dobCell.setCellValue(kendra.getjSannidatha().getDob());
+			}
+			row.createCell(i++).setCellValue(kendra.getjSannidatha().getPhone());
+		} else {
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
 		}
-
-		row.createCell(i++).setCellValue(kendra.getjSannidatha().getPhone());
 		row.createCell(i++).setCellValue(kendra.getTaluka());
-		row.createCell(i++).setCellValue(kendra.gettSannidatha().getName());
-
-		dobCell = row.createCell(i++);
-		if (kendra.gettSannidatha().getDob() != null) {
-			dobCell.setCellStyle(dateStyle);
-			dobCell.setCellValue(kendra.gettSannidatha().getDob());
+		if (kendra.gettSannidatha() != null) {
+			row.createCell(i++).setCellValue(kendra.gettSannidatha().getName());
+			dobCell = row.createCell(i++);
+			if (kendra.gettSannidatha().getDob() != null) {
+				dobCell.setCellStyle(dateStyle);
+				dobCell.setCellValue(kendra.gettSannidatha().getDob());
+			}
+			row.createCell(i++).setCellValue(kendra.gettSannidatha().getPhone());
+		} else {
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
 		}
-
-		row.createCell(i++).setCellValue(kendra.gettSannidatha().getPhone());
 		row.createCell(i++).setCellValue(kendra.getGroup());
-		row.createCell(i++).setCellValue(kendra.getAvekshak().getName());
-
-		dobCell = row.createCell(i++);
-		if (kendra.getAvekshak().getDob() != null) {
-			dobCell.setCellStyle(dateStyle);
-			dobCell.setCellValue(kendra.getAvekshak().getDob());
+		if (kendra.getAvekshak() != null) {
+			row.createCell(i++).setCellValue(kendra.getAvekshak().getName());
+			dobCell = row.createCell(i++);
+			if (kendra.getAvekshak().getDob() != null) {
+				dobCell.setCellStyle(dateStyle);
+				dobCell.setCellValue(kendra.getAvekshak().getDob());
+			}
+		} else {
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
 		}
-
 		row.createCell(i++).setCellValue(kendra.getAvekshak().getPhone());
 		row.createCell(i++).setCellValue(kendra.getKendra());
-		row.createCell(i++).setCellValue(kendra.getKendraType().toString());
-		row.createCell(i++).setCellValue(kendra.getYuvaYuvati().toString());
+		row.createCell(i++).setCellValue((kendra.getKendraType() != null) ? kendra.getKendraType().toString() : "");
+		row.createCell(i++).setCellValue((kendra.getYuvaYuvati() != null) ? kendra.getYuvaYuvati().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getYearOfKendra());
-		row.createCell(i++).setCellValue(kendra.getCategory().toString());
+		row.createCell(i++).setCellValue((kendra.getCategory() != null) ? kendra.getCategory().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getKendraNumber());
-		row.createCell(i++).setCellValue(kendra.getStatus().toString());
+		row.createCell(i++).setCellValue((kendra.getStatus() != null) ? kendra.getStatus().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getYearMerged());
 		row.createCell(i++).setCellValue(kendra.getMergedTo());
-		row.createCell(i++).setCellValue(kendra.getSanchalak1().getName());
-		row.createCell(i++).setCellValue(kendra.getSanchalak1().getPhone());
+		if (kendra.getSanchalak1() != null) {
+			row.createCell(i++).setCellValue(kendra.getSanchalak1().getName());
+			row.createCell(i++).setCellValue(kendra.getSanchalak1().getPhone());
 
-		dobCell = row.createCell(i++);
-		if (kendra.getSanchalak1().getDob() != null) {
-			dobCell.setCellStyle(dateStyle);
-			dobCell.setCellValue(kendra.getSanchalak1().getDob());
+			dobCell = row.createCell(i++);
+			if (kendra.getSanchalak1().getDob() != null) {
+				dobCell.setCellStyle(dateStyle);
+				dobCell.setCellValue(kendra.getSanchalak1().getDob());
+			}
+		} else {
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
 		}
+		if (kendra.getSanchalak2() != null) {
+			row.createCell(i++).setCellValue(kendra.getSanchalak2().getName());
+			row.createCell(i++).setCellValue(kendra.getSanchalak2().getPhone());
 
-		row.createCell(i++).setCellValue(kendra.getSanchalak2().getName());
-		row.createCell(i++).setCellValue(kendra.getSanchalak2().getPhone());
-
-		dobCell = row.createCell(i++);
-		if (kendra.getSanchalak2().getDob() != null) {
-			dobCell.setCellStyle(dateStyle);
-			dobCell.setCellValue(kendra.getSanchalak2().getDob());
+			dobCell = row.createCell(i++);
+			if (kendra.getSanchalak2().getDob() != null) {
+				dobCell.setCellStyle(dateStyle);
+				dobCell.setCellValue(kendra.getSanchalak2().getDob());
+			}
+		} else {
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
+			row.createCell(i++).setCellValue("");
 		}
 
 		row.createCell(i++).setCellValue(kendra.getMinAttendance());

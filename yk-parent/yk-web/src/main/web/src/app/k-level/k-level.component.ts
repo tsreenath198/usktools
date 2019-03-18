@@ -113,30 +113,45 @@ export class KLevelComponent implements OnInit {
       case "jilla": {
         temp = this.jSannidathaList.filter(t => t.id == value);
         this.klCurrent.jSannidatha.phone = temp[0].phone;
+        this.klCurrent.jSannidatha.name = temp[0].name;
+        this.klCurrent.jSannidatha.role = temp[0].role;
+        this.klCurrent.jSannidatha.id = temp[0].id;
         this.klCurrent.jSannidatha.dob = new Date(temp[0].dob);
         break;
       }
       case "taluka": {
         temp = this.tSannidathaList.filter(t => t.id == value);
         this.klCurrent.tSannidatha.phone = temp[0].phone;
+        this.klCurrent.tSannidatha.name = temp[0].name;
+        this.klCurrent.tSannidatha.role = temp[0].role;
+        this.klCurrent.tSannidatha.id = temp[0].id;
         this.klCurrent.tSannidatha.dob = new Date(temp[0].dob);
         break;
       }
       case "avekshak": {
         temp = this.avekshakList.filter(t => t.id == value);
         this.klCurrent.avekshak.phone = temp[0].phone;
+        this.klCurrent.avekshak.name = temp[0].name;
+        this.klCurrent.avekshak.role = temp[0].role;
+        this.klCurrent.avekshak.id = temp[0].id;
         this.klCurrent.avekshak.dob = new Date(temp[0].dob);
         break;
       }
       case "s1": {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak1.phone = temp[0].phone;
+        this.klCurrent.sanchalak1.name = temp[0].name;
+        this.klCurrent.sanchalak1.role = temp[0].role;
+        this.klCurrent.sanchalak1.id = temp[0].id;
         this.klCurrent.sanchalak1.dob = new Date(temp[0].dob);
         break;
       }
       case "s2": {
         temp = this.sanchalakList.filter(t => t.id == value);
         this.klCurrent.sanchalak2.phone = temp[0].phone;
+        this.klCurrent.sanchalak2.name = temp[0].name;
+        this.klCurrent.sanchalak2.role = temp[0].role;
+        this.klCurrent.sanchalak2.id = temp[0].id;
         this.klCurrent.sanchalak2.dob = new Date(temp[0].dob);
         break;
       }

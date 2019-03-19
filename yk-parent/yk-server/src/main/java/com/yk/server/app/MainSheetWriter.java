@@ -124,7 +124,8 @@ public class MainSheetWriter {
 		row.createCell(i++).setCellValue((kendra.getKendraType() != null) ? kendra.getKendraType().toString() : "");
 		row.createCell(i++).setCellValue((kendra.getYuvaYuvati() != null) ? kendra.getYuvaYuvati().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getYearOfKendra());
-		row.createCell(i++).setCellValue((kendra.getCategory() != null) ? kendra.getCategory().toString() : "");
+		row.createCell(i++)
+				.setCellValue((kendra.getKendraCategory() != null) ? kendra.getKendraCategory().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getKendraNumber());
 		row.createCell(i++).setCellValue((kendra.getStatus() != null) ? kendra.getStatus().toString() : "");
 		row.createCell(i++).setCellValue(kendra.getYearMerged());

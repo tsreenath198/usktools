@@ -32,9 +32,9 @@ public class YuvaValidator extends DataValidator {
 	}
 
 	private String checkPhone(String role, String phone, List<String> errors) {
-		if (phone == null || phone.length() < 10) {
+		/*if (phone == null || phone.length() < 10) {
 			errors.add(role + " Phone : " + phone);
-		}
+		}*/
 		phone = phone.replaceAll(" ", "");
 		if (phone.length() != 10) {
 			errors.add(role + " Phone : " + phone);

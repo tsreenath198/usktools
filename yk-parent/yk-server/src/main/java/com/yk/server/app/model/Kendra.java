@@ -65,9 +65,9 @@ public class Kendra {
 	private YuvaYuvati yuvaYuvati;
 	@Column(name = "year_of_kendra")
 	private String yearOfKendra;
-	@Column(name = "category")
+	@Column(name = "kendra_category")
 	@Enumerated(EnumType.STRING)
-	private KendraCategory category;
+	private KendraCategory kendraCategory;
 	@Column(name = "kendra_number")
 	private String kendraNumber;
 	@Column(name = "status")
@@ -224,12 +224,12 @@ public class Kendra {
 		this.yearOfKendra = yearOfKendra;
 	}
 
-	public KendraCategory getCategory() {
-		return category;
+	public KendraCategory getKendraCategory() {
+		return kendraCategory;
 	}
 
-	public void setCategory(KendraCategory category) {
-		this.category = category;
+	public void setKendraCategory(KendraCategory kendraCategory) {
+		this.kendraCategory = kendraCategory;
 	}
 
 	public String getKendraNumber() {

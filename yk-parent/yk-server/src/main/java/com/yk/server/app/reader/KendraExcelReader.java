@@ -145,7 +145,7 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		kendra.setKendraType(findKendramType(getCellValue(rowObj, 16)));
 		kendra.setYuvaYuvati(findYuvaYuvati(getCellValue(rowObj, 17)));
 		kendra.setYearOfKendra(getCellValue(rowObj, 18));
-		kendra.setCategory(findKendraCategory(getCellValue(rowObj, 19)));
+		kendra.setKendraCategory(findKendraCategory(getCellValue(rowObj, 19)));
 		kendra.setKendraNumber(getCellValue(rowObj, 20));
 		kendra.setStatus(findKendraStatus(getCellValue(rowObj, 21)));
 		kendra.setYearMerged(getCellValue(rowObj, 22));

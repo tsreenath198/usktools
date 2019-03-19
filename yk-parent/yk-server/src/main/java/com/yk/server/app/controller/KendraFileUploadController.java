@@ -1,4 +1,4 @@
-package com.yk.server.app.controller;
+/*package com.yk.server.app.controller;
 
 import java.util.List;
 
@@ -58,4 +58,4 @@ public class KendraFileUploadController {
 		return summaryWriter.getSummary();
 	}
 
-}
+}*/

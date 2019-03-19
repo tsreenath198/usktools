@@ -6,11 +6,11 @@
                 <option value="searchdmilan">yuvan</option>
             </select>
         </span>
-        <span class="float-left form-group col-2">
-            <input type="text" class="form-control" placeholder="Filter By Text" (keyup)="filterKendra($event)"/>
+        <span class="float-left form-group col-2"> <!--(keyup)="filterKendra($event)-->
+            <input type="text" class="form-control" placeholder="Filter By Text" [(ngModel)]="currSearchTxt"/>
         </span>
         <span class="float-right col-1">
-            <button class="btn btn-primary btn-sm float-right" (click)="addToList()">Add</button>
+            <button class="btn btn-primary btn-sm float-right" (click)="add()">Add</button>
         </span>
     </div>
     <!-- Displays data which is retrived from database -->
@@ -61,7 +61,7 @@
             </tr>
         </thead>
         <tbody id="table_id">
-            <tr *ngFor="let kl of klList;let i = index">
+            <tr *ngFor="let kl of klList | filter : {txt: currSearchTxt,list:copyKlList}">
 
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.country}}</span>

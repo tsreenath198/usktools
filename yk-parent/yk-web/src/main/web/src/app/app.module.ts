@@ -11,6 +11,7 @@ import { SearchdmilanComponent } from './searchdmilan/searchdmilan.component';
 import { KLevelComponent } from './k-level/k-level.component';
 import { YuvanComponent } from './yuvan/yuvan.component';
 import { SearchklevelComponent } from './k-level/search/searchklevel/searchklevel.component';
+import { FilterPipe } from './filter-pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchklevelComponent } from './k-level/search/searchklevel/searchkleve
     LoginComponent,
     SearchdmilanComponent,
     KLevelComponent,
-    SearchklevelComponent
+    SearchklevelComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

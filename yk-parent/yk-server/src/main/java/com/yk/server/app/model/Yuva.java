@@ -45,7 +45,7 @@ public class Yuva {
 
 	public Yuva(String role) {
 		super();
-		this.role = role;
+		this.role = FormatterUtil.format(role);
 	}
 
 	public String getName() {

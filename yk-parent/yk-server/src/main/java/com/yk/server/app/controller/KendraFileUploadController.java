@@ -1,5 +1,6 @@
-/*package com.yk.server.app.controller;
+package com.yk.server.app.controller;
 
+import java.io.FileOutputStream;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Workbook;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yk.server.app.MainSheetWriter;
-import com.yk.server.app.SummaryWriter;
 import com.yk.server.app.model.KendraSummary;
 import com.yk.server.app.repository.KendraRepository;
 import com.yk.server.app.upload.YuvaDataUploader;
+import com.yk.server.app.writer.MainSheetWriter;
+import com.yk.server.app.writer.SummaryWriter;
 
 @RestController
 @RequestMapping("/api/kendra/upload")
@@ -41,16 +42,22 @@ public class KendraFileUploadController {
 
 	@GetMapping("/upload")
 	public void upload() throws Exception {
-		yuvaDataUploader
-				.uploadAllData("F:\\Swadhyay\\2019\\District Data\\2019 Nizamabad_YK Details.xls");
+		yuvaDataUploader.uploadAllData(
+				"F:\\Swadhyay\\2019\\District Data\\generated\\1553045120835_Nizamabad_District_Data_20190320.xlsx");
 	}
 
 	@GetMapping("/download")
 	public String download(@RequestParam String fileName) throws Exception {
+		fileName = "F:\\Swadhyay\\2019\\District Data\\generated\\" + System.currentTimeMillis() + "_" + fileName
+				+ ".xlsx";
 		Workbook workbook = new XSSFWorkbook();
-		String filename = mainSheetWriter.createMainSheet(workbook, fileName);
+		mainSheetWriter.createMainSheet(workbook);
+		summaryWriter.createSummarySheet(workbook);
+		FileOutputStream fileOut = new FileOutputStream(fileName);
+		workbook.write(fileOut);
+		fileOut.close();
 		workbook.close();
-		return filename;
+		return fileName;
 	}
 
 	@GetMapping("/summary")
@@ -58,4 +65,4 @@ public class KendraFileUploadController {
 		return summaryWriter.getSummary();
 	}
 
-}*/
+}

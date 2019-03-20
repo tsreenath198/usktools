@@ -27,6 +27,7 @@ public class YuvaDataUploader {
 		kendraRepo.deleteAll();
 		yuvaRepo.deleteAll();
 		Set<Kendra> newKendras = kendraExcelReader.read(filePath);
+		System.out.println("Total kendras : " + newKendras.size());
 		for (Kendra kendra : newKendras) {
 			save(kendra.getjSannidatha());
 			save(kendra.gettSannidatha());
@@ -41,7 +42,7 @@ public class YuvaDataUploader {
 	private void saveKendram(Kendra kendra) {
 		if (kendra != null) {
 			Kendra pObj = kendraRepo.find(kendra.getSanghat(), kendra.getJilla(), kendra.getTaluka(), kendra.getGroup(),
-					kendra.getKendra(), kendra.getYuvaYuvati().toString());
+					kendra.getKendra(), kendra.getYuvaYuvati().name());
 			if (pObj != null) {
 				kendra.setId(pObj.getId());
 			}

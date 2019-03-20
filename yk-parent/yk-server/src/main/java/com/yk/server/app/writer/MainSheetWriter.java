@@ -1,4 +1,4 @@
-package com.yk.server.app;
+package com.yk.server.app.writer;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,6 +19,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 
 import com.yk.server.app.model.Kendra;
+import com.yk.server.app.model.YuvaYuvati;
 import com.yk.server.app.repository.KendraRepository;
 
 @Component
@@ -55,7 +56,7 @@ public class MainSheetWriter {
 
 	public void createMainSheet(Workbook workbook) throws IOException, InvalidFormatException {
 		Sort sort = new Sort(Direction.ASC,
-				Arrays.asList("yuvaYuvati", "sanghat", "jilla", "taluka", "group", "kendraNumber"));
+				Arrays.asList("sanghat", "jilla", "taluka", "group", "yuvaYuvati", "kendraNumber"));
 		List<Kendra> kendraList = kendraRepository.findAll(sort);
 		CreationHelper createHelper = workbook.getCreationHelper();
 		Sheet sheet = workbook.createSheet("To-Be-Updated");
@@ -85,6 +86,8 @@ public class MainSheetWriter {
 			if (kendra.getjSannidatha().getDob() != null) {
 				dobCell.setCellStyle(dateStyle);
 				dobCell.setCellValue(kendra.getjSannidatha().getDob());
+			} else {
+				dobCell.setCellValue("");
 			}
 			row.createCell(i++).setCellValue(kendra.getjSannidatha().getPhone());
 		} else {
@@ -99,6 +102,8 @@ public class MainSheetWriter {
 			if (kendra.gettSannidatha().getDob() != null) {
 				dobCell.setCellStyle(dateStyle);
 				dobCell.setCellValue(kendra.gettSannidatha().getDob());
+			} else {
+				dobCell.setCellValue("");
 			}
 			row.createCell(i++).setCellValue(kendra.gettSannidatha().getPhone());
 		} else {
@@ -107,19 +112,22 @@ public class MainSheetWriter {
 			row.createCell(i++).setCellValue("");
 		}
 		row.createCell(i++).setCellValue(kendra.getGroup());
+		row.createCell(i++).setCellValue(kendra.getAvekshak().getPhone());
 		if (kendra.getAvekshak() != null) {
 			row.createCell(i++).setCellValue(kendra.getAvekshak().getName());
 			dobCell = row.createCell(i++);
 			if (kendra.getAvekshak().getDob() != null) {
 				dobCell.setCellStyle(dateStyle);
 				dobCell.setCellValue(kendra.getAvekshak().getDob());
+			} else {
+				dobCell.setCellValue("");
 			}
 		} else {
 			row.createCell(i++).setCellValue("");
 			row.createCell(i++).setCellValue("");
 			row.createCell(i++).setCellValue("");
 		}
-		row.createCell(i++).setCellValue(kendra.getAvekshak().getPhone());
+		
 		row.createCell(i++).setCellValue(kendra.getKendra());
 		row.createCell(i++).setCellValue((kendra.getKendraType() != null) ? kendra.getKendraType().toString() : "");
 		row.createCell(i++).setCellValue((kendra.getYuvaYuvati() != null) ? kendra.getYuvaYuvati().toString() : "");
@@ -138,6 +146,8 @@ public class MainSheetWriter {
 			if (kendra.getSanchalak1().getDob() != null) {
 				dobCell.setCellStyle(dateStyle);
 				dobCell.setCellValue(kendra.getSanchalak1().getDob());
+			} else {
+				dobCell.setCellValue("");
 			}
 		} else {
 			row.createCell(i++).setCellValue("");
@@ -152,6 +162,8 @@ public class MainSheetWriter {
 			if (kendra.getSanchalak2().getDob() != null) {
 				dobCell.setCellStyle(dateStyle);
 				dobCell.setCellValue(kendra.getSanchalak2().getDob());
+			} else {
+				dobCell.setCellValue("");
 			}
 		} else {
 			row.createCell(i++).setCellValue("");

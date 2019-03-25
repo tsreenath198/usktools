@@ -1,0 +1,103 @@
+<!-- Form to insert the details of a kendram person -->
+<form name="form" (ngSubmit)=" f.form.valid && addToList()" #f="ngForm" novalidate>
+  <!-- Name section in form -->
+  <div class="row pt10">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">First and last name</span>
+      </div>
+      <input type="text" class="form-control" name="surName" [(ngModel)]="surname" #surName="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && surName.invalid}" placeholder="Surname" required />
+      <input type="text" class="form-control" name="middleName" [(ngModel)]="middlename" #middleName="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && middleName.invalid}" placeholder="Middle Name" required />
+      <input type="text" class="form-control" name="Name" [(ngModel)]="name" #Name="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && Name.invalid}" placeholder="Name" required />
+      <div class="invalid-feedback">
+        Username is required field
+      </div>
+    </div>
+  </div>
+  <div class="row pt10">
+    <!-- Role section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Role</span>
+      </div>
+      <select class="custom-select" [(ngModel)]="ykCurrData.role" placeholder="Role" name="role" #role="ngModel">
+        <option *ngFor="let role of roleList" [ngValue]="role.key">{{role.value}}</option>
+      </select>
+    </div>
+    <!-- Contact section in form -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Phone</span>
+      </div>
+      <input type="number" class="form-control col quantity" [(ngModel)]="ykCurrData.phone" name="phone"
+        #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required minlength="10"
+        maxlength="11" />
+      <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+        <div *ngIf="phone.errors.required">phone is required</div>
+      </div>
+      <div *ngIf="phone.errors" class="invalid-feedback">
+        <div *ngIf="phone.errors.minlength">
+          Too short
+        </div>
+      </div>
+      <!-- <div [hidden]="!contact.errors.minlength">
+          contact must be at least 10 characters long.
+        </div>
+        <div [hidden]="!contact.errors.maxlength">
+          Name cannot be more than 11 characters long.
+        </div> -->
+    </div>
+    <!-- Dob section in form  -->
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
+      </div>
+      <input type="date" class="form-control col" [(ngModel)]="ykCurrData.dob" placeholder="dob" name="dob"
+        #dob="ngModel" />
+    </div>
+    <div class="input-group input-group-sm mb-3 col-sm-3">
+      <!-- <button class="btn btn-primary btn-sm" (click)="addToList()">Add</button>-->
+      <button [disabled]="loading" class="tn btn-primary btn-sm">Add</button>
+    </div>
+  </div>
+</form>
+<!-- Displaying all the filled details in the above form. -->
+<div class="mt-4">
+  <table class="table" id="table_id" *ngIf="ykList.length">
+    <thead class="thead-dark">
+      <tr>
+        <th>Full Name</th>
+        <th>Role</th>
+        <th>Contact</th>
+        <th>DOB</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <!-- displays details filled in form -->
+    <tbody id="table_id">
+      <tr *ngFor="let yk of ykList;let i = index;let f= first;let l= last">
+        <td>
+          <span>{{yk.name}}</span>
+        </td>
+        <td>
+          <span>{{yk.role}}</span>
+        </td>
+        <td>
+          <span>{{yk.phone}}</span>
+        </td>
+        <td>
+          <span>{{yk.dob | date}}</span>
+        </td>
+        <td>
+          <!-- Delete's the particular row data from the table -->
+          <button type="button" (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Submits all the data of the row to database -->
+  <button *ngIf="ykList.length" class="btn btn-primary btn-sm" (click)="submit()">Submit</button>
+</div>

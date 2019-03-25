@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       let response = resp as LoginModel
       if (response.username == this.username) {
         console.log("succes");
-        this.router.navigate(['/', 'searchdmilan'])
+        this.router.navigate(['/', 'landing'])
       }
     });
   }

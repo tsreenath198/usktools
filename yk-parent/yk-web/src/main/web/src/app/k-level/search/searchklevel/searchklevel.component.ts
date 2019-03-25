@@ -112,7 +112,7 @@ export class SearchklevelComponent implements OnInit {
 
     }
   }
-  /* filterKendra(event): void {
+   /*filterKendra(event): void {
      //event.target.value
      let temp = [];
      for (var i = 0; i < this.copyKlList.length; i++) {

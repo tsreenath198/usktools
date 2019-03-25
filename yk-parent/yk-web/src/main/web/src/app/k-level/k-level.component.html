@@ -1,4 +1,4 @@
-<form name="form" (ngSubmit)=" addToList()" #f="ngForm" novalidate>
+<form name="form" (ngSubmit)="f.form.valid && addToList()" #f="ngForm" novalidate>
   <div class="row pt10">
     <!-- Jilla Name section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">
@@ -6,7 +6,10 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Jilla Name</span>
       </div>
       <input class="form-control" [(ngModel)]="klCurrent.jilla" placeholder="Jilla Name" name="jillaName"
-        #jillaName="ngModel" />
+      [ngClass]="{'is-invalid': f.submitted && jillaName.invalid}" #jillaName="ngModel" required/>
+      <div class="invalid-feedback">
+        Jilla Name is required field
+      </div>
     </div>
     <!-- Jilla Sannidatha section in form -->
     <div class="input-group input-group-sm mb-3 col-sm-3">

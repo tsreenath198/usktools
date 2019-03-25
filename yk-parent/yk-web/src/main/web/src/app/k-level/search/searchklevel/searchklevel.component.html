@@ -6,8 +6,9 @@
                 <option value="searchdmilan">yuvan</option>
             </select>
         </span>
-        <span class="float-left form-group col-2"> <!--(keyup)="filterKendra($event)-->
-            <input type="text" class="form-control" placeholder="Filter By Text" [(ngModel)]="currSearchTxt"/>
+        <span class="float-left form-group col-2">
+            <!--(keyup)="filterKendra($event)-->
+            <input type="text" class="form-control" placeholder="Filter By Text" [(ngModel)]="currSearchTxt" />
         </span>
         <span class="float-right col-1">
             <button class="btn btn-primary btn-sm float-right" (click)="add()">Add</button>
@@ -64,12 +65,15 @@
             <tr *ngFor="let kl of klList | filter : {txt: currSearchTxt,list:copyKlList}">
 
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.country}}</span>
+                    <span *ngIf="selectedIndex !== i ">
+                        <span>{{kl.country}}</span>
+                        
+                    </span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.country" /></span>
 
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanghat}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl?.sanghat}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanghat" /></span>
                 </td>
                 <td>
@@ -77,7 +81,7 @@
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.jilla" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.name}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha?.name}}</span>
                     <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.jSannidatha.name"
                             (change)="setName(kl.jSannidatha.name,'jilla',i)">
                             <option hidden selected></option>
@@ -85,19 +89,23 @@
                         </select></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.dob | date}}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.jSannidatha.dob" readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">
+                        <span >{{kl.jSannidatha?.dob}}</span>
+                    </span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.jSannidatha.dob"
+                            readonly /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha.phone}}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.jSannidatha.phone" readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.jSannidatha?.phone}}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.jSannidatha.phone"
+                            readonly /></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.taluka}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.taluka" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.name}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha?.name}}</span>
                     <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.tSannidatha.name"
                             (change)="setName(kl.tSannidatha.name,'taluka',i)">
                             <option hidden selected></option>
@@ -105,19 +113,21 @@
                         </select></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.dob | date }}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.tSannidatha.dob" readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha?.dob | date }}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.tSannidatha.dob"
+                            readonly /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha.phone}}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.tSannidatha.phone" /></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.tSannidatha?.phone}}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.tSannidatha.phone"
+                            readonly /></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.group}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.group" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.name}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak?.name}}</span>
                     <span *ngIf="selectedIndex === i "><select (change)="setName(kl.avekshak.name,'avekshak',i)"
                             [(ngModel)]="kl.avekshak.name">
                             <option hidden selected></option>
@@ -125,12 +135,13 @@
                         </select></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.phone}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak?.phone}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.avekshak.phone" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak.dob | date }}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.avekshak.dob " readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.avekshak?.dob | date }}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.avekshak.dob "
+                            readonly /></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.kendra}}</span>
@@ -139,9 +150,9 @@
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.kendraType}}</span>
                     <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.kendraType">
-                        <option hidden selected></option>
-                        <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
-                    </select></span>
+                            <option hidden selected></option>
+                            <option *ngFor="let ktl of kendraTypeList">{{ktl}}</option>
+                        </select></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.yuvaYuvati}}</span>
@@ -181,7 +192,7 @@
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.mergedTo" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.name}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1?.name}}</span>
                     <span *ngIf="selectedIndex === i "><select (change)="setName(kl.sanchalak1.name,'s1',i)"
                             [(ngModel)]="kl.sanchalak1.name">
                             <option hidden selected></option>
@@ -189,15 +200,16 @@
                         </select></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.phone}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1?.phone}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak1.phone" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1.dob | date}}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak1.dob" readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak1?.dob | date}}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak1.dob"
+                            readonly /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.name}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2?.name}}</span>
                     <span *ngIf="selectedIndex === i "><select (change)="setName(kl.sanchalak2.name,'s2',i)"
                             [(ngModel)]="kl.sanchalak2.name">
                             <option hidden selected></option>
@@ -205,12 +217,13 @@
                         </select></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.phone}}</span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2?.phone}}</span>
                     <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak2.phone" /></span>
                 </td>
                 <td>
-                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2.dob | date}}</span>
-                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak2.dob" readonly/></span>
+                    <span *ngIf="selectedIndex !== i ">{{kl.sanchalak2?.dob | date}}</span>
+                    <span *ngIf="selectedIndex === i "><input type="text" [(ngModel)]="kl.sanchalak2.dob"
+                            readonly /></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.minAttendance}}</span>
@@ -222,10 +235,10 @@
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.ykConducted}}</span>
-                    <span *ngIf="selectedIndex === i "><select  [(ngModel)]="kl.ykConducted" >
+                    <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.ykConducted">
                             <option hidden selected></option>
                             <option *ngFor="let con of conducted">{{con}}</option>
-                          </select></span>
+                        </select></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.villageOfYK}}</span>
@@ -245,10 +258,10 @@
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.dayOfYK}}</span>
-                    <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.dayOfYK" >
+                    <span *ngIf="selectedIndex === i "><select [(ngModel)]="kl.dayOfYK">
                             <option hidden selected></option>
                             <option *ngFor="let day of daysList">{{day}}</option>
-                          </select></span>
+                        </select></span>
                 </td>
                 <td>
                     <span *ngIf="selectedIndex !== i ">{{kl.timeOfYK}}</span>
@@ -266,8 +279,8 @@
                 <td>
                     <!-- Edit the particular row data from the table -->
                     <!-- *ngIf="selectedIndex == -1" (click)="edit(i)" -->
-                    <button type="button" 
-                        class="btn btn-primary btn-sm" data-toggle="tooltip" title="Under Progress!">Edit</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip"
+                        title="Under Progress!">Edit</button>
                     <button type="button" *ngIf="selectedIndex !== -1" (click)="update(kl)"
                         class="btn btn-primary btn-sm">Update</button>
                 </td>

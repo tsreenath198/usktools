@@ -15,7 +15,7 @@ export interface KLevelModel{
     kendraType : string;
     yuvaYuvati : string;
     yearOfKendra : string;
-    category : string;
+    kendraCategory : string;
     kendraNumber : string;
     status : string;
     yearMerged : string;
@@ -23,12 +23,12 @@ export interface KLevelModel{
     minAttendance : string;
     maxAttendance : string;
     villageOfYK : string;
-    landMark : string;
+    landmark : string;
     yKSthal : string;
     yKSthalPin : string;
     dayOfYK : string;
     timeOfYK : string;
     swadhyayLoc : string;
     swadhyayVillage : string;
-    ykConducted : string;
+    ykconducted : string;
 }

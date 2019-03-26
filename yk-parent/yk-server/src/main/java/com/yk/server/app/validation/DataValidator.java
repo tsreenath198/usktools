@@ -8,8 +8,7 @@ public class DataValidator {
 	protected void checkNotNull(String key, Object value, List<String> errors) {
 		if (value == null) {
 			errors.add(key + " : null");
-		} else if (!StringUtils.hasText(value.toString()) || "N/A".equalsIgnoreCase(value.toString())
-				|| "NA".equalsIgnoreCase(value.toString())) {
+		} else if (StringUtils.isEmpty(value.toString())) {
 			errors.add("invalid " + key + ":" + value);
 		}
 	}

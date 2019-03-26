@@ -61,6 +61,7 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 	private void addKendram(Row rowObj, Set<Kendra> kendras) {
 		Kendra kendra = new Kendra();
 		List<String> errors = new ArrayList<>();
+
 		populateOtherFields(rowObj, kendra);
 		for (Role rcMap : Role.values()) {
 			setPersonalFields(kendra, rowObj, rcMap, errors);
@@ -76,16 +77,27 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 	}
 
 	private void setPersonalFields(Kendra kendra, Row rowObj, Role rcMap, List<String> errors) {
-
-		if (YuvaYuvati.YUVATI.equals(kendra.getYuvaYuvati())) {
-			if (rcMap.equals(Role.J_SANNIDATHA)) {
-				kendra.setjSannidatha(null);
-				return;
-			}
-			if (rcMap.equals(Role.T_SANNIDATHA)) {
+		if (isNA(rowObj, rcMap)) {
+			switch (rcMap) {
+			case SANCHALAK_1:
+				kendra.setSanchalak1(null);
+				break;
+			case SANCHALAK_2:
+				kendra.setSanchalak2(null);
+				break;
+			case AVEKSHAK:
+				kendra.setAvekshak(null);
+				break;
+			case T_SANNIDATHA:
 				kendra.settSannidatha(null);
-				return;
+				break;
+			case J_SANNIDATHA:
+				kendra.setjSannidatha(null);
+				break;
+			default:
+				break;
 			}
+			return;
 		}
 		String name = super.getCellValue(rowObj, rcMap.getNameCol());
 		Date dob = null;
@@ -134,7 +146,19 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		}
 	}
 
+	private boolean isNA(Row rowObj, Role rcMap) {
+		String name = super.getCellValue(rowObj, rcMap.getNameCol());
+		String dob = super.getCellValue(rowObj, rcMap.getDobCol());
+		String phone = super.getCellValue(rowObj, rcMap.getPhoneCol());
+		return isNAStr(name) && isNAStr(dob) && isNAStr(phone);
+	}
+
+	private boolean isNAStr(String val) {
+		return StringUtils.isEmpty(val) || "N/A".equalsIgnoreCase(val) || "NA".equalsIgnoreCase(val);
+	}
+
 	private void populateOtherFields(Row rowObj, Kendra kendra) {
+		kendra.setOrderNo(getIntValue(rowObj, 0));
 		kendra.setCountry(getCellValue(rowObj, 1));
 		kendra.setSanghat(getCellValue(rowObj, 2));
 		kendra.setJilla(getCellValue(rowObj, 3));
@@ -146,7 +170,7 @@ public class KendraExcelReader extends ExcelReader<Kendra> {
 		kendra.setYuvaYuvati(findYuvaYuvati(getCellValue(rowObj, 17)));
 		kendra.setYearOfKendra(getCellValue(rowObj, 18));
 		kendra.setKendraCategory(findKendraCategory(getCellValue(rowObj, 19)));
-		kendra.setKendraNumber(getCellValue(rowObj, 20));
+		kendra.setKendraNumber(getIntValue(rowObj, 20));
 		kendra.setStatus(findKendraStatus(getCellValue(rowObj, 21)));
 		kendra.setYearMerged(getCellValue(rowObj, 22));
 		kendra.setMergedTo(getCellValue(rowObj, 23));

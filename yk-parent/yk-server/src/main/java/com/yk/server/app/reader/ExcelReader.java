@@ -9,6 +9,8 @@ import org.apache.poi.ss.usermodel.Row;
 
 import com.yk.server.app.util.DateUtil;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
+
 public abstract class ExcelReader<T> {
 	public abstract Set<T> read(String filePath) throws Exception;
 
@@ -38,12 +40,28 @@ public abstract class ExcelReader<T> {
 			val = cell.getBooleanCellValue();
 			break;
 		default:
+			val = cell.toString();
 		}
 		if (val != null) {
 			return val.toString();
 		} else {
 			return "";
 		}
+	}
+
+	public Integer getIntValue(Row row, int col) {
+		Cell cell = row.getCell(col);
+		if (cell == null) {
+			// System.err.println("empty value in row : " + (row.getRowNum() + 1) + " in col
+			// " + (col + 1));
+			return null;
+		}
+
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_NUMERIC:
+			return new Double(cell.getNumericCellValue()).intValue();
+		}
+		return null;
 	}
 
 	public Date getDateValue(Row row, int col) throws Exception {

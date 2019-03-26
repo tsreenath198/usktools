@@ -41,11 +41,11 @@ public class YuvaDataUploader {
 
 	private void saveKendram(Kendra kendra) {
 		if (kendra != null) {
-			Kendra pObj = kendraRepo.find(kendra.getSanghat(), kendra.getJilla(), kendra.getTaluka(), kendra.getGroup(),
-					kendra.getKendra(), kendra.getYuvaYuvati().name());
-			if (pObj != null) {
-				kendra.setId(pObj.getId());
-			}
+//			Kendra pObj = kendraRepo.find(kendra.getSanghat(), kendra.getJilla(), kendra.getTaluka(), kendra.getGroup(),
+//					kendra.getKendra(), kendra.getYuvaYuvati().name());
+//			if (pObj != null) {
+//				kendra.setId(pObj.getId());
+//			}
 			kendra = kendraRepo.save(kendra);
 		}
 	}
@@ -55,6 +55,7 @@ public class YuvaDataUploader {
 			Yuva pObj = yuvaRepo.find(yuva.getName(), yuva.getPhone(), yuva.getRole());
 			if (pObj != null) {
 				yuva.setId(pObj.getId());
+				return;
 			}
 			yuva = yuvaRepo.save(yuva);
 		}

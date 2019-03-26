@@ -69,7 +69,7 @@ public class Kendra {
 	@Enumerated(EnumType.STRING)
 	private KendraCategory kendraCategory;
 	@Column(name = "kendra_number")
-	private String kendraNumber;
+	private Integer kendraNumber;
 	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
 	private KendraStatus status;
@@ -100,6 +100,8 @@ public class Kendra {
 	private String swadhyayLoc;
 	@Column(name = "swadhyay_village")
 	private String swadhyayVillage;
+	@Column(name = "order_no")
+	private Integer orderNo;
 
 	@Column(name = "errors")
 	private String errors;
@@ -232,12 +234,12 @@ public class Kendra {
 		this.kendraCategory = kendraCategory;
 	}
 
-	public String getKendraNumber() {
+	public Integer getKendraNumber() {
 		return kendraNumber;
 	}
 
-	public void setKendraNumber(String kendraNumber) {
-		this.kendraNumber = FormatterUtil.format(kendraNumber);
+	public void setKendraNumber(Integer kendraNumber) {
+		this.kendraNumber = kendraNumber;
 	}
 
 	public KendraStatus getStatus() {
@@ -358,6 +360,14 @@ public class Kendra {
 
 	public void setErrors(String errors) {
 		this.errors = FormatterUtil.format(errors);
+	}
+
+	public Integer getOrderNo() {
+		return orderNo;
+	}
+
+	public void setOrderNo(Integer orderNo) {
+		this.orderNo = orderNo;
 	}
 
 }

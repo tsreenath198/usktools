@@ -43,7 +43,7 @@ public class KendraFileUploadController {
 	@GetMapping("/upload")
 	public void upload() throws Exception {
 		yuvaDataUploader.uploadAllData(
-				"F:\\Swadhyay\\2019\\District Data\\generated\\1553045120835_Nizamabad_District_Data_20190320.xlsx");
+				"F:\\Swadhyay\\2019\\District Data\\generated\\data.xlsx");
 	}
 
 	@GetMapping("/download")

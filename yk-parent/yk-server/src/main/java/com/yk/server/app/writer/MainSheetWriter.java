@@ -2,6 +2,7 @@ package com.yk.server.app.writer;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -17,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.yk.server.app.model.Kendra;
-import com.yk.server.app.model.YuvaYuvati;
+import com.yk.server.app.model.Role;
+import com.yk.server.app.model.Yuva;
 import com.yk.server.app.repository.KendraRepository;
 
 @Component
@@ -55,8 +58,7 @@ public class MainSheetWriter {
 	private KendraRepository kendraRepository;
 
 	public void createMainSheet(Workbook workbook) throws IOException, InvalidFormatException {
-		Sort sort = new Sort(Direction.ASC,
-				Arrays.asList("sanghat", "jilla", "taluka", "group", "yuvaYuvati", "kendraNumber"));
+		Sort sort = new Sort(Direction.ASC, Arrays.asList("orderNo"));
 		List<Kendra> kendraList = kendraRepository.findAll(sort);
 		CreationHelper createHelper = workbook.getCreationHelper();
 		Sheet sheet = workbook.createSheet("To-Be-Updated");
@@ -65,124 +67,124 @@ public class MainSheetWriter {
 
 		CellStyle dateCellStyle = workbook.createCellStyle();
 		dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat("dd/MM/yyyy"));
+
+		CellStyle blankCellStyle = workbook.createCellStyle();
+		blankCellStyle.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+		blankCellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		int rowNum = 1;
-		for (Kendra employee : kendraList) {
+		for (Kendra kendra : kendraList) {
 			Row row = sheet.createRow(rowNum);
-			addValues(dateCellStyle, employee, row, rowNum);
+			addValues(dateCellStyle, blankCellStyle, kendra, row, rowNum);
 			rowNum++;
 		}
 	}
 
-	private void addValues(CellStyle dateStyle, Kendra kendra, Row row, int rowNum) {
+	private void addValues(CellStyle dateStyle, CellStyle blankCellStyle, Kendra kendra, Row row, int rowNum) {
 		int i = 0;
-		row.createCell(i++).setCellValue(rowNum);
-		row.createCell(i++).setCellValue(kendra.getCountry());
-		row.createCell(i++).setCellValue(kendra.getSanghat());
-		row.createCell(i++).setCellValue(kendra.getJilla());
-		Cell dobCell;
-		if (kendra.getjSannidatha() != null) {
-			row.createCell(i++).setCellValue(kendra.getjSannidatha().getName());
-			dobCell = row.createCell(i++);
-			if (kendra.getjSannidatha().getDob() != null) {
-				dobCell.setCellStyle(dateStyle);
-				dobCell.setCellValue(kendra.getjSannidatha().getDob());
-			} else {
-				dobCell.setCellValue("");
-			}
-			row.createCell(i++).setCellValue(kendra.getjSannidatha().getPhone());
-		} else {
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-		}
-		row.createCell(i++).setCellValue(kendra.getTaluka());
-		if (kendra.gettSannidatha() != null) {
-			row.createCell(i++).setCellValue(kendra.gettSannidatha().getName());
-			dobCell = row.createCell(i++);
-			if (kendra.gettSannidatha().getDob() != null) {
-				dobCell.setCellStyle(dateStyle);
-				dobCell.setCellValue(kendra.gettSannidatha().getDob());
-			} else {
-				dobCell.setCellValue("");
-			}
-			row.createCell(i++).setCellValue(kendra.gettSannidatha().getPhone());
-		} else {
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-		}
-		row.createCell(i++).setCellValue(kendra.getGroup());
-		row.createCell(i++).setCellValue(kendra.getAvekshak().getPhone());
-		if (kendra.getAvekshak() != null) {
-			row.createCell(i++).setCellValue(kendra.getAvekshak().getName());
-			dobCell = row.createCell(i++);
-			if (kendra.getAvekshak().getDob() != null) {
-				dobCell.setCellStyle(dateStyle);
-				dobCell.setCellValue(kendra.getAvekshak().getDob());
-			} else {
-				dobCell.setCellValue("");
-			}
-		} else {
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-		}
-		
-		row.createCell(i++).setCellValue(kendra.getKendra());
-		row.createCell(i++).setCellValue((kendra.getKendraType() != null) ? kendra.getKendraType().toString() : "");
-		row.createCell(i++).setCellValue((kendra.getYuvaYuvati() != null) ? kendra.getYuvaYuvati().toString() : "");
-		row.createCell(i++).setCellValue(kendra.getYearOfKendra());
-		row.createCell(i++)
-				.setCellValue((kendra.getKendraCategory() != null) ? kendra.getKendraCategory().toString() : "");
-		row.createCell(i++).setCellValue(kendra.getKendraNumber());
-		row.createCell(i++).setCellValue((kendra.getStatus() != null) ? kendra.getStatus().toString() : "");
-		row.createCell(i++).setCellValue(kendra.getYearMerged());
-		row.createCell(i++).setCellValue(kendra.getMergedTo());
-		if (kendra.getSanchalak1() != null) {
-			row.createCell(i++).setCellValue(kendra.getSanchalak1().getName());
-			row.createCell(i++).setCellValue(kendra.getSanchalak1().getPhone());
+		writeCell(row, i++, blankCellStyle, rowNum);
+		writeCell(row, i++, blankCellStyle, kendra.getCountry());
+		writeCell(row, i++, blankCellStyle, kendra.getSanghat());
+		writeCell(row, i++, blankCellStyle, kendra.getJilla());
+		i = writePerson(kendra.getjSannidatha(), i, row, blankCellStyle, dateStyle);
+		writeCell(row, i++, blankCellStyle, kendra.getTaluka());
+		i = writePerson(kendra.gettSannidatha(), i, row, blankCellStyle, dateStyle);
+		writeCell(row, i++, blankCellStyle, kendra.getGroup());
+		i = writePerson(kendra.getAvekshak(), i, row, blankCellStyle, dateStyle);
+		writeCell(row, i++, blankCellStyle, kendra.getKendra());
+		writeCell(row, i++, blankCellStyle, (kendra.getKendraType() != null) ? kendra.getKendraType().toString() : "");
+		writeCell(row, i++, blankCellStyle, (kendra.getYuvaYuvati() != null) ? kendra.getYuvaYuvati().toString() : "");
+		writeCell(row, i++, blankCellStyle, kendra.getYearOfKendra());
+		writeCell(row, i++, blankCellStyle, kendra.getKendraCategory());
+		writeCell(row, i++, blankCellStyle, kendra.getKendraNumber());
+		writeCell(row, i++, blankCellStyle, kendra.getStatus());
+		writeCell(row, i++, blankCellStyle, kendra.getYearMerged());
+		writeCell(row, i++, blankCellStyle, kendra.getMergedTo());
+		i = writePerson(kendra.getSanchalak1(), i, row, blankCellStyle, dateStyle);
+		i = writePerson(kendra.getSanchalak2(), i, row, blankCellStyle, dateStyle);
+		writeCell(row, i++, blankCellStyle, kendra.getMinAttendance());
+		writeCell(row, i++, blankCellStyle, kendra.getMaxAttendance());
+		writeCell(row, i++, blankCellStyle, kendra.getYKConducted());
+		writeCell(row, i++, blankCellStyle, kendra.getVillageOfYK());
+		writeCell(row, i++, blankCellStyle, kendra.getLandmark());
+		writeCell(row, i++, blankCellStyle, kendra.getyKSthal());
+		writeCell(row, i++, blankCellStyle, kendra.getyKSthalPin());
+		writeCell(row, i++, blankCellStyle, kendra.getDayOfYK());
+		writeCell(row, i++, blankCellStyle, kendra.getTimeOfYK());
+		writeCell(row, i++, blankCellStyle, kendra.getSwadhyayLoc());
+		writeCell(row, i++, blankCellStyle, kendra.getSwadhyayVillage());
 
-			dobCell = row.createCell(i++);
-			if (kendra.getSanchalak1().getDob() != null) {
-				dobCell.setCellStyle(dateStyle);
-				dobCell.setCellValue(kendra.getSanchalak1().getDob());
-			} else {
-				dobCell.setCellValue("");
-			}
-		} else {
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-		}
-		if (kendra.getSanchalak2() != null) {
-			row.createCell(i++).setCellValue(kendra.getSanchalak2().getName());
-			row.createCell(i++).setCellValue(kendra.getSanchalak2().getPhone());
+	}
 
-			dobCell = row.createCell(i++);
-			if (kendra.getSanchalak2().getDob() != null) {
-				dobCell.setCellStyle(dateStyle);
-				dobCell.setCellValue(kendra.getSanchalak2().getDob());
+	private int writePerson(Yuva yuva, int i, Row row, CellStyle blankCellStyle, CellStyle dateStyle) {
+		if (yuva != null) {
+			writeNameCell(row, i++, blankCellStyle, yuva.getName());
+			if (!(Role.J_SANNIDATHA.getRole().equalsIgnoreCase(yuva.getRole())
+					|| Role.T_SANNIDATHA.getRole().equalsIgnoreCase(yuva.getRole()))) {
+				writeCell(row, i++, blankCellStyle, yuva.getPhone());
+			}
+			if (yuva.getDob() != null) {
+				writeCell(row, i++, yuva.getDob(), dateStyle);
 			} else {
-				dobCell.setCellValue("");
+				writeBlank(row, i++, blankCellStyle);
+			}
+			if (Role.J_SANNIDATHA.getRole().equalsIgnoreCase(yuva.getRole())
+					|| Role.T_SANNIDATHA.getRole().equalsIgnoreCase(yuva.getRole())) {
+				writeCell(row, i++, blankCellStyle, yuva.getPhone());
 			}
 		} else {
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
-			row.createCell(i++).setCellValue("");
+			writeCell(row, i++, blankCellStyle, "N/A");
+			writeCell(row, i++, blankCellStyle, "N/A");
+			writeCell(row, i++, blankCellStyle, "N/A");
+		}
+		return i;
+	}
+
+	private void writeNameCell(Row row, int i, CellStyle blankCellStyle, String name) {
+		if (name != null) {
+			if (name.split(" ").length >= 3) {
+				writeCell(row, i, blankCellStyle, name);
+			} else {
+				Cell errorCell = row.createCell(i);
+				errorCell.setCellStyle(blankCellStyle);
+				errorCell.setCellValue(name);
+			}
+		} else {
+			writeBlank(row, i, blankCellStyle);
 		}
 
-		row.createCell(i++).setCellValue(kendra.getMinAttendance());
-		row.createCell(i++).setCellValue(kendra.getMaxAttendance());
-		row.createCell(i++).setCellValue(kendra.getYKConducted());
-		row.createCell(i++).setCellValue(kendra.getVillageOfYK());
-		row.createCell(i++).setCellValue(kendra.getLandmark());
-		row.createCell(i++).setCellValue(kendra.getyKSthal());
-		row.createCell(i++).setCellValue(kendra.getyKSthalPin());
-		row.createCell(i++).setCellValue(kendra.getDayOfYK());
-		row.createCell(i++).setCellValue(kendra.getTimeOfYK());
-		row.createCell(i++).setCellValue(kendra.getSwadhyayLoc());
-		row.createCell(i++).setCellValue(kendra.getSwadhyayVillage());
+	}
 
+	private void writeBlank(Row row, int i, CellStyle blankCellStyle) {
+		Cell blankCell = row.createCell(i);
+		blankCell.setCellStyle(blankCellStyle);
+		blankCell.setCellValue("");
+
+	}
+
+	private void writeCell(Row row, int i, Date dt, CellStyle dateStyle) {
+		Cell dateCell = row.createCell(i);
+		dateCell.setCellStyle(dateStyle);
+		dateCell.setCellValue(dt);
+	}
+
+	private void writeCell(Row row, int i, CellStyle blankCellStyle, Enum<?> e) {
+		if (e != null) {
+			row.createCell(i).setCellValue(e.toString());
+		} else {
+			writeBlank(row, i, blankCellStyle);
+		}
+	}
+
+	private void writeCell(Row row, int i, CellStyle blankCellStyle, String value) {
+		if (StringUtils.isEmpty(value)) {
+			writeBlank(row, i, blankCellStyle);
+		} else {
+			row.createCell(i).setCellValue(value);
+		}
+	}
+
+	private void writeCell(Row row, int i, CellStyle blankCellStyle, int value) {
+		row.createCell(i).setCellValue(value);
 	}
 
 	private void addHeaders(Workbook workbook, Sheet sheet) {

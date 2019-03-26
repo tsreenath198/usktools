@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KLevelModel } from './k-level.model';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http.service';
 import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 

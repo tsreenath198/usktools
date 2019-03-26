@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { YuvaModel } from './yuva.model';
-import { HttpService } from "../http.service";
+import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, NgForm } from '@angular/forms';
 

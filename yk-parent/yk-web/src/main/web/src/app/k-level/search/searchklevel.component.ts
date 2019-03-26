@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/http.service';
 import { KLevelModel } from '../k-level.model';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-searchklevel',

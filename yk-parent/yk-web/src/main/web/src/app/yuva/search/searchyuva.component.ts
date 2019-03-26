@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { YuvaModel } from '../yuva.model';
-import { HttpService } from 'src/app/http.service';
+import { HttpService } from 'src/app/services/http.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class SearchyuvaComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   progress: { percentage: number } = { percentage: 0 };
-  constructor(private http: HttpService, private router: Router) { }
+  constructor(private http: HttpService , private router: Router) { }
   //gets data from database
   ngOnInit() {
     this.http.getReq('yuvan/getAll').subscribe(resp => {

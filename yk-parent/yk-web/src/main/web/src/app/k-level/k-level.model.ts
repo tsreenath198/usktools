@@ -1,4 +1,4 @@
-import { YuvanModel } from '../yuvan/yuvan.model';
+import { YuvaModel } from '../yuva/yuva.model';
 
 export interface KLevelModel{
     country : string;
@@ -7,11 +7,11 @@ export interface KLevelModel{
     taluka : string;
     group : string;
     kendra : string;
-    jSannidatha : YuvanModel;
-    tSannidatha : YuvanModel;
-    avekshak : YuvanModel;
-    sanchalak1 : YuvanModel;
-    sanchalak2 : YuvanModel;
+    jSannidatha : YuvaModel;
+    tSannidatha : YuvaModel;
+    avekshak : YuvaModel;
+    sanchalak1 : YuvaModel;
+    sanchalak2 : YuvaModel;
     kendraType : string;
     yuvaYuvati : string;
     yearOfKendra : string;

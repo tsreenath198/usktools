@@ -1,4 +1,4 @@
-export interface YuvanModel{
+export interface YuvaModel{
     name:string;
     phone:string;
     dob:Date;

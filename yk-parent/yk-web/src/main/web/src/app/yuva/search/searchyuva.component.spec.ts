@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchdmilanComponent } from './searchdmilan.component';
+import { SearchyuvaComponent } from './searchyuva.component';
 
-describe('SearchdmilanComponent', () => {
-  let component: SearchdmilanComponent;
-  let fixture: ComponentFixture<SearchdmilanComponent>;
+describe('SearchyuvaComponent', () => {
+  let component: SearchyuvaComponent;
+  let fixture: ComponentFixture<SearchyuvaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchdmilanComponent ]
+      declarations: [ SearchyuvaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchdmilanComponent);
+    fixture = TestBed.createComponent(SearchyuvaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
-import { YuvanModel } from '../yuvan/yuvan.model';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
+import { YuvaModel } from '../yuva.model';
+import { HttpService } from 'src/app/services/http.service';
 
 
 @Component({
-  selector: 'app-searchdmilan',
-  templateUrl: './searchdmilan.component.html',
-  styleUrls: ['./searchdmilan.component.css']
+  selector: 'app-searchyuva',
+  templateUrl: './searchyuva.component.html',
+  styleUrls: ['./searchyuva.component.css']
 })
-export class SearchdmilanComponent implements OnInit {
-  public ykPush: YuvanModel[] = [];
+export class SearchyuvaComponent implements OnInit {
+  public ykPush: YuvaModel[] = [];
   public ykInput: string;
-  public ykTemp: YuvanModel = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
-  public ykList: YuvanModel[] = [];
+  public ykTemp: YuvaModel = <YuvaModel>{ name: "",  phone: "", dob: new Date(), role: "" };
+  public ykList: YuvaModel[] = [];
   selectedFiles: FileList;
   currentFileUpload: File;
   progress: { percentage: number } = { percentage: 0 };
-  constructor(private http: HttpService, private router: Router) { }
+  constructor(private http: HttpService , private router: Router) { }
   //gets data from database
   ngOnInit() {
     this.http.getReq('yuvan/getAll').subscribe(resp => {
-      this.ykList = resp as YuvanModel[]
+      this.ykList = resp as YuvaModel[]
     });
   }
   //navigates to next page

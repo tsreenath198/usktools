@@ -1,0 +1,16 @@
+.i-color{
+    background-color: blue;
+    color:white;
+}
+
+tbody {
+    display:block;
+    height:260px;
+    overflow-y:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+

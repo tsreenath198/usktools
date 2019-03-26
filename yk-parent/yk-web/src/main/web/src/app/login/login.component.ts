@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginModel } from './login.model';
-import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: HttpService, private router:Router) { }
+  constructor(private loginService: HttpService , private router:Router) { }
   username: string = "";
   password: string = "";
   ngOnInit() {
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       let response = resp as LoginModel
       if (response.username == this.username) {
         console.log("succes");
-        this.router.navigate(['/', 'searchdmilan'])
+        this.router.navigate(['/', 'landing'])
       }
     });
   }

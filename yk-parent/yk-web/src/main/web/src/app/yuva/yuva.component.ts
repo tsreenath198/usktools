@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { YuvanModel } from './yuvan.model';
-import { HttpService } from "../http.service";
+import { YuvaModel } from './yuva.model';
+import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-yuvan',
-  templateUrl: './yuvan.component.html',
-  styleUrls: ['./yuvan.component.css']
+  selector: 'app-yuva',
+  templateUrl: './yuva.component.html',
+  styleUrls: ['./yuva.component.css']
 })
-export class YuvanComponent implements OnInit {
+export class YuvaComponent implements OnInit {
   public surname;
   public middlename;
   public name;
-  public ykList: YuvanModel[] = [];
-  public ykCurrData: YuvanModel = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
+  public ykList: YuvaModel[] = [];
+  public ykCurrData: YuvaModel = <YuvaModel>{ name: "",  phone: "", dob: new Date(), role: "" };
   public selectedIndex: number = 0;
   public roleList = [{"key":"J_SANNIDATHA","value":"Jilla Sannidatha"},{"key":"J_SANNIDATHA","value":"Taluka Sannidatha"},{"key":"AVEKSHAK","value":"Avekshak"},{"key":"SANCHALAK_1","value":"Sanchalak"}];
   constructor(private clientHttp: HttpService, private router: Router, private formBuilder: FormBuilder) { }
@@ -24,7 +24,7 @@ export class YuvanComponent implements OnInit {
   addToList(dMilanForm: NgForm) {
     this.ykCurrData.name=this.surname+" "+this.middlename+" "+this.name;
     this.ykList.unshift(this.ykCurrData);
-    this.ykCurrData = <YuvanModel>{ name: "",  phone: "", dob: new Date(), role: "" };
+    this.ykCurrData = <YuvaModel>{ name: "",  phone: "", dob: new Date(), role: "" };
     this.name=null;
     this.middlename=null;
     this.name=null;

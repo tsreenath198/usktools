@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KLevelModel } from './k-level.model';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http.service';
 import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -26,7 +26,7 @@ export class KLevelComponent implements OnInit {
     kendraType: "",
     yuvaYuvati: "",
     yearOfKendra: "",
-    category: "",
+    kendraCategory: "",
     kendraNumber: "",
     status: "",
     yearMerged: "",
@@ -34,14 +34,14 @@ export class KLevelComponent implements OnInit {
     minAttendance: "",
     maxAttendance: "",
     villageOfYK: "",
-    landMark: "",
+    landmark: "",
     yKSthal: "",
     yKSthalPin: "",
     dayOfYK: "",
     timeOfYK: "",
     swadhyayLoc: "",
     swadhyayVillage: "",
-    ykConducted: "",
+    ykconducted: "",
   };
   public kendraTypeList = [{"key":"YK","value":"Yuva Kendra"},{"key":"DPC","value":"DPC"}];
   public genderType = [{"key":"YUVA","value":"Yuva"},{"key":"YUVATI","value":"Yuvati"}];
@@ -88,7 +88,7 @@ export class KLevelComponent implements OnInit {
       kendraType: "",
       yuvaYuvati: "",
       yearOfKendra: "",
-      category: "",
+      kendraCategory: "",
       kendraNumber: "",
       status: "",
       yearMerged: "",
@@ -96,14 +96,14 @@ export class KLevelComponent implements OnInit {
       minAttendance: "",
       maxAttendance: "",
       villageOfYK: "",
-      landMark: "",
+      landmark: "",
       yKSthal: "",
       yKSthalPin: "",
       dayOfYK: "",
       timeOfYK: "",
       swadhyayLoc: "",
       swadhyayVillage: "",
-      ykConducted: "",
+      ykconducted: "",
     };
     console.log(this.klList);
   }

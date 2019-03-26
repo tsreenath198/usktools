@@ -4,25 +4,27 @@ import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HttpService } from "./http.service";
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SearchdmilanComponent } from './searchdmilan/searchdmilan.component';
 import { KLevelComponent } from './k-level/k-level.component';
-import { YuvanComponent } from './yuvan/yuvan.component';
-import { SearchklevelComponent } from './k-level/search/searchklevel/searchklevel.component';
-import { FilterPipe } from './filter-pipe/filter.pipe';
+import { YuvaComponent } from './yuva/yuva.component';
+import { SearchklevelComponent } from './k-level/search/searchklevel.component';
+import { FilterPipe } from './pipes/filter-pipe/filter.pipe';
+import { SearchyuvaComponent } from './yuva/search/searchyuva.component';
+import { LandingComponent } from './landing/landing.component';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
     
     AppComponent,
-    YuvanComponent,
+    YuvaComponent,
     LoginComponent,
-    SearchdmilanComponent,
+    SearchyuvaComponent,
     KLevelComponent,
     SearchklevelComponent,
-    FilterPipe
+    FilterPipe,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

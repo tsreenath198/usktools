@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YuvanComponent } from './yuvan.component';
+import { YuvaComponent } from './yuva.component';
 
 describe('YuvanComponent', () => {
-  let component: YuvanComponent;
-  let fixture: ComponentFixture<YuvanComponent>;
+  let component: YuvaComponent;
+  let fixture: ComponentFixture<YuvaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YuvanComponent ]
+      declarations: [ YuvaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YuvanComponent);
+    fixture = TestBed.createComponent(YuvaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
